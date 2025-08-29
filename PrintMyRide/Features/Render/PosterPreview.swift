@@ -15,6 +15,8 @@ struct PosterPreview: View {
     // Either/or sources
     let route: GPXRoute?
     let payload: RoutePayload?
+    
+    @AppStorage("showPosterDebug") private var showPosterDebug = false
 
     private var coords: [CLLocationCoordinate2D] {
         if let p = payload, p.hasData { return p.coords }
@@ -30,8 +32,10 @@ struct PosterPreview: View {
                          mode: mode)
 #if DEBUG
         .overlay(alignment: .topLeading) {
-            Text("Coords: \(coords.count)\nMap: \(coords.count > 1 ? "✓" : "✖︎")")
-                .font(.caption2).foregroundStyle(.red).padding(6)
+            if showPosterDebug {
+                Text("Coords: \(coords.count)\nMap: \(coords.count > 1 ? "✓" : "✖︎")")
+                    .font(.caption2).foregroundStyle(.red).padding(6)
+            }
         }
 #endif
     }
