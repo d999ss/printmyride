@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# fix-build - One-command build fixer for Xcode projects
+# Usage: ./fix-build [project-dir]
+
+set -e
+
+PROJECT_DIR="${1:-$(pwd)}"
+cd "$PROJECT_DIR"
+
+echo "🔧 Claude Code Build Fixer"
+echo "📍 Working in: $PROJECT_DIR"
+
+# Check if we have the Python fixer
+if [[ -f "fix_build.py" ]]; then
+    echo "🐍 Using existing fix_build.py script..."
+    python3 fix_build.py
+elif command -v claude-code >/dev/null 2>&1; then
+    echo "🤖 Using Claude Code CLI to fix build..."
+    claude-code "Fix my build errors. Run the build, identify any compilation errors, and apply the necessary fixes. Protect any canonical files and only edit code in appropriate directories. Test the build afterwards to ensure it works."
+else
+    echo "❌ Neither fix_build.py nor claude-code CLI found"
+    echo "💡 Install Claude Code CLI or create fix_build.py script"
+    exit 1
+fi
+
+echo "✅ Build fix attempt complete!"

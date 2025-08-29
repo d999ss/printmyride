@@ -1,0 +1,7 @@
+# Canonical files (hands-off)
+- Never edit:
+  - PrintMyRide/Models/PosterDesign.swift
+  - PrintMyRide/Features/Render/GridOverlay.swift
+- If a change seems required, stop and ask for a spec update.
+- Do not introduce alternative types (e.g., Size, RGBAColor).
+- Use CGSize and PosterDesign.ColorData only.

@@ -1,0 +1,40 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Root/RootView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Home",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 9
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 10
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gallery",
+        "location": {
+          "startingColumn": 51,
+          "startingLine": 11
+        }
+      },
+      {
+        "comment": "",
+        "key": "Settings",
+        "location": {
+          "startingColumn": 52,
+          "startingLine": 12
+        }
+      }
+    ]
+  },
+  "version": 1
+}

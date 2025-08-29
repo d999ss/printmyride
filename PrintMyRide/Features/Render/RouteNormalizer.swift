@@ -2,7 +2,7 @@ import CoreGraphics
 
 struct RouteNormalizer {
     static func path(for route: GPXRoute, in content: CGRect) -> CGPath {
-        guard let first = route.points.first else { return CGMutablePath() }
+        guard !route.points.isEmpty else { return CGMutablePath() }
         let lats = route.points.map { $0.lat }
         let lons = route.points.map { $0.lon }
         let minLat = lats.min()!, maxLat = lats.max()!

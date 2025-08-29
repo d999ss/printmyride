@@ -1,0 +1,648 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project PrintMyRide.xcodeproj -scheme PrintMyRide -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 16 Pro" -resultBundlePath build/fixbuild/iOS_18.xcresult SWIFT_STRICT_CONCURRENCY=complete GCC_TREAT_WARNINGS_AS_ERRORS=YES build
+
+Build settings from command line:
+    GCC_TREAT_WARNINGS_AS_ERRORS = YES
+    SDKROOT = iphonesimulator18.5
+    SWIFT_STRICT_CONCURRENCY = complete
+
+Writing result bundle at path:
+	/Users/donnysmith/CC/printmyride/build/fixbuild/iOS_18.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:9544C4B4-1C3E-4F29-A0E8-E2C8E3813972, OS:18.6, name:iPhone 16 Pro }
+{ platform:iOS Simulator, arch:x86_64, id:9544C4B4-1C3E-4F29-A0E8-E2C8E3813972, OS:18.6, name:iPhone 16 Pro }
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'PrintMyRide' in project 'PrintMyRide' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/donnysmith/CC/printmyride/PrintMyRide/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: f3456c14f58c2d89444cd8231ed71cae
+Build description path: /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/XCBuildData/f3456c14f58c2d89444cd8231ed71cae.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk /Users/donnysmith/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-d5fc8ad4295d2ef488fb7d0f804ce0c4.sdkstatcache
+    cd /Users/donnysmith/CC/printmyride/PrintMyRide.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-d5fc8ad4295d2ef488fb7d0f804ce0c4.sdkstatcache
+
+CreateBuildDirectory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products
+    cd /Users/donnysmith/CC/printmyride/PrintMyRide.xcodeproj
+    builtin-create-build-directory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products
+
+CreateBuildDirectory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex
+    cd /Users/donnysmith/CC/printmyride/PrintMyRide.xcodeproj
+    builtin-create-build-directory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex
+
+CreateBuildDirectory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator
+    cd /Users/donnysmith/CC/printmyride/PrintMyRide.xcodeproj
+    builtin-create-build-directory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator
+
+CreateBuildDirectory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+    cd /Users/donnysmith/CC/printmyride/PrintMyRide.xcodeproj
+    builtin-create-build-directory /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide-79a2e689c5b126914c918b95051861fe-VFS-iphonesimulator/all-product-headers.yaml
+    cd /Users/donnysmith/CC/printmyride/PrintMyRide.xcodeproj
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide-79a2e689c5b126914c918b95051861fe-VFS-iphonesimulator/all-product-headers.yaml
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-project-headers.hmap (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-project-headers.hmap
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.DependencyMetadataFileList (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-all-target-headers.hmap (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-own-target-headers.hmap (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.DependencyStaticMetadataFileList (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-all-non-framework-target-headers.hmap (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-DebugDylibPath-normal-arm64.txt (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-DebugDylibInstallName-normal-arm64.txt (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-DebugDylibInstallName-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-generated-files.hmap (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-generated-files.hmap
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.hmap (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.hmap
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/empty-PrintMyRide.plist (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/empty-PrintMyRide.plist
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftConstValuesFileList (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftFileList (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftFileList
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_const_extract_protocols.json (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.LinkFileList (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.LinkFileList
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-OutputFileMap.json (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-OutputFileMap.json
+
+MkDir /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /bin/mkdir -p /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+WriteAuxiliaryFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/Entitlements-Simulated.plist (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    write-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/Entitlements-Simulated.plist
+
+ProcessProductPackaging "" /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "3864YR83JA.d999ss.PrintMyRide";
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent
+
+ProcessProductPackagingDER /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent.der (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /usr/bin/derq query -f xml -i /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent.der --raw
+
+MkDir /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/unthinned (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /bin/mkdir -p /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/unthinned
+
+MkDir /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/thinned (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /bin/mkdir -p /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/thinned
+
+CpResource /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/sample.gpx /Users/donnysmith/CC/printmyride/PrintMyRide/sample.gpx (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/donnysmith/CC/printmyride/PrintMyRide/sample.gpx /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+GenerateAssetSymbols /Users/donnysmith/CC/printmyride/PrintMyRide/Assets.xcassets (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/donnysmith/CC/printmyride/PrintMyRide/Assets.xcassets --compile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app --output-format human-readable-text --notices --warnings --export-dependency-info /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_dependencies --output-partial-info-plist /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_generated_info.plist --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 16.0 --platform iphonesimulator --bundle-identifier d999ss.PrintMyRide --generate-swift-asset-symbols /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols.swift --generate-objc-asset-symbols /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols.h --generate-asset-symbol-index /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/* com.apple.actool.compilation-results */
+/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols-Index.plist
+/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols.h
+/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols.swift
+
+
+CpResource /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/StyleSheet.swift.disabled /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/StyleSheet.swift.disabled (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/StyleSheet.swift.disabled /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+CpResource /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PreBuildCheck.sh /Users/donnysmith/CC/printmyride/PrintMyRide/PreBuildCheck.sh (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/donnysmith/CC/printmyride/PrintMyRide/PreBuildCheck.sh /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+CpResource /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrivacyInfo.xcprivacy /Users/donnysmith/CC/printmyride/PrintMyRide/PrivacyInfo.xcprivacy (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/donnysmith/CC/printmyride/PrintMyRide/PrivacyInfo.xcprivacy /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+CpResource /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Afternoon_Mountain_Bike_Ride.gpx /Users/donnysmith/CC/printmyride/PrintMyRide/Afternoon_Mountain_Bike_Ride.gpx (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/donnysmith/CC/printmyride/PrintMyRide/Afternoon_Mountain_Bike_Ride.gpx /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+CpResource /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/CanvasSheet.swift.disabled /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/CanvasSheet.swift.disabled (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/CanvasSheet.swift.disabled /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+Ld /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/__preview.dylib normal (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -F/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -install_name @rpath/PrintMyRide.debug.dylib -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_dependency_info.dat -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent.der -Xlinker -no_adhoc_codesign -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/__preview.dylib
+
+CompileAssetCatalogVariant thinned /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app /Users/donnysmith/CC/printmyride/PrintMyRide/Assets.xcassets (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /Applications/Xcode.app/Contents/Developer/usr/bin/actool /Users/donnysmith/CC/printmyride/PrintMyRide/Assets.xcassets --compile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/thinned --output-format human-readable-text --notices --warnings --export-dependency-info /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_dependencies_thinned --output-partial-info-plist /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_generated_info.plist_thinned --app-icon AppIcon --accent-color AccentColor --compress-pngs --enable-on-demand-resources YES --filter-for-thinning-device-configuration iPhone17,1 --filter-for-device-os-version 18.6 --development-region en --target-device iphone --target-device ipad --minimum-deployment-target 16.0 --platform iphonesimulator
+/* com.apple.actool.compilation-results */
+/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_generated_info.plist_thinned
+/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/thinned/AppIcon60x60@2x.png
+/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/thinned/AppIcon76x76@2x~ipad.png
+/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/thinned/Assets.car
+
+
+SwiftDriver PrintMyRide normal arm64 com.apple.xcode.tools.swift.compiler (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name PrintMyRide -Onone -enforce-exclusivity\=checked @/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftFileList -DDEBUG -enable-upcoming-feature StrictConcurrency -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios16.0-simulator -g -module-cache-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Index.noindex/DataStore -swift-version 5 -I /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -F /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64 -c -j16 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-d5fc8ad4295d2ef488fb7d0f804ce0c4.sdkstatcache -output-file-map /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_const_extract_protocols.json -Xcc -iquote -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-generated-files.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-own-target-headers.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-all-target-headers.hmap -Xcc -iquote -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-project-headers.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources-normal/arm64 -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/arm64 -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-Swift.h -working-directory /Users/donnysmith/CC/printmyride -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ PrintMyRideApp.swift,\ StylePreset.swift,\ Simplify.swift /Users/donnysmith/CC/printmyride/PrintMyRide/PrintMyRideApp.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Models/StylePreset.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/Simplify.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/PrintMyRideApp.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Models/StylePreset.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/Simplify.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ ShareSheet.swift,\ StatsExtractor.swift,\ CanvasView.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift /Users/donnysmith/CC/printmyride/PrintMyRide/GPX/StatsExtractor.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/CanvasView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:10:18: warning: call to main actor-isolated initializer 'init(activityItems:applicationActivities:)' in a synchronous nonisolated context; this is an error in the Swift 6 language mode
+        let av = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                 ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityViewController.h:31:1: note: calls to initializer 'init(activityItems:applicationActivities:)' from outside of its actor context are implicitly asynchronous
+- (instancetype)initWithActivityItems:(NSArray *)activityItems applicationActivities:(nullable NSArray<__kindof UIActivity *> *)applicationActivities NS_DESIGNATED_INITIALIZER;
+^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityViewController.h:31:1: note: main actor isolation inferred from inheritance from class 'UIViewController'
+- (instancetype)initWithActivityItems:(NSArray *)activityItems applicationActivities:(nullable NSArray<__kindof UIActivity *> *)applicationActivities NS_DESIGNATED_INITIALIZER;
+^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:4:17: note: add '@MainActor' to make static method 'present(fileURL:previewPNGData:)' part of global actor 'MainActor'
+    static func present(fileURL: URL, previewPNGData: Data? = nil) {
+                ^
+    @MainActor 
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:11:45: warning: main actor-isolated property 'connectedScenes' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:170:50: note: property declared here
+@property(nonatomic, readonly) NSSet<UIScene *> *connectedScenes API_AVAILABLE(ios(13.0)) API_UNAVAILABLE(watchos);
+                                                 ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:4:17: note: add '@MainActor' to make static method 'present(fileURL:previewPNGData:)' part of global actor 'MainActor'
+    static func present(fileURL: URL, previewPNGData: Data? = nil) {
+                ^
+    @MainActor 
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:11:38: warning: main actor-isolated class property 'shared' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                     ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:87:54: note: class property declared here
+@property(class, nonatomic, readonly) UIApplication *sharedApplication NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
+                                                     ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:4:17: note: add '@MainActor' to make static method 'present(fileURL:previewPNGData:)' part of global actor 'MainActor'
+    static func present(fileURL: URL, previewPNGData: Data? = nil) {
+                ^
+    @MainActor 
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:12:28: warning: main actor-isolated property 'windows' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+           let win = scene.windows.first,
+                           ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWindowScene.h:38:54: note: property declared here
+@property (nonatomic, readonly) NSArray<UIWindow *> *windows;
+                                                     ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:4:17: note: add '@MainActor' to make static method 'present(fileURL:previewPNGData:)' part of global actor 'MainActor'
+    static func present(fileURL: URL, previewPNGData: Data? = nil) {
+                ^
+    @MainActor 
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:13:25: warning: main actor-isolated property 'rootViewController' can not be referenced from a nonisolated context; this is an error in the Swift 6 language mode
+           let vc = win.rootViewController {
+                        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWindow.h:66:57: note: property declared here
+@property(nullable, nonatomic,strong) UIViewController *rootViewController API_AVAILABLE(ios(4.0));  // default is nil
+                                                        ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:4:17: note: add '@MainActor' to make static method 'present(fileURL:previewPNGData:)' part of global actor 'MainActor'
+    static func present(fileURL: URL, previewPNGData: Data? = nil) {
+                ^
+    @MainActor 
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:14:16: warning: call to main actor-isolated instance method 'present(_:animated:completion:)' in a synchronous nonisolated context; this is an error in the Swift 6 language mode
+            vc.present(av, animated: true)
+               ^
+UIKit.UIViewController.present:3:24: note: calls to instance method 'present(_:animated:completion:)' from outside of its actor context are implicitly asynchronous
+  @MainActor open func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil)}
+                       ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareSheet.swift:4:17: note: add '@MainActor' to make static method 'present(fileURL:previewPNGData:)' part of global actor 'MainActor'
+    static func present(fileURL: URL, previewPNGData: Data? = nil) {
+                ^
+    @MainActor 
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/GPX/StatsExtractor.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/CanvasView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ PosterProject.swift,\ PosterRenderer.swift,\ EditorView.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Models/PosterProject.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/PosterRenderer.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/EditorView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Models/PosterProject.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/PosterRenderer.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/EditorView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ PosterDesign.swift,\ PosterPreview.swift,\ EditorState.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Models/PosterDesign.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/PosterPreview.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/EditorState.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Models/PosterDesign.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/PosterPreview.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/EditorState.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ RouteRegion.swift,\ GPXImporter.swift,\ LibraryStore.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/RouteRegion.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Import/GPXImporter.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Data/LibraryStore.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/RouteRegion.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Import/GPXImporter.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Data/LibraryStore.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ RouteNormalizer.swift,\ PosterEditorView.swift,\ ChromeVisibility.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/RouteNormalizer.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/PosterEditorView.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ChromeVisibility.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/RouteNormalizer.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/PosterEditorView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ChromeVisibility.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ChromeVisibility.swift:12:17: warning: capture of 'self' with non-sendable type 'ChromeVisibility?' in a '@Sendable' closure
+                self?.visible = false
+                ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ChromeVisibility.swift:3:13: note: class 'ChromeVisibility' does not conform to the 'Sendable' protocol
+final class ChromeVisibility: ObservableObject {
+            ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ChromeVisibility.swift:12:17: warning: capture of 'self' with non-sendable type 'ChromeVisibility?' in an isolated closure; this is an error in the Swift 6 language mode
+                self?.visible = false
+                ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ChromeVisibility.swift:3:13: note: class 'ChromeVisibility' does not conform to the 'Sendable' protocol
+final class ChromeVisibility: ObservableObject {
+            ^
+
+SwiftCompile normal arm64 Compiling\ UTType+GPX.swift,\ GPXRoute.swift,\ PosterExport.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/UTType+GPX.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Models/GPXRoute.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/PosterExport.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/UTType+GPX.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Models/GPXRoute.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/PosterExport.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ TextOverlay.swift,\ DesignTokens.swift,\ SettingsView.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/TextOverlay.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/DesignTokens.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Settings/SettingsView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/TextOverlay.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/DesignTokens.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Settings/SettingsView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ StyleSheet.swift,\ DesignDefaults.swift,\ GalleryView.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/StyleSheet.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/DesignDefaults.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Gallery/GalleryView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/StyleSheet.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/DesignDefaults.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Gallery/GalleryView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ Snapshotter.swift,\ GridOverlay.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/Snapshotter.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/GridOverlay.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/Snapshotter.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/GridOverlay.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ PrintMyRide (in target 'PrintMyRide' from project 'PrintMyRide')
+
+EmitSwiftModule normal arm64 (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ RenderMath.swift,\ ExportSheet.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/RenderMath.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/ExportSheet.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/RenderMath.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/ExportSheet.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ RootView.swift,\ MapSnapshotper.swift,\ OnboardingView.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Root/RootView.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/MapSnapshotper.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Welcome/OnboardingView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Root/RootView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/MapSnapshotper.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/MapSnapshotper.swift:28:36: warning: non-sendable result type 'MKMapSnapshotter.Snapshot' cannot be sent from nonisolated context in call to instance method 'start()'; this is an error in the Swift 6 language mode
+        do { return try await shot.start().image } catch { return nil }
+                                   ^
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk/System/Library/Frameworks/MapKit.framework/Headers/MKMapSnapshot.h:20:12: note: class 'Snapshot' does not conform to the 'Sendable' protocol
+@interface MKMapSnapshot : NSObject
+           ^
+/Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/MapSnapshotper.swift:2:1: warning: add '@preconcurrency' to suppress 'Sendable'-related warnings from module 'MapKit'
+import MapKit
+^
+@preconcurrency 
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Welcome/OnboardingView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ ShareCard.swift,\ GPXRoute+Ext.swift,\ ZoomState.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareCard.swift /Users/donnysmith/CC/printmyride/PrintMyRide/GPX/GPXRoute+Ext.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ZoomState.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ShareCard.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/GPX/GPXRoute+Ext.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/ZoomState.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ CanvasSheet.swift,\ PosterText.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/CanvasSheet.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Models/PosterText.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/CanvasSheet.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Models/PosterText.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 Compiling\ HomeView.swift,\ GeneratedAssetSymbols.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Home/HomeView.swift /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Home/HomeView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for PrintMyRide (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriver\ Compilation\ Requirements PrintMyRide normal arm64 com.apple.xcode.tools.swift.compiler (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name PrintMyRide -Onone -enforce-exclusivity\=checked @/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftFileList -DDEBUG -enable-upcoming-feature StrictConcurrency -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios16.0-simulator -g -module-cache-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Index.noindex/DataStore -swift-version 5 -I /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -F /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64 -c -j16 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-d5fc8ad4295d2ef488fb7d0f804ce0c4.sdkstatcache -output-file-map /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_const_extract_protocols.json -Xcc -iquote -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-generated-files.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-own-target-headers.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-all-target-headers.hmap -Xcc -iquote -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-project-headers.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources-normal/arm64 -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/arm64 -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-Swift.h -working-directory /Users/donnysmith/CC/printmyride -experimental-emit-module-separately -disable-cmo
+
+LinkAssetCatalog /Users/donnysmith/CC/printmyride/PrintMyRide/Assets.xcassets (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-linkAssetCatalog --thinned /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/thinned --thinned-dependencies /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_dependencies_thinned --thinned-info-plist-content /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_generated_info.plist_thinned --unthinned /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_output/unthinned --unthinned-dependencies /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_dependencies_unthinned --unthinned-info-plist-content /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_generated_info.plist_unthinned --output /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app --plist-output /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_generated_info.plist
+note: Emplaced /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/AppIcon76x76@2x~ipad.png (in target 'PrintMyRide' from project 'PrintMyRide')
+note: Emplaced /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/AppIcon60x60@2x.png (in target 'PrintMyRide' from project 'PrintMyRide')
+note: Emplaced /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Assets.car (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftMergeGeneratedHeaders /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/PrintMyRide-Swift.h /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-Swift.h (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-swiftHeaderTool -arch arm64 /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-Swift.h -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/PrintMyRide-Swift.h
+
+Copy /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftmodule (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftmodule /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftdoc (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftdoc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+Copy /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/arm64-apple-ios-simulator.abi.json /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.abi.json (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.abi.json /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftsourceinfo (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftsourceinfo /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+ProcessInfoPlistFile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Info.plist /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/empty-PrintMyRide.plist (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-infoPlistUtility /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/empty-PrintMyRide.plist -producttype com.apple.product-type.application -genpkginfo /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/assetcatalog_generated_info.plist -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Info.plist
+
+SwiftCompile normal arm64 Compiling\ TextSheet.swift,\ HUD.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/TextSheet.swift /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/HUD.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/TextSheet.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftCompile normal arm64 /Users/donnysmith/CC/printmyride/PrintMyRide/Utilities/HUD.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling PrintMyRideApp.swift, StylePreset.swift, Simplify.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ShareCard.swift, GPXRoute+Ext.swift, ZoomState.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling CanvasSheet.swift, PosterText.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Snapshotter.swift, GridOverlay.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling TextOverlay.swift, DesignTokens.swift, SettingsView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RenderMath.swift, ExportSheet.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling HomeView.swift, GeneratedAssetSymbols.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling StyleSheet.swift, DesignDefaults.swift, GalleryView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling PosterProject.swift, PosterRenderer.swift, EditorView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RouteNormalizer.swift, PosterEditorView.swift, ChromeVisibility.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling PosterDesign.swift, PosterPreview.swift, EditorState.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RootView.swift, MapSnapshotper.swift, OnboardingView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling UTType+GPX.swift, GPXRoute.swift, PosterExport.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling TextSheet.swift, HUD.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling ShareSheet.swift, StatsExtractor.swift, CanvasView.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriverJobDiscovery normal arm64 Compiling RouteRegion.swift, GPXImporter.swift, LibraryStore.swift (in target 'PrintMyRide' from project 'PrintMyRide')
+
+SwiftDriver\ Compilation PrintMyRide normal arm64 com.apple.xcode.tools.swift.compiler (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name PrintMyRide -Onone -enforce-exclusivity\=checked @/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftFileList -DDEBUG -enable-upcoming-feature StrictConcurrency -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -target arm64-apple-ios16.0-simulator -g -module-cache-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Index.noindex/DataStore -swift-version 5 -I /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -F /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64 -c -j16 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator18.5-22F76-d5fc8ad4295d2ef488fb7d0f804ce0c4.sdkstatcache -output-file-map /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_const_extract_protocols.json -Xcc -iquote -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-generated-files.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-own-target-headers.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-all-target-headers.hmap -Xcc -iquote -Xcc /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-project-headers.hmap -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources-normal/arm64 -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources/arm64 -Xcc -I/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide-Swift.h -working-directory /Users/donnysmith/CC/printmyride -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide.debug.dylib normal (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -F/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -filelist /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.LinkFileList -install_name @rpath/PrintMyRide.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -Xlinker -dependency_info -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_dependency_info.dat -fobjc-link-runtime -fprofile-instr-generate -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.swiftmodule -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -Xlinker -no_adhoc_codesign -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide.debug.dylib
+
+ConstructStubExecutorLinkFileList /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-ExecutorLinkFileList-normal-arm64.txt (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    construct-stub-executor-link-file-list /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'PrintMyRide' from project 'PrintMyRide')
+
+Ld /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide normal (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.0-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk -O0 -L/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -F/Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -debug_variant -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide-ExecutorLinkFileList-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.app-Simulated.xcent.der /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide.debug.dylib -Xlinker -no_adhoc_codesign -o /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide
+
+CopySwiftLibs /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide.debug.dylib --scan-folder /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Frameworks --scan-folder /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PlugIns --scan-folder /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/SystemExtensions --scan-folder /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+ExtractAppIntentsMetadata (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name PrintMyRide --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk --xcode-version 16F6 --platform-family iOS --deployment-target 16.0 --bundle-identifier d999ss.PrintMyRide --output /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app --target-triple arm64-apple-ios16.0-simulator --binary-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide --dependency-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide_dependency_info.dat --stringsdata-file /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftFileList --metadata-file-list /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.DependencyMetadataFileList --static-metadata-file-list /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.DependencyStaticMetadataFileList --swift-const-vals-list /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PrintMyRide.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2025-08-27 21:45:41.199 appintentsmetadataprocessor[86464:1059442] Starting appintentsmetadataprocessor export
+2025-08-27 21:45:41.200 appintentsmetadataprocessor[86464:1059442] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+AppIntentsSSUTraining (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Info.plist --temp-dir-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/ssu --bundle-id d999ss.PrintMyRide --product-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app --extracted-metadata-path /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/Metadata.appintents --metadata-file-list /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/PrintMyRide.DependencyMetadataFileList --archive-ssu-assets
+2025-08-27 21:45:41.209 appintentsnltrainingprocessor[86465:1059444] Parsing options for appintentsnltrainingprocessor
+2025-08-27 21:45:41.209 appintentsnltrainingprocessor[86465:1059444] No AppShortcuts found - Skipping.
+
+CodeSign /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide.debug.dylib (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/PrintMyRide.debug.dylib
+
+CodeSign /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/__preview.dylib (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app/__preview.dylib
+
+CodeSign /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+RegisterExecutionPolicyException /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-RegisterExecutionPolicyException /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+Validate /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    builtin-validationUtility /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app -infoplist-subpath Info.plist
+
+Touch /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app (in target 'PrintMyRide' from project 'PrintMyRide')
+    cd /Users/donnysmith/CC/printmyride
+    /usr/bin/touch -c /Users/donnysmith/Library/Developer/Xcode/DerivedData/PrintMyRide-ejvprgoqxjmpqvcyjmaqqandidrq/Build/Products/Debug-iphonesimulator/PrintMyRide.app
+
+
+Result bundle written to path:
+	/Users/donnysmith/CC/printmyride/build/fixbuild/iOS_18.xcresult
+
+** BUILD SUCCEEDED **
+

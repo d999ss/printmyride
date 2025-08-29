@@ -1,54 +1,67 @@
 import SwiftUI
-import UIKit
+import PDFKit
 
 enum PosterExport {
-    static func renderPNG(route: GPXRoute, design: PosterDesign, exportScale: CGFloat = 1.0) -> Data? {
-        let W = Int(design.widthInches  * CGFloat(design.dpi) * exportScale)
-        let H = Int(design.heightInches * CGFloat(design.dpi) * exportScale)
-        let M = Int(min(W, H)).quotientAndRemainder(dividingBy: 10_000).remainder // ignore, using margin below
-        
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        guard let ctx = CGContext(data: nil, width: W, height: H, bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
-        
-        // Background
-        ctx.setFillColor(UIColor(design.backgroundColor.color).cgColor)
-        ctx.fill(CGRect(x: 0, y: 0, width: W, height: H))
-        
-        // Content rect with margins
-        let margin = Int(CGFloat(min(W, H)) * design.marginRatio)
-        let content = CGRect(x: margin, y: margin, width: W - 2*margin, height: H - 2*margin)
-        
-        // Route
-        let path = RouteNormalizer.path(for: route, in: content)
-        ctx.addPath(path)
-        ctx.setLineCap(.round)
-        ctx.setLineJoin(.round)
-        ctx.setLineWidth(design.strokeWidthPt * exportScale)
-        ctx.setStrokeColor(UIColor(design.routeColor.color).cgColor)
-        ctx.strokePath()
-        
-        // Title and subtitle
-        let title = design.title as NSString
-        let subtitle = design.subtitle as NSString
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.alignment = .center
-        let titleAttrs: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 48 * exportScale, weight: .semibold),
-            .foregroundColor: UIColor.white,
-            .paragraphStyle: paragraph
-        ]
-        let subAttrs: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 24 * exportScale, weight: .regular),
-            .foregroundColor: UIColor(white: 1, alpha: 0.8),
-            .paragraphStyle: paragraph
-        ]
-        let textWidth = CGFloat(W) - CGFloat(2*margin)
-        let titleRect = CGRect(x: CGFloat(margin), y: CGFloat(H) - CGFloat(margin) - 96 * exportScale, width: textWidth, height: 60 * exportScale)
-        let subRect   = CGRect(x: CGFloat(margin), y: titleRect.maxY + 4 * exportScale, width: textWidth, height: 40 * exportScale)
-        title.draw(in: titleRect, withAttributes: titleAttrs)
-        if !design.subtitle.isEmpty { subtitle.draw(in: subRect, withAttributes: subAttrs) }
-        
-        guard let img = ctx.makeImage() else { return nil }
-        return UIImage(cgImage: img).pngData()
+    struct Sizes { let pt: CGSize; let px: CGSize; let bleedPt: CGFloat }
+    static func sizes(inches: CGSize, dpi: Int, bleedInches: CGFloat) -> Sizes {
+        let pt = CGSize(width: inches.width*72, height: inches.height*72)
+        let px = CGSize(width: inches.width*CGFloat(dpi), height: inches.height*CGFloat(dpi))
+        return .init(pt: pt, px: px, bleedPt: bleedInches*72)
     }
+
+    // Async PNG: hop to MainActor for the ImageRenderer work
+    static func pngAsync(design: PosterDesign, route: GPXRoute?, dpi: Int,
+                         bleedInches: CGFloat, includeGrid: Bool) async -> Data? {
+        await MainActor.run {
+            let s = sizes(inches: design.paperSize, dpi: dpi, bleedInches: bleedInches)
+            var temp = design; if !includeGrid { temp.showGrid = false }
+            let frame = CGSize(width: s.pt.width + 2*s.bleedPt, height: s.pt.height + 2*s.bleedPt)
+            let view = ZStack {
+                Color.white
+                PosterPreview(design: temp, route: route, mode: .export)
+                    .padding(EdgeInsets(top: s.bleedPt, leading: s.bleedPt, bottom: s.bleedPt, trailing: s.bleedPt))
+            }
+            .frame(width: frame.width, height: frame.height)
+
+            let r = ImageRenderer(content: view)
+            r.scale = CGFloat(dpi)/72.0
+            #if canImport(UIKit)
+            return r.uiImage?.pngData()
+            #else
+            return nil
+            #endif
+        }
+    }
+
+    // Async PDF: render SwiftUI into a PDF page on the main actor
+    static func pdfAsync(design: PosterDesign, route: GPXRoute?, bleedInches: CGFloat,
+                         includeGrid: Bool) async -> Data? {
+        await MainActor.run {
+            let s = sizes(inches: design.paperSize, dpi: 300, bleedInches: bleedInches)
+            let page = CGRect(x: 0, y: 0, width: s.pt.width + 2*s.bleedPt, height: s.pt.height + 2*s.bleedPt)
+
+            var temp = design; if !includeGrid { temp.showGrid = false }
+            let view = ZStack {
+                Color.white
+                PosterPreview(design: temp, route: route, mode: .export)
+                    .padding(EdgeInsets(top: s.bleedPt, leading: s.bleedPt, bottom: s.bleedPt, trailing: s.bleedPt))
+            }
+            .frame(width: page.width, height: page.height)
+
+            let fmt = UIGraphicsPDFRendererFormat()
+            let rnd = UIGraphicsPDFRenderer(bounds: page, format: fmt)
+            let data = rnd.pdfData { ctx in
+                ctx.beginPage()
+                let r = ImageRenderer(content: view)
+                r.render { size, render in
+                    render(ctx.cgContext)
+                }
+            }
+            return data
+        }
+    }
+}
+
+private extension CGSize {
+    var rounded: CGSize { .init(width: round(width), height: round(height)) }
 }
