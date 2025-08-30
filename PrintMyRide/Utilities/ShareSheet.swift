@@ -14,4 +14,14 @@ enum ShareSheet {
             vc.present(av, animated: true)
         }
     }
+    
+    static func present(items: [Any]) {
+        guard !items.isEmpty else { return }
+        let av = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let win = scene.windows.first, let vc = win.rootViewController {
+            vc.present(av, animated: true)
+        }
+    }
+    static func present(items: Any...) { present(items: items) }
 }

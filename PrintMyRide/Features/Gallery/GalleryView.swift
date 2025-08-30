@@ -2,97 +2,208 @@ import SwiftUI
 
 struct GalleryView: View {
     @EnvironmentObject var library: LibraryStore
-    @State private var openProject: PosterProject?
-    @State private var pendingRename: PosterProject?
 
-    let cols = [GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2)]
+    // selection state
+    @State private var isSelecting = false
+    @State private var selected: Set<UUID> = []
+
+    // grid
+    private let cols: [GridItem] = [
+        .init(.flexible(), spacing: 2),
+        .init(.flexible(), spacing: 2),
+        .init(.flexible(), spacing: 2)
+    ]
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: cols, spacing: 2) {
-                    ForEach(Array(library.projects.enumerated()), id: \.element.id) { indexedProject in
-                        let (idx, p) = indexedProject
-                        Group {
-                            if let img = UIImage(contentsOfFile: library.thumbnailURL(for: p).path) {
-                                Image(uiImage: img)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(height: 140)
-                                    .clipped()
-                            } else {
-                                Rectangle()
-                                    .fill(DesignTokens.ColorToken.surface)
-                                    .frame(height: 140)
+        ZStack {
+            Color.black.ignoresSafeArea()
+
+            VStack(spacing: 12) {
+                // STUDIO header row (minimal)
+                HStack {
+                    Text("STUDIO")
+                        .font(.system(size: 28, weight: .semibold))
+                        .foregroundStyle(.white)
+                    Spacer()
+                    Button(isSelecting ? "Done" : "Select") {
+                        UISelectionFeedbackGenerator().selectionChanged()
+                        if isSelecting { selected.removeAll() }
+                        isSelecting.toggle()
+                    }
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .opacity(library.projects.isEmpty ? 0 : 1)
+                }
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+
+                if library.projects.isEmpty {
+                    EmptyState()
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: cols, spacing: 2) {
+                            ForEach(library.projects) { p in
+                                Tile(project: p,
+                                     image: thumb(for: p),
+                                     isSelecting: isSelecting,
+                                     isSelected: selected.contains(p.id))
+                                .onTapGesture {
+                                    if isSelecting {
+                                        toggle(p.id)
+                                    } else {
+                                        open(project: p)
+                                    }
+                                }
+                                .onLongPressGesture {
+                                    if !isSelecting {
+                                        isSelecting = true
+                                    }
+                                    toggle(p.id)
+                                }
                             }
                         }
-                        .contextMenu {
-                            Button("Duplicate") {
-                                var copy = p
-                                copy.id = UUID()
-                                copy.title += " (copy)"
-                                library.projects.insert(copy, at: 0)
-                                library.save()
-                            }
-                            .font(DesignTokens.Typography.body)
-                            
-                            Button("Rename") { pendingRename = p }
-                                .font(DesignTokens.Typography.body)
-                            
-                            ShareLink(item: library.thumbnailURL(for: p), preview: .init("Poster", image: Image(uiImage: UIImage(contentsOfFile: library.thumbnailURL(for: p).path)!)))
-                                .font(DesignTokens.Typography.body)
-                            
-                            Button("Delete", role: .destructive) { 
-                                library.projects.remove(at: idx)
-                                library.save() 
-                            }
-                            .font(DesignTokens.Typography.body)
-                        }
-                        .onTapGesture { openProject = p }
+                        .padding(.horizontal, 0)
+                        .padding(.bottom, 80) // room for action bar
                     }
                 }
             }
-            .navigationTitle("Gallery")
-            .sheet(item: $openProject) { p in
-                let url = library.routeURL(for: p)
-                let r = url.flatMap { GPXImporter.load(url: $0) }
-                EditorView(initialDesign: p.design, initialRoute: r, initialText: p.text)
-            }
-            .sheet(item: $pendingRename) { proj in
-                RenameSheet(project: proj)
+
+            // Bottom action bar (appears in selection)
+            if isSelecting {
+                ActionBar(selectedCount: selected.count,
+                          onShare: shareSelected,
+                          onDelete: deleteSelected)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 8)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.2), value: selected)
+                    .ignoresSafeArea(edges: .bottom)
             }
         }
+        .toolbar(.hidden, for: .navigationBar) // no big title
+    }
+
+    // MARK: helpers
+
+    private func toggle(_ id: UUID) {
+        if selected.contains(id) { selected.remove(id) } else { selected.insert(id) }
+        UISelectionFeedbackGenerator().selectionChanged()
+    }
+
+    private func thumb(for p: PosterProject) -> UIImage? {
+        UIImage(contentsOfFile: library.thumbnailURL(for: p).path)
+    }
+
+    private func open(project: PosterProject) {
+        // v1: just go to Create tab preloaded (wire with your tab router)
+        // You already know how you're switching tabs; call it here.
+        // selected.removeAll(); isSelecting = false
+    }
+
+    private func shareSelected() {
+        guard !selected.isEmpty else { return }
+        let images: [UIImage] = library.projects
+            .filter { selected.contains($0.id) }
+            .compactMap { UIImage(contentsOfFile: library.thumbnailURL(for: $0).path) }
+        ShareSheet.present(items: images)
+    }
+
+    private func deleteSelected() {
+        guard !selected.isEmpty else { return }
+        let ids = selected
+        library.projects.removeAll { ids.contains($0.id) }
+        library.save()
+        selected.removeAll()
+        isSelecting = false
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
 }
 
-struct RenameSheet: View {
-    @EnvironmentObject var library: LibraryStore
-    @Environment(\.dismiss) var dismiss
-    @State var project: PosterProject
+// MARK: - Tile (no rounding, no shadows)
+
+private struct Tile: View {
+    let project: PosterProject
+    let image: UIImage?
+    let isSelecting: Bool
+    let isSelected: Bool
+
     var body: some View {
-        NavigationStack {
-            Form { 
-                TextField("Title", text: $project.title)
-                    .font(DesignTokens.Typography.body)
+        GeometryReader { geo in
+            // 3:4 aspect tile
+            let w = geo.size.width
+            let h = w * 4.0 / 3.0
+            ZStack(alignment: .topTrailing) {
+                if let img = image {
+                    Image(uiImage: img)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: w, height: h)
+                        .clipped()                    // hard edge, no rounding
+                } else {
+                    Rectangle()
+                        .fill(Color(.secondarySystemBackground))
+                        .frame(width: w, height: h)
+                }
+
+                if isSelecting {
+                    Circle()
+                        .stroke(isSelected ? Color.white : Color.white.opacity(0.35), lineWidth: 2)
+                        .background(Circle().fill(isSelected ? Color.white : .clear))
+                        .frame(width: 22, height: 22)
+                        .padding(6)
+                }
             }
-            .navigationTitle("Rename")
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        if let i = library.projects.firstIndex(where: { $0.id == project.id }) {
-                            library.projects[i].title = project.title
-                            library.save()
-                        }
-                        dismiss()
-                    }
-                    .font(DesignTokens.Typography.headline)
-                    .foregroundColor(DesignTokens.Colors.primary)
-                }
-                ToolbarItem(placement: .cancellationAction) { 
-                    Button("Cancel") { dismiss() }
-                        .font(DesignTokens.Typography.body)
-                }
+            .frame(width: w, height: h)
+        }
+        .frame(height: tileHeight) // fixes LazyVGrid row height
+    }
+
+    private var tileHeight: CGFloat { UIScreen.main.bounds.width/3 * 4/3 }
+}
+
+// MARK: - Bottom action bar (monochrome, no shadow)
+
+private struct ActionBar: View {
+    let selectedCount: Int
+    let onShare: () -> Void
+    let onDelete: () -> Void
+
+    var body: some View {
+        HStack(spacing: 24) {
+            Text("\(selectedCount) selected")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(.white)
+            Spacer()
+            Button(action: onShare) {
+                Label("Share", systemImage: "square.and.arrow.up")
+                    .labelStyle(.iconOnly)
+                    .foregroundStyle(.white)
+            }
+            Button(role: .destructive, action: onDelete) {
+                Label("Delete", systemImage: "trash")
+                    .labelStyle(.iconOnly)
+                    .foregroundStyle(.white)
             }
         }
+        .padding(.vertical, 10)
+        .padding(.horizontal, 12)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+    }
+}
+
+// MARK: - Empty state (studio vibe)
+
+private struct EmptyState: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("No posters yet")
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundStyle(.white)
+            Text("Import a GPX or try a sample from Home.")
+                .font(.footnote)
+                .foregroundStyle(.white.opacity(0.6))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

@@ -6,8 +6,16 @@
         "comment": "",
         "key": "Settings",
         "location": {
-          "startingColumn": 27,
-          "startingLine": 26
+          "startingColumn": 26,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "Design",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 12
         }
       },
       {
@@ -15,7 +23,7 @@
         "key": "General",
         "location": {
           "startingColumn": 21,
-          "startingLine": 11
+          "startingLine": 24
         }
       },
       {
@@ -23,7 +31,15 @@
         "key": "About",
         "location": {
           "startingColumn": 21,
-          "startingLine": 25
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "Style Guide",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 17
         }
       },
       {
@@ -31,7 +47,7 @@
         "key": "Units",
         "location": {
           "startingColumn": 24,
-          "startingLine": 12
+          "startingLine": 25
         }
       },
       {
@@ -39,7 +55,7 @@
         "key": "Default grid %lld pt",
         "location": {
           "startingColumn": 25,
-          "startingLine": 15
+          "startingLine": 35
         }
       },
       {
@@ -47,7 +63,7 @@
         "key": "Default paper",
         "location": {
           "startingColumn": 24,
-          "startingLine": 16
+          "startingLine": 38
         }
       },
       {
@@ -55,15 +71,15 @@
         "key": "Miles",
         "location": {
           "startingColumn": 26,
-          "startingLine": 13
+          "startingLine": 26
         }
       },
       {
         "comment": "",
         "key": "Kilometers",
         "location": {
-          "startingColumn": 51,
-          "startingLine": 13
+          "startingColumn": 26,
+          "startingLine": 29
         }
       },
       {
@@ -71,7 +87,7 @@
         "key": "18×24 in",
         "location": {
           "startingColumn": 26,
-          "startingLine": 17
+          "startingLine": 39
         }
       },
       {
@@ -79,7 +95,7 @@
         "key": "24×36 in",
         "location": {
           "startingColumn": 26,
-          "startingLine": 18
+          "startingLine": 42
         }
       },
       {
@@ -87,7 +103,7 @@
         "key": "A2",
         "location": {
           "startingColumn": 26,
-          "startingLine": 19
+          "startingLine": 45
         }
       },
       {
@@ -95,15 +111,15 @@
         "key": "Clear Library",
         "location": {
           "startingColumn": 24,
-          "startingLine": 23
+          "startingLine": 53
         }
       },
       {
         "comment": "",
         "key": "Print My Ride — prototype build",
         "location": {
-          "startingColumn": 37,
-          "startingLine": 25
+          "startingColumn": 22,
+          "startingLine": 61
         }
       }
     ]

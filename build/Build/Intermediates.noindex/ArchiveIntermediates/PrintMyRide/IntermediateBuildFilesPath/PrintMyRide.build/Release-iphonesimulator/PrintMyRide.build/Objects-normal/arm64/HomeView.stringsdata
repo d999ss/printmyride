@@ -1,48 +1,5 @@
 {
   "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Home/HomeView.swift",
-  "tables": {
-    "Localizable": [
-      {
-        "comment": "",
-        "key": "Home",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 42
-        }
-      },
-      {
-        "comment": "",
-        "key": "Recent",
-        "location": {
-          "startingColumn": 25,
-          "startingLine": 24
-        }
-      },
-      {
-        "comment": "",
-        "key": "Import",
-        "location": {
-          "startingColumn": 32,
-          "startingLine": 15
-        }
-      },
-      {
-        "comment": "",
-        "key": "Sample",
-        "location": {
-          "startingColumn": 32,
-          "startingLine": 16
-        }
-      },
-      {
-        "comment": "",
-        "key": "New",
-        "location": {
-          "startingColumn": 32,
-          "startingLine": 17
-        }
-      }
-    ]
-  },
+  "tables": {},
   "version": 1
 }

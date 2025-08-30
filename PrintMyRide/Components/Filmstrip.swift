@@ -31,20 +31,19 @@ struct Filmstrip: View {
 
 struct ShimmerCard: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 12, style: .continuous)
+        Rectangle()
             .fill(Color(.secondarySystemBackground))
             .frame(width: 160, height: 213.3333)
             .overlay(
                 LinearGradient(colors: [.clear,.white.opacity(0.25),.clear],
                                startPoint: .topLeading, endPoint: .bottomTrailing)
                     .mask(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        Rectangle()
                             .fill(.white)
                             .offset(x: -200)
                             .modifier(ShimmerAnim())
                     )
             )
-            .shadow(color: .black.opacity(0.10), radius: 10, y: 6)
     }
 }
 

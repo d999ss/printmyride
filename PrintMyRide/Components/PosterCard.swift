@@ -15,8 +15,6 @@ struct PosterCard: View {
         }
         .frame(width: 160, height: 213.3) // 3:4 ratio
         .clipped()
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .shadow(color: Color.black.opacity(0.10), radius: 10, y: 6)
     }
 }
 

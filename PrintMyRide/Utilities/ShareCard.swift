@@ -7,7 +7,7 @@ enum ShareCard {
         let view = ZStack {
             Color(.black)
             VStack(spacing: size * 0.04) {
-                PosterPreview(design: design, route: route, mode: .export)
+                PosterPreview(design: design, posterTitle: title.isEmpty ? "My Ride" : title, mode: .export, route: route, payload: nil)
                     .frame(width: size - inset * 2, height: size * 0.72)
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 Text(title.isEmpty ? "My Ride" : title)

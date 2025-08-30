@@ -7,7 +7,7 @@
         "key": "Style",
         "location": {
           "startingColumn": 30,
-          "startingLine": 61
+          "startingLine": 92
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Stroke",
         "location": {
           "startingColumn": 25,
-          "startingLine": 24
+          "startingLine": 26
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Line Caps",
         "location": {
           "startingColumn": 25,
-          "startingLine": 31
+          "startingLine": 43
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Shadow",
         "location": {
           "startingColumn": 25,
-          "startingLine": 42
+          "startingLine": 60
         }
       },
       {
@@ -47,23 +47,23 @@
         "key": "Preview",
         "location": {
           "startingColumn": 25,
-          "startingLine": 56
-        }
-      },
-      {
-        "comment": "",
-        "key": "%.2f pt",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 29
+          "startingLine": 86
         }
       },
       {
         "comment": "",
         "key": "Width",
         "location": {
-          "startingColumn": 46,
-          "startingLine": 28
+          "startingColumn": 34,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "%.2f pt",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 32
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "Cap",
         "location": {
           "startingColumn": 28,
-          "startingLine": 32
+          "startingLine": 44
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "Round",
         "location": {
           "startingColumn": 30,
-          "startingLine": 36
+          "startingLine": 48
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "Square",
         "location": {
           "startingColumn": 30,
-          "startingLine": 37
+          "startingLine": 51
         }
       },
       {
@@ -95,15 +95,7 @@
         "key": "Butt",
         "location": {
           "startingColumn": 30,
-          "startingLine": 38
-        }
-      },
-      {
-        "comment": "",
-        "key": "%lld px",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 52
+          "startingLine": 54
         }
       },
       {
@@ -111,15 +103,23 @@
         "key": "Enable shadow",
         "location": {
           "startingColumn": 28,
-          "startingLine": 43
+          "startingLine": 61
         }
       },
       {
         "comment": "",
         "key": "Radius",
         "location": {
-          "startingColumn": 47,
-          "startingLine": 51
+          "startingColumn": 38,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld px",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 73
         }
       },
       {
@@ -127,7 +127,7 @@
         "key": "Cancel",
         "location": {
           "startingColumn": 28,
-          "startingLine": 65
+          "startingLine": 96
         }
       },
       {
@@ -135,7 +135,7 @@
         "key": "Apply",
         "location": {
           "startingColumn": 28,
-          "startingLine": 71
+          "startingLine": 103
         }
       }
     ]

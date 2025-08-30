@@ -6,4 +6,12 @@ extension GPXRoute {
         // Case B: stored as custom points with lat/lon Doubles (our current model)
         return points.map { $0.coordinate }
     }
+    
+    var elevations: [Double] { 
+        return points.compactMap { $0.ele }
+    }
+    
+    var timestamps: [Date] { 
+        return points.compactMap { $0.t }
+    }
 }

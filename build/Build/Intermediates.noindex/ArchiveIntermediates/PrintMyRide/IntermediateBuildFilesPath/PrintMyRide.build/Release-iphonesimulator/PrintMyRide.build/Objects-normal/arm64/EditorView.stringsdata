@@ -4,34 +4,10 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "Print My Ride",
-        "location": {
-          "startingColumn": 34,
-          "startingLine": 49
-        }
-      },
-      {
-        "comment": "",
         "key": "Import a GPX to start",
         "location": {
-          "startingColumn": 18,
-          "startingLine": 130
-        }
-      },
-      {
-        "comment": "",
-        "key": "Undo",
-        "location": {
-          "startingColumn": 32,
-          "startingLine": 54
-        }
-      },
-      {
-        "comment": "",
-        "key": "Redo",
-        "location": {
-          "startingColumn": 32,
-          "startingLine": 63
+          "startingColumn": 34,
+          "startingLine": 81
         }
       },
       {
@@ -39,47 +15,7 @@
         "key": "Save",
         "location": {
           "startingColumn": 32,
-          "startingLine": 72
-        }
-      },
-      {
-        "comment": "",
-        "key": "Import",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 145
-        }
-      },
-      {
-        "comment": "",
-        "key": "Sample",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 147
-        }
-      },
-      {
-        "comment": "",
-        "key": "Style",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 150
-        }
-      },
-      {
-        "comment": "",
-        "key": "Canvas",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 152
-        }
-      },
-      {
-        "comment": "",
-        "key": "Export",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 154
+          "startingLine": 105
         }
       }
     ]

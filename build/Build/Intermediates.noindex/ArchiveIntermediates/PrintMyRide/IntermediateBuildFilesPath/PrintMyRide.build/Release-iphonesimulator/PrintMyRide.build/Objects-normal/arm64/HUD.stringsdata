@@ -7,7 +7,7 @@
         "key": "%lld dpi",
         "location": {
           "startingColumn": 18,
-          "startingLine": 14
+          "startingLine": 16
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "M %lld%%",
         "location": {
           "startingColumn": 18,
-          "startingLine": 15
+          "startingLine": 18
         }
       },
       {
@@ -23,7 +23,15 @@
         "key": "G %lldpt",
         "location": {
           "startingColumn": 18,
-          "startingLine": 16
+          "startingLine": 20
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 23
         }
       },
       {
@@ -31,7 +39,7 @@
         "key": "pts %lld/%lld",
         "location": {
           "startingColumn": 18,
-          "startingLine": 17
+          "startingLine": 27
         }
       },
       {
@@ -39,7 +47,7 @@
         "key": "%lld×%lld in",
         "location": {
           "startingColumn": 19,
-          "startingLine": 13
+          "startingLine": 14
         }
       }
     ]

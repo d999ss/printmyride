@@ -63,7 +63,7 @@ struct EditorView: View {
             ZStack {
                 // Full-bleed poster
                 if let r = activeRoute {
-                    PosterPreview(design: design, route: r, mode: .editor)
+                    PosterPreview(design: design, posterTitle: "My Ride", mode: .editor, route: r, payload: nil)
                         .overlay(alignment: .topLeading) {
                             let coords = r.coordinates
                             let stats = coords.isEmpty ? nil : StatsExtractor.compute(from: coords)

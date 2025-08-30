@@ -7,7 +7,15 @@
         "key": "Canvas",
         "location": {
           "startingColumn": 30,
-          "startingLine": 117
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "Poster Style",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 43
         }
       },
       {
@@ -15,7 +23,7 @@
         "key": "Paper Preset",
         "location": {
           "startingColumn": 25,
-          "startingLine": 13
+          "startingLine": 50
         }
       },
       {
@@ -23,7 +31,7 @@
         "key": "Paper Size",
         "location": {
           "startingColumn": 25,
-          "startingLine": 24
+          "startingLine": 60
         }
       },
       {
@@ -31,15 +39,7 @@
         "key": "Margins",
         "location": {
           "startingColumn": 25,
-          "startingLine": 48
-        }
-      },
-      {
-        "comment": "",
-        "key": "DPI",
-        "location": {
-          "startingColumn": 25,
-          "startingLine": 61
+          "startingLine": 80
         }
       },
       {
@@ -47,23 +47,15 @@
         "key": "Grid",
         "location": {
           "startingColumn": 25,
-          "startingLine": 79
+          "startingLine": 87
         }
       },
       {
         "comment": "",
-        "key": "Overlay",
+        "key": "Backdrop (preview)",
         "location": {
           "startingColumn": 25,
-          "startingLine": 101
-        }
-      },
-      {
-        "comment": "",
-        "key": "Defaults",
-        "location": {
-          "startingColumn": 25,
-          "startingLine": 105
+          "startingLine": 98
         }
       },
       {
@@ -71,92 +63,44 @@
         "key": "",
         "location": {
           "startingColumn": 28,
-          "startingLine": 14
+          "startingLine": 44
         }
       },
       {
         "comment": "",
-        "key": "18×24",
+        "key": "Pure",
         "location": {
           "startingColumn": 30,
-          "startingLine": 18
+          "startingLine": 45
         }
       },
       {
         "comment": "",
-        "key": "24×36",
+        "key": "Classic Map",
         "location": {
           "startingColumn": 30,
-          "startingLine": 19
+          "startingLine": 46
         }
       },
       {
         "comment": "",
-        "key": "A2",
+        "key": "",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 20
+          "startingColumn": 28,
+          "startingLine": 51
         }
       },
       {
         "comment": "",
         "key": "Width",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 26
+          "startingColumn": 35,
+          "startingLine": 62
         }
       },
       {
         "comment": "",
         "key": "%lld\"",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 28
-        }
-      },
-      {
-        "comment": "",
-        "key": "Height",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 37
-        }
-      },
-      {
-        "comment": "",
-        "key": "%lld\"",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 39
-        }
-      },
-      {
-        "comment": "",
-        "key": "Margin Ratio",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 50
-        }
-      },
-      {
-        "comment": "",
-        "key": "%lld%%",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 52
-        }
-      },
-      {
-        "comment": "",
-        "key": "DPI",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 68
-        }
-      },
-      {
-        "comment": "",
-        "key": "Resolution",
         "location": {
           "startingColumn": 30,
           "startingLine": 63
@@ -164,15 +108,15 @@
       },
       {
         "comment": "",
-        "key": "%lld DPI",
+        "key": "Height",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 65
+          "startingColumn": 35,
+          "startingLine": 71
         }
       },
       {
         "comment": "",
-        "key": "150 DPI",
+        "key": "%lld\"",
         "location": {
           "startingColumn": 30,
           "startingLine": 72
@@ -180,18 +124,18 @@
       },
       {
         "comment": "",
-        "key": "300 DPI",
+        "key": "Margins",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 73
+          "startingColumn": 35,
+          "startingLine": 81
         }
       },
       {
         "comment": "",
-        "key": "600 DPI",
+        "key": "%lld%%",
         "location": {
           "startingColumn": 30,
-          "startingLine": 74
+          "startingLine": 82
         }
       },
       {
@@ -199,23 +143,7 @@
         "key": "Show grid",
         "location": {
           "startingColumn": 28,
-          "startingLine": 80
-        }
-      },
-      {
-        "comment": "",
-        "key": "Grid Spacing",
-        "location": {
-          "startingColumn": 34,
           "startingLine": 88
-        }
-      },
-      {
-        "comment": "",
-        "key": "%lld pt",
-        "location": {
-          "startingColumn": 34,
-          "startingLine": 90
         }
       },
       {
@@ -223,31 +151,71 @@
         "key": "Show info HUD",
         "location": {
           "startingColumn": 28,
-          "startingLine": 102
+          "startingLine": 95
         }
       },
       {
         "comment": "",
-        "key": "Apply Settings Defaults",
+        "key": "Grid spacing",
         "location": {
-          "startingColumn": 28,
+          "startingColumn": 39,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld pt",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 91
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map is preview-only. Exports remain clean unless you choose to include map later.",
+        "location": {
+          "startingColumn": 30,
           "startingLine": 106
         }
       },
       {
         "comment": "",
-        "key": "Cancel",
+        "key": "Map background",
         "location": {
           "startingColumn": 28,
-          "startingLine": 121
+          "startingLine": 99
         }
       },
       {
         "comment": "",
-        "key": "Apply",
+        "key": "Style",
         "location": {
-          "startingColumn": 28,
-          "startingLine": 127
+          "startingColumn": 32,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Standard",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "Hybrid",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Satellite",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 104
         }
       }
     ]

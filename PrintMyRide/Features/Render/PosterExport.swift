@@ -18,7 +18,7 @@ enum PosterExport {
             let frame = CGSize(width: s.pt.width + 2*s.bleedPt, height: s.pt.height + 2*s.bleedPt)
             let view = ZStack {
                 Color.white
-                PosterPreview(design: temp, route: route, mode: .export)
+                PosterPreview(design: temp, posterTitle: "My Ride", mode: .export, route: route, payload: nil)
                     .padding(EdgeInsets(top: s.bleedPt, leading: s.bleedPt, bottom: s.bleedPt, trailing: s.bleedPt))
             }
             .frame(width: frame.width, height: frame.height)
@@ -43,7 +43,7 @@ enum PosterExport {
             var temp = design; if !includeGrid { temp.showGrid = false }
             let view = ZStack {
                 Color.white
-                PosterPreview(design: temp, route: route, mode: .export)
+                PosterPreview(design: temp, posterTitle: "My Ride", mode: .export, route: route, payload: nil)
                     .padding(EdgeInsets(top: s.bleedPt, leading: s.bleedPt, bottom: s.bleedPt, trailing: s.bleedPt))
             }
             .frame(width: page.width, height: page.height)

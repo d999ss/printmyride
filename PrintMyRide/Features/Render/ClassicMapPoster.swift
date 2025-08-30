@@ -3,14 +3,12 @@ import MapKit
 import CoreLocation
 
 struct ClassicMapPoster: View {
-    let design: PosterDesign
+    let style: PosterStyle
     let title: String
     let payload: RoutePayload
     let mode: PosterRenderMode
-    var terrain: MapTerrain = .muted
     var labels: [PlaceLabel] = []
     var callouts: [MapCallout] = []
-    var drawDirectionTicks: Bool = true
 
     @State private var mapImage: UIImage?
     @AppStorage("units") private var units: String = "mi"
@@ -57,7 +55,7 @@ struct ClassicMapPoster: View {
                                 Color.white
                             }
                             // gentle mute so route pops
-                            Rectangle().fill(Color.white.opacity(0.08))
+                            Rectangle().fill(Color.white.opacity(style.map.muteOpacity))
                         }
                         // pull the map down by the cover height so it hides the © line under footer
                         .padding(.bottom, -coverH)
@@ -65,15 +63,16 @@ struct ClassicMapPoster: View {
                         .clipped()
 
                         // FOOTER: clean, no top rule
-                        PosterFooterGrid(title: title,
-                                         date: payload.timestamps.first,
-                                         distanceText: distanceString(km: stats.distanceKm),
-                                         timeText:     timeString(sec: stats.durationSec ?? 0),
-                                         avgText:      avgString(kmh: stats.avgKmh),
-                                         gainText:     elevString(m: stats.ascentM))
-                            .frame(height: footerH)
-                            .padding(.horizontal, 26)
-                            .padding(.vertical, 12)
+                        if style.footer?.enabled == true {
+                            PosterFooterGrid(style: style,
+                                             title: title,
+                                             date: payload.timestamps.first,
+                                             distanceText: distanceString(km: stats.distanceKm),
+                                             timeText:     timeString(sec: stats.durationSec ?? 0),
+                                             avgText:      avgString(kmh: stats.avgKmh),
+                                             gainText:     elevString(m: stats.ascentM))
+                                .frame(height: footerH)
+                        }
                     }
                 }
                 .frame(width: posterW, height: posterH)
@@ -82,17 +81,17 @@ struct ClassicMapPoster: View {
                 // ROUTE overlay (uses inset rect)
                 RouteLayer(coords: payload.coords,
                            rect: routeRect,
-                           color: Color(red: 0xFC/255, green: 0x4C/255, blue: 0x02/255),
-                           drawTicks: true)
+                           color: style.routeColor,
+                           drawTicks: style.route.ticks.enabled)
                 // Optional: labels/callouts
                 LabelsLayer(labels: labels,   coords: payload.coords, rect: routeRect)
                 CalloutsLayer(callouts: callouts, coords: payload.coords, rect: routeRect)
             }
             // map snapshot at final size
-            .task(id: "\(Int(posterW))x\(Int(mapH))-\(payload.coords.count)-\(terrain.rawValue)") {
+            .task(id: "\(Int(posterW))x\(Int(mapH))-\(payload.coords.count)-\(style.map.terrain)") {
                 mapImage = await MapKitPoster.snapshot(coords: payload.coords,
                                                        size: CGSize(width: posterW, height: mapH),
-                                                       terrain: terrain)
+                                                       terrain: mapType(style.map.terrain))
             }
         }
     }
@@ -129,4 +128,8 @@ struct ClassicMapPoster: View {
     }
     private func elevString(m: Double) -> String { units=="mi" ? "\(Int((m*3.28084).rounded())) ft" : "\(Int(m.rounded())) m" }
     private func timeString(sec: Double) -> String { let s=Int(sec), h=s/3600, m=(s%3600)/60; return h>0 ? String(format:"%d:%02d",h,m) : "\(m) min" }
+    
+    private func mapType(_ s: String) -> MKMapType {
+        switch s { case "standard": return .standard; case "hybrid": return .hybrid; default: return .mutedStandard }
+    }
 }

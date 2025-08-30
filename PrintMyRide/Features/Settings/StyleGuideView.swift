@@ -103,21 +103,16 @@ private struct ComponentsSection: View {
             }
 
             // CTAs
-            HStack(spacing: DesignTokens.Spacing.m) {
-                Text("Import GPX").fontWeight(.semibold)
-                    .padding(.vertical, 10).padding(.horizontal, 16)
-                    .foregroundStyle(.white).background(DesignTokens.ColorToken.accent, in: Capsule())
-                Text("Try Sample")
-                    .padding(.vertical, 10).padding(.horizontal, 16)
-                    .background(.ultraThinMaterial, in: Capsule())
+            VStack(spacing: 12) {
+                VSCOPrimaryBar(title: "Connect to Strava") { }
+                VSCOSecondaryBar(title: "Try Sample") { }
             }
 
             // Poster card
             VStack(alignment: .leading, spacing: 6) {
                 Text("Poster Card").font(.headline)
-                RoundedRectangle(cornerRadius: 12).fill(Color(.secondarySystemBackground))
+                Rectangle().fill(Color(.secondarySystemBackground))
                     .frame(width: 160, height: 213.3333)
-                    .shadow(color: .black.opacity(0.10), radius: 10, y: 6)
             }
         }
     }
@@ -133,18 +128,14 @@ private struct PosterPreviews: View {
             SectionHeader("Poster Styles")
 
             Text("Classic Map").font(.headline)
-            PosterPreview(design: PosterDesign(), route: sampleRoute, mode: .editor)
+            PosterPreview(design: PosterDesign(), posterTitle: "My Ride", mode: .editor, route: sampleRoute, payload: nil)
                 .frame(height: 320)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .shadow(color: .black.opacity(0.12), radius: 8, y: 4)
 
             Divider().padding(.vertical, 8)
 
             Text("Pure").font(.headline)
             PurePosterPreview(route: sampleRoute) // minimal variant
                 .frame(height: 320)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .shadow(color: .black.opacity(0.12), radius: 8, y: 4)
         }
     }
 }

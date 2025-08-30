@@ -3,7 +3,7 @@ import SwiftUI
 enum Snapshotter {
     @MainActor
     static func posterPNG(design: PosterDesign, route: GPXRoute?, size: CGSize = .init(width: 600, height: 800)) -> Data? {
-        let v = PosterPreview(design: design, route: route, mode: .export)
+        let v = PosterPreview(design: design, posterTitle: "My Ride", mode: .export, route: route, payload: nil)
             .frame(width: size.width, height: size.height)
             .background(design.backgroundColor.color)
         let r = ImageRenderer(content: v)

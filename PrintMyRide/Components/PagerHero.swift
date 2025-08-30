@@ -20,8 +20,6 @@ struct PagerHero: View {
                         Image(uiImage: img)
                             .resizable()
                             .aspectRatio(3/4, contentMode: .fit)
-                            .cornerRadius(16)
-                            .shadow(color: .black.opacity(0.15), radius: 12, y: 8)
                             .padding(.horizontal, 20)
                             .offset(x: -parallax)               // gentle parallax
                             .scaleEffect(1 - abs(minX)/4000)    // whisper zoom
@@ -35,11 +33,10 @@ struct PagerHero: View {
 
 private struct ShimmerPage: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: 16, style: .continuous)
+        Rectangle()
             .fill(Color(.secondarySystemBackground))
             .padding(.horizontal, 20)
-            .shadow(color: .black.opacity(0.08), radius: 10, y: 6)
-            .overlay(ShimmerBand().clipShape(RoundedRectangle(cornerRadius: 16)))
+            .overlay(ShimmerBand())
     }
 }
 

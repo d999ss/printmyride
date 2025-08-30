@@ -1,0 +1,19 @@
+# Cloudflare Workers configuration
+name = "printmyride-strava"
+main = "index.ts"
+compatibility_date = "2024-01-01"
+
+# Environment variables (set these in Cloudflare dashboard or wrangler secret)
+# wrangler secret put STRAVA_CLIENT_ID
+# wrangler secret put STRAVA_CLIENT_SECRET
+
+[vars]
+# You can set non-secret variables here
+
+[[routes]]
+pattern = "your-domain.com/api/strava/*"
+zone_name = "your-domain.com"
+
+# Or use custom domain:
+# [route]
+# pattern = "strava-api.your-domain.com/*"

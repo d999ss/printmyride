@@ -4,74 +4,66 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "Gallery",
+        "key": "STUDIO",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 40
+          "startingColumn": 26,
+          "startingLine": 24
         }
       },
       {
         "comment": "",
-        "key": "Duplicate",
+        "key": "Done",
         "location": {
-          "startingColumn": 36,
-          "startingLine": 25
+          "startingColumn": 42,
+          "startingLine": 28
         }
       },
       {
         "comment": "",
-        "key": "Rename",
+        "key": "Select",
         "location": {
-          "startingColumn": 36,
-          "startingLine": 32
+          "startingColumn": 51,
+          "startingLine": 28
         }
       },
       {
         "comment": "",
-        "key": "Poster",
+        "key": "%lld selected",
         "location": {
-          "startingColumn": 90,
-          "startingLine": 33
+          "startingColumn": 18,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 179
         }
       },
       {
         "comment": "",
         "key": "Delete",
         "location": {
-          "startingColumn": 36,
-          "startingLine": 34
+          "startingColumn": 23,
+          "startingLine": 184
         }
       },
       {
         "comment": "",
-        "key": "Rename",
+        "key": "No posters yet",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 60
+          "startingColumn": 18,
+          "startingLine": 200
         }
       },
       {
         "comment": "",
-        "key": "Title",
+        "key": "Import a GPX or try a sample from Home.",
         "location": {
-          "startingColumn": 30,
-          "startingLine": 59
-        }
-      },
-      {
-        "comment": "",
-        "key": "Save",
-        "location": {
-          "startingColumn": 28,
-          "startingLine": 63
-        }
-      },
-      {
-        "comment": "",
-        "key": "Cancel",
-        "location": {
-          "startingColumn": 70,
-          "startingLine": 71
+          "startingColumn": 18,
+          "startingLine": 203
         }
       }
     ]

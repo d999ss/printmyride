@@ -12,4 +12,7 @@ static NSString * const ACBundleID AC_SWIFT_PRIVATE = @"d999ss.PrintMyRide";
 /// The "AccentColor" asset catalog color resource.
 static NSString * const ACColorNameAccentColor AC_SWIFT_PRIVATE = @"AccentColor";
 
+/// The "PMR Logo" asset catalog image resource.
+static NSString * const ACImageNamePMRLogo AC_SWIFT_PRIVATE = @"PMR Logo";
+
 #undef AC_SWIFT_PRIVATE

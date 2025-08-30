@@ -279,6 +279,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AuthenticationServices;
 @import Foundation;
 @import ObjectiveC;
 #endif
@@ -310,6 +311,13 @@ SWIFT_CLASS("_TtC11PrintMyRide11GPXImporter")
 - (void)parser:(NSXMLParser * _Nonnull)parser didStartElement:(NSString * _Nonnull)name namespaceURI:(NSString * _Nullable)namespaceURI qualifiedName:(NSString * _Nullable)qName attributes:(NSDictionary<NSString *, NSString *> * _Nonnull)attributes;
 - (void)parser:(NSXMLParser * _Nonnull)parser foundCharacters:(NSString * _Nonnull)string;
 - (void)parser:(NSXMLParser * _Nonnull)parser didEndElement:(NSString * _Nonnull)name namespaceURI:(NSString * _Nullable)namespaceURI qualifiedName:(NSString * _Nullable)qName;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class ASWebAuthenticationSession;
+SWIFT_CLASS("_TtC11PrintMyRide13StravaService")
+@interface StravaService : NSObject <ASWebAuthenticationPresentationContextProviding>
+- (ASPresentationAnchor _Nonnull)presentationAnchorForWebAuthenticationSession:(ASWebAuthenticationSession * _Nonnull)s SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

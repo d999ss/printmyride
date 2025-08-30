@@ -10,14 +10,13 @@ struct PosterHost: View {
     }
     
     private func hostSidePadding(for width: CGFloat) -> CGFloat {
-        // ~14% of screen width; min 56pt, max 84pt
-        let raw = max(56, min(84, width * 0.14))
+        let raw = max(44, min(72, width * 0.085)) // was min 36, max 64, factor 0.10
         return snap(raw)
     }
     
     private func hostVerticalPadding(for height: CGFloat) -> CGFloat {
-        // ~4% of height; min 20pt, max 40pt
-        let raw = max(20, min(40, height * 0.04))
+        // ~3% of height, min 18pt, max 36pt
+        let raw = max(18, min(36, height * 0.03))
         return snap(raw)
     }
     
@@ -28,45 +27,38 @@ struct PosterHost: View {
             VStack(spacing: 0) {
                 // Top bar
                 HStack {
-                    Spacer()
                     Button { onClose() } label: {
                         Image(systemName: "xmark").font(.system(size: 18, weight: .semibold))
-                    }.foregroundStyle(.white)
+                    }
+                    .foregroundStyle(.white)
+                    Spacer()
                 }
                 .padding(.horizontal, 16)
                 .frame(height: 44)
                 .background(Color.black)
 
-                // Centered 18×24 poster with outer gutters
+                // Poster area (fills remainder)
                 GeometryReader { geo in
                     let side = hostSidePadding(for: geo.size.width)
                     let vpad = hostVerticalPadding(for: geo.size.height)
-                    
-                    let hostW = snap(geo.size.width  - side*2)
-                    let hostH = snap(geo.size.height - vpad*2)
-                    
-                    // 🔎 DEBUG: overlay the numbers
-                    let _ = print("[PosterHost] geo:", geo.size, "side:", side, "vpad:", vpad, "hostW:", hostW, "hostH:", hostH)
-                    
-                    VStack(spacing: 0) {
-                        PosterPreview(design: PosterDesign(),
-                                      posterTitle: "My Ride",
-                                      mode: .editor,
-                                      route: nil,
-                                      payload: payload)
-                            .frame(width: hostW, height: hostH)
-                            .clipped()
-                            .overlay(alignment: .topLeading) {
-                                #if DEBUG
-                                Text(String(format:"hostW: %.1f\nhostH: %.1f", hostW, hostH))
-                                    .font(.caption2).foregroundStyle(.red).padding(6)
-                                #endif
-                            }
-                    }
+
+                    let maxW = max(1, snap(geo.size.width  - side*2))
+                    let maxH = max(1, snap(geo.size.height - vpad*2 - 44)) // adjust if bar height differs
+
+                    PosterPreview(
+                        design: PosterDesign(),
+                        posterTitle: "My Ride",
+                        mode: .editor,
+                        route: nil,
+                        payload: payload
+                    )
+                    .aspectRatio(18.0/24.0, contentMode: .fit)
+                    .frame(maxWidth: maxW, maxHeight: maxH, alignment: .center) // <- no fixed width cap
                     .padding(.horizontal, side)
                     .padding(.vertical, vpad)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // ensure GeometryReader owns all remaining height
             }
         }
         .toolbar(.hidden, for: .tabBar)

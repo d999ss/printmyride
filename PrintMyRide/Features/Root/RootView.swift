@@ -3,29 +3,19 @@ import SwiftUI
 struct RootView: View {
     @StateObject private var library = LibraryStore()
     @StateObject private var settings = SettingsStore.shared
-
+    @StateObject private var router = AppRouter()
+    
     var body: some View {
-        Group {
-            if library.hasSeenOnboarding {
-                TabView {
-                    HomeView().tabItem { Label("Home", systemImage: "house.fill") }.accessibilityIdentifier("tab-home")
-                    EditorView().tabItem { Label("Create", systemImage: "scribble.variable") }.accessibilityIdentifier("tab-create")
-                    GalleryView().tabItem { Label("Gallery", systemImage: "square.grid.2x2.fill") }.accessibilityIdentifier("tab-gallery")
-                    SettingsView().tabItem { Label("Settings", systemImage: "gearshape.fill") }.accessibilityIdentifier("tab-settings")
-                }
-            } else {
-                OnboardingView()
-            }
+        TabView(selection: $router.selectedTab) {
+            HomeView() .tag(0).tabItem { Label("Home",    systemImage: "house.fill") }
+            EditorV2() .tag(1).tabItem { Label("Create",  systemImage: "scribble.variable") }
+            GalleryView().tag(2).tabItem { Label("Gallery",systemImage: "square.grid.2x2.fill") }
+            SettingsView().tag(3).tabItem { Label("Settings",systemImage: "gearshape.fill") }
         }
         .environmentObject(library)
-        .preferredColorScheme(preferredScheme(settings.appearance))   // <- apply
+        .environmentObject(router)
+        .preferredColorScheme(preferredScheme(settings.appearance))
     }
 
-    private func preferredScheme(_ mode: String) -> ColorScheme? {
-        switch mode {
-        case "light": return .light
-        case "dark":  return .dark
-        default:      return nil    // system
-        }
-    }
+    private func preferredScheme(_ m: String) -> ColorScheme? { m=="light" ? .light : m=="dark" ? .dark : nil }
 }

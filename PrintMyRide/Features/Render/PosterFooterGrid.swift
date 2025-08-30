@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PosterFooterGrid: View {
+    let style: PosterStyle
     let title: String
     let date: Date?
     let distanceText: String
@@ -10,42 +11,39 @@ struct PosterFooterGrid: View {
 
     var body: some View {
         GeometryReader { geo in
-            // Total width inside the footer container
-            let total = geo.size.width
-
-            // Layout constants (tunable if needed)
-            let cols = 4
-            let spacing: CGFloat = 28      // space between columns
-            let minCol: CGFloat = 60       // smallest we allow on SE
-            let maxCol: CGFloat = 120      // don't let columns get too wide
-
-            // Compute a width that fits 4 columns + 3 gaps
-            let available = max(0, total - spacing * CGFloat(cols - 1))
-            let colW = max(minCol, min(maxCol, available / CGFloat(cols)))
+            let isNarrow = geo.size.width < 320   // SE / tight cases
+            let avgLabel = isNarrow ? "AVG SPD" : "AVG SPEED"
+            let elevLabel = isNarrow ? "ELEV" : "ELEVATION"
 
             VStack(alignment: .leading, spacing: 6) {
+                // Title + date
                 Text(title)
                     .font(.headline)
                     .foregroundStyle(.black)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.9)
 
                 if let d = date {
                     Text(dateFormatter.string(from: d))
                         .font(.caption2)
                         .foregroundStyle(.black.opacity(0.7))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.9)
                 }
 
-                HStack(spacing: spacing) {
-                    Stat(value: distanceText, label: "Distance")
-                        .frame(width: colW, alignment: .leading)
-                    Stat(value: timeText, label: "Time")
-                        .frame(width: colW, alignment: .leading)
-                    Stat(value: avgText, label: "Avg Speed")
-                        .frame(width: colW, alignment: .leading)
-                    Stat(value: gainText, label: "Elevation")
-                        .frame(width: colW, alignment: .leading)
+                // 4 responsive columns
+                HStack(spacing: 24) {
+                    Stat(value: distanceText, label: "DISTANCE")
+                    Stat(value: timeText,     label: "TIME")
+                    Stat(value: avgText,      label: avgLabel)
+                    Stat(value: gainText,     label: elevLabel)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            // use style padding
+            .padding(.horizontal, style.footer?.paddingH ?? 26)
+            .padding(.vertical, style.footer?.paddingV ?? 12)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
     }
     
@@ -60,9 +58,21 @@ struct PosterFooterGrid: View {
         let label: String
         var body: some View {
             VStack(spacing: 2) {
-                Text(value).font(.footnote).foregroundStyle(.black)
-                Text(label.uppercased()).font(.caption2).foregroundStyle(.black.opacity(0.6)).tracking(0.5)
+                Text(value)
+                    .font(.footnote)
+                    .foregroundStyle(.black)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.9)
+
+                Text(label)
+                    .font(.caption2)
+                    .foregroundStyle(.black.opacity(0.6))
+                    .tracking(0.5)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
             }
+            // equal flexible column
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }

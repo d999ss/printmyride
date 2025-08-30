@@ -18,7 +18,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		Df8xy1Y53ZE7RaNkW/3UCHlSxFg=
+		JTkPgCptl376j3BQaK57yKghvYg=
 		</data>
 		<key>CanvasSheet.swift.disabled</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		m9hYwwyTSGqrzRY/1aXX7mVFJmQ=
+		fAOB4twN3rlU8ZUQwXa5Wh2JA0I=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -36,9 +36,17 @@
 		<data>
 		Nc7Tl+u+V3xv9VEm34HtbVCC4XA=
 		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		psabOnVURxVuIcxID64+hk5qKzw=
+		</data>
 		<key>StyleSheet.swift.disabled</key>
 		<data>
 		n8V5r+mYi5sW67iD04h/5vmr7rg=
+		</data>
+		<key>default.gpx</key>
+		<data>
+		RCNb2WRCFjeNM2SiwrnmVUX2i7w=
 		</data>
 		<key>sample.gpx</key>
 		<data>
@@ -72,7 +80,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yyk8pDD64PIOBusBjGDMB+sYPpkJj8zi5ZZrZ18WTJs=
+			Am2qYKcsG0b1e6eh/Uf/EmDyR9vUzyBb5tlKrsSWsyo=
 			</data>
 		</dict>
 		<key>CanvasSheet.swift.disabled</key>
@@ -89,11 +97,25 @@
 			ZUZG+Rzu7GEUwzAROYdPSD8hSfKcsvZVlf6j3K+oUv4=
 			</data>
 		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sYmdOZRKV5ow66CXGcFilTK77wV7vX9ApVydrvSdHu0=
+			</data>
+		</dict>
 		<key>StyleSheet.swift.disabled</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			3qoaN0yHzG0eHp/iyEtjxpjAQPZtV06Id/b4lR+V8cg=
+			</data>
+		</dict>
+		<key>default.gpx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cNhMf4d5fJ15P/e/M3oLBVs77ZS/15o2GNIrigcfj7U=
 			</data>
 		</dict>
 		<key>sample.gpx</key>

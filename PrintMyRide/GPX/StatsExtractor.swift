@@ -9,6 +9,13 @@ enum StatsExtractor {
             return (distanceKm / (dt / 3600.0)) }
         let date: Date?
     }
+    
+    // Convenience overload for non-optional timestamps
+    static func compute(coords: [CLLocationCoordinate2D],
+                        elevations: [Double],
+                        timestamps: [Date]) -> Stats {
+        return compute(from: coords, elevations: elevations, timestamps: timestamps)
+    }
 
     static func compute(from coords: [CLLocationCoordinate2D],
                         elevations: [Double] = [],

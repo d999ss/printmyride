@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6517541F2E5F706E00291137 /* Build configuration list for PBXProject "printmyride" */;
+			buildConfigurationList = 6517541F2E5F706E00291137 /* Build configuration list for PBXProject "PrintMyRide" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -399,6 +399,21 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDocumentTypes = "";
+				INFOPLIST_KEY_CFBundleURLTypes = (
+					{
+						CFBundleURLName = pmr;
+						CFBundleURLSchemes = (
+							pmr,
+						);
+					},
+				);
+				INFOPLIST_KEY_LSApplicationQueriesSchemes = (
+					strava,
+				);
+				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
+				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
+				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;
+				INFOPLIST_KEY_STRAVA_REDIRECT_HTTPS = "https://printmyride.app/oauth/strava/callback";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +443,21 @@
 				DEVELOPMENT_TEAM = 3864YR83JA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleURLTypes = (
+					{
+						CFBundleURLName = pmr;
+						CFBundleURLSchemes = (
+							pmr,
+						);
+					},
+				);
+				INFOPLIST_KEY_LSApplicationQueriesSchemes = (
+					strava,
+				);
+				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
+				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
+				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;
+				INFOPLIST_KEY_STRAVA_REDIRECT_HTTPS = "https://printmyride.app/oauth/strava/callback";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -518,7 +548,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6517541F2E5F706E00291137 /* Build configuration list for PBXProject "printmyride" */ = {
+		6517541F2E5F706E00291137 /* Build configuration list for PBXProject "PrintMyRide" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				651754432E5F706F00291137 /* Debug */,

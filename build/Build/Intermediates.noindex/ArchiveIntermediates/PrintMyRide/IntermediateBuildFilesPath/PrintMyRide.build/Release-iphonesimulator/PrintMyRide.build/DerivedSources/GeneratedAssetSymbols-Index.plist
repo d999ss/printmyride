@@ -16,7 +16,18 @@
 		</dict>
 	</array>
 	<key>images</key>
-	<array/>
+	<array>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/donnysmith/CC/printmyride/PrintMyRide/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNamePMRLogo</string>
+			<key>relativePath</key>
+			<string>./PMR Logo.imageset</string>
+			<key>swiftSymbol</key>
+			<string>pmrLogo</string>
+		</dict>
+	</array>
 	<key>symbols</key>
 	<array/>
 </dict>

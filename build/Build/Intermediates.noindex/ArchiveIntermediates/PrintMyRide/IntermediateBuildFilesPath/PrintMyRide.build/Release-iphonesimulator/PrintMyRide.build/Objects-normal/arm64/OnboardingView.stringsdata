@@ -4,26 +4,10 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "Print My Ride",
+        "key": "Turn rides into art.",
         "location": {
-          "startingColumn": 18,
-          "startingLine": 7
-        }
-      },
-      {
-        "comment": "",
-        "key": "Turn your rides into beautiful posters. Import, tweak, save, share.",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 8
-        }
-      },
-      {
-        "comment": "",
-        "key": "Get Started",
-        "location": {
-          "startingColumn": 20,
-          "startingLine": 10
+          "startingColumn": 22,
+          "startingLine": 20
         }
       }
     ]

@@ -26,7 +26,7 @@ struct CanvasSheet: View {
     @AppStorage("showHUD") private var showHUD = true
     @AppStorage("showMapBackground") private var showMapBackground = false
     @AppStorage("mapBackdropStyle") private var mapBackdropStyle = 0
-    @AppStorage("posterStyle") private var posterStyle = 1
+    @AppStorage("activePosterStyle") private var activeStyleID: String = "gallery/pyrenees"
     @State private var preset: PaperPreset
 
     var pushUndo: (PosterDesign) -> Void = { _ in }
@@ -40,12 +40,6 @@ struct CanvasSheet: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Poster Style") {
-                    Picker("", selection: $posterStyle) {
-                        Text("Pure").tag(0)
-                        Text("Classic Map").tag(1)
-                    }.pickerStyle(.segmented)
-                }
                 
                 Section("Paper Preset") {
                     Picker("", selection: $preset) {
@@ -93,6 +87,14 @@ struct CanvasSheet: View {
                         Slider(value: $design.gridSpacing, in: 10...200, step: 10)
                     }
                     Toggle("Show info HUD", isOn: $showHUD)
+                }
+
+                Section("Poster Style") {
+                    Picker("Poster", selection: $activeStyleID) {
+                        ForEach(StyleRegistry.all) { s in
+                            Text(s.name).tag(s.id)
+                        }
+                    }.pickerStyle(.segmented)
                 }
                 
                 Section("Backdrop (preview)") {
