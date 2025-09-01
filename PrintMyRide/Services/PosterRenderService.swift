@@ -155,15 +155,14 @@ actor PosterRenderService {
         return renderer.image { context in
             let ctx = context.cgContext
             
-            // Background
-            ctx.setFillColor(UIColor(background).cgColor)
-            ctx.fill(CGRect(origin: .zero, size: size))
-            
-            // Map snapshot (if enabled and available)
+            // If we have a map snapshot, use it as the background
             if let snapshot = mapSnapshot {
-                ctx.setAlpha(0.92) // Muted VSCO-like effect
+                // Draw map as the background
                 ctx.draw(snapshot.cgImage!, in: CGRect(origin: .zero, size: size))
-                ctx.setAlpha(1.0)
+            } else {
+                // Only fill with background color if no map
+                ctx.setFillColor(UIColor(background).cgColor)
+                ctx.fill(CGRect(origin: .zero, size: size))
             }
             
             // Route overlay

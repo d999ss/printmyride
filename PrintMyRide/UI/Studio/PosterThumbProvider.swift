@@ -173,10 +173,10 @@ struct PosterThumbProvider: View {
     private func createThumbnailDesign() -> PosterDesign {
         var design = PosterDesign()
         design.paperSize = CGSize(width: thumbSize.width/72, height: thumbSize.height/72) // Convert pixels to inches
-        design.backgroundColor = .black
-        design.routeColor = .white
-        design.strokeWidthPt = max(4.0, thumbSize.width * 0.015) // Thicker stroke for visibility in thumbnails
-        design.margins = 0.15 // 15% margins so route is visible
+        design.backgroundColor = .clear // Clear background to show map
+        design.routeColor = .blue // Blue route line for visibility on map
+        design.strokeWidthPt = max(6.0, thumbSize.width * 0.02) // Thicker stroke for visibility in thumbnails
+        design.margins = 0.10 // 10% margins so route fills more of the frame
         design.lineCap = .round // Smooth line endings
         
         print("🎨 Thumbnail design: \(Int(thumbSize.width))x\(Int(thumbSize.height))px, stroke: \(design.strokeWidthPt)pt, margins: \(design.margins)")
