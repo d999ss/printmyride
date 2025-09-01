@@ -92,7 +92,7 @@ struct HeroBannerView: View {
                     .lineLimit(2)
             }
             
-            actionButtons
+            // Removed Try Pro & Settings buttons per request
         }
     }
     
