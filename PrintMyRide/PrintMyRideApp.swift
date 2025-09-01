@@ -6,7 +6,7 @@ struct PrintMyRideApp: App {
     @StateObject private var appState = AppState()
     @StateObject private var oauth = StravaOAuth()
     @StateObject private var services = ServiceHub()
-    @AppStorage("pmr.hasOnboarded") private var hasOnboarded: Bool = false
+    @AppStorage("pmr.hasOnboarded") private var hasOnboarded: Bool = true
     @State private var showOnboarding = false
     @State private var showSplash = true
     
@@ -101,14 +101,23 @@ struct PrintMyRideApp: App {
                         // Forward to OAuth handler; it checks scheme/host/path
                         oauth.handleCallback(url: url)
                     }
+                    // Overlay-based onboarding that doesn't block touch events
+                    .overlay(alignment: .center) {
+                        if showOnboarding {
+                            SimpleOnboardingView {
+                                withAnimation(.easeInOut) {
+                                    hasOnboarded = true
+                                    showOnboarding = false
+                                }
+                            }
+                            .transition(.opacity.combined(with: .scale))
+                            .zIndex(1000)
+                        }
+                    }
+                
                 if showSplash {
                     SplashScreen { showSplash = false }
                 }
-            }
-            .fullScreenCover(isPresented: $showOnboarding) {
-                OnboardingView()
-                    .environmentObject(services)
-                    .environmentObject(oauth)
             }
             .onChange(of: hasOnboarded) { done in
                 if done { showOnboarding = false }

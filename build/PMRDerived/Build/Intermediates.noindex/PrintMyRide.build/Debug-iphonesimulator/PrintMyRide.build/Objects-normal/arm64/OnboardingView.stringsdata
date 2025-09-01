@@ -20,18 +20,26 @@
       },
       {
         "comment": "",
+        "key": "Skip for now",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
         "key": "Starting…",
         "location": {
-          "startingColumn": 42,
-          "startingLine": 43
+          "startingColumn": 38,
+          "startingLine": 42
         }
       },
       {
         "comment": "",
         "key": "Start Demo",
         "location": {
-          "startingColumn": 58,
-          "startingLine": 43
+          "startingColumn": 54,
+          "startingLine": 42
         }
       },
       {
@@ -39,15 +47,7 @@
         "key": "Connect Strava",
         "location": {
           "startingColumn": 30,
-          "startingLine": 53
-        }
-      },
-      {
-        "comment": "",
-        "key": "Skip for now",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 61
+          "startingLine": 57
         }
       }
     ]

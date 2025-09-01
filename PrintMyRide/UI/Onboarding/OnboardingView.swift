@@ -39,31 +39,39 @@ struct OnboardingView: View {
 
                 // CTA Buttons (explicit frames + backgrounds to guarantee hit testing)
                 VStack(spacing: 12) {
-                    Button(action: startDemo) {
-                        Text(isWorking ? "Starting…" : "Start Demo")
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .disabled(isWorking)
+                    Text(isWorking ? "Starting…" : "Start Demo")
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            guard !isWorking else { return }
+                            print("[Onboarding] Start Demo tapped!")
+                            startDemo()
+                        }
 
                     Button(action: connectStrava) {
                         Text("Connect Strava")
+                            .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
-
-                    Button(action: skip) {
-                        Text("Skip for now")
-                            .foregroundStyle(.secondary)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
+                            .background(.gray.opacity(0.3))
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
                     .buttonStyle(.plain)
+
+                    Text("Skip for now")
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            print("[Onboarding] Skip tapped!")
+                            skip()
+                        }
                 }
                 .padding(.horizontal, 20)
 

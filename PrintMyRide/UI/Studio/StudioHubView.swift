@@ -66,7 +66,7 @@ struct StudioHubView: View {
                             .scaleEffect(pressed ? 0.98 : 1.0)
                             .animation(.spring(response: 0.35, dampingFraction: 0.9), value: pressed)
                     }
-                    .buttonStyle(CardPressStyle(pressed: $pressed))
+                    .buttonStyle(.plain)
                 } else {
                     NavigationLink(destination: PosterDetailView(poster: poster).environmentObject(gate)) {
                         PosterCardView(
@@ -84,7 +84,7 @@ struct StudioHubView: View {
                             .scaleEffect(pressed ? 0.98 : 1.0)
                             .animation(.spring(response: 0.35, dampingFraction: 0.9), value: pressed)
                     }
-                    .buttonStyle(CardPressStyle(pressed: $pressed))
+                    .buttonStyle(.plain)
                 }
             }
         }

@@ -62,18 +62,31 @@ actor PosterRenderService {
     // MARK: - Optimized Map Snapshots
     
     private func renderMapSnapshot(coords: [CLLocationCoordinate2D], size: CGSize, quality: RenderQuality) async -> UIImage? {
-        guard !coords.isEmpty else { return nil }
+        guard !coords.isEmpty else { 
+            print("🗺️ No coordinates for map snapshot")
+            return nil 
+        }
         
         // Use lower resolution for previews
         let actualSize = quality == .preview ? 
             CGSize(width: size.width * 0.5, height: size.height * 0.5) : size
         
-        return await MapSnapshotper.snapshot(
+        print("🗺️ Requesting map snapshot: \(Int(actualSize.width))x\(Int(actualSize.height)), \(coords.count) coords")
+        
+        let result = await MapSnapshotper.snapshot(
             coords: coords,
             size: actualSize,
             scale: quality.scale,
             style: .standard
         )
+        
+        if let snapshot = result {
+            print("✅ Map snapshot generated: \(Int(snapshot.size.width))x\(Int(snapshot.size.height))")
+        } else {
+            print("❌ Map snapshot failed")
+        }
+        
+        return result
     }
     
     // MARK: - Optimized Route Path Generation
@@ -152,21 +165,27 @@ actor PosterRenderService {
     @MainActor
     private func compositePoster(background: Color, mapSnapshot: UIImage?, routePath: UIImage?, design: PosterDesign, size: CGSize) async -> UIImage? {
         let renderer = UIGraphicsImageRenderer(size: size)
+        
+        print("🎨 Compositing poster: map=\(mapSnapshot != nil), route=\(routePath != nil)")
+        
         return renderer.image { context in
             let ctx = context.cgContext
             
             // If we have a map snapshot, use it as the background
             if let snapshot = mapSnapshot {
                 // Draw map as the background
+                print("🗺️ Drawing map background: \(Int(snapshot.size.width))x\(Int(snapshot.size.height))")
                 ctx.draw(snapshot.cgImage!, in: CGRect(origin: .zero, size: size))
             } else {
                 // Only fill with background color if no map
+                print("🎨 No map - using background color: \(background)")
                 ctx.setFillColor(UIColor(background).cgColor)
                 ctx.fill(CGRect(origin: .zero, size: size))
             }
             
             // Route overlay
             if let route = routePath {
+                print("🛤️ Drawing route overlay: \(Int(route.size.width))x\(Int(route.size.height))")
                 ctx.draw(route.cgImage!, in: CGRect(origin: .zero, size: size))
             }
         }
