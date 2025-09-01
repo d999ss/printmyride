@@ -68,7 +68,7 @@ struct StudioHubView: View {
                     }
                     .buttonStyle(.plain)
                 } else {
-                    NavigationLink(destination: PosterDetailView(poster: poster).environmentObject(gate)) {
+                    NavigationLink(destination: destinationView(for: poster, coords: coords)) {
                         PosterCardView(
                             title: poster.title,
                             thumbPath: poster.thumbnailPath,
@@ -89,6 +89,23 @@ struct StudioHubView: View {
             }
         }
         .redacted(reason: store.posters.isEmpty ? .placeholder : [])
+    }
+    
+    @ViewBuilder
+    private func destinationView(for poster: Poster, coords: [CLLocationCoordinate2D]) -> some View {
+        if poster.title == "Alpine Climb" {
+            PosterDetailV2(
+                rideTitle: poster.title,
+                rideSubtitle: "Boulder Canyon",
+                coords: coords,
+                distanceMeters: 1127.0, // 0.7 km
+                elevationMeters: 91.4,  // ~300 ft
+                durationSec: 1800,      // 30 min
+                date: poster.createdAt
+            )
+        } else {
+            PosterDetailView(poster: poster).environmentObject(gate)
+        }
     }
     
     private func sharePoster(_ poster: Poster) {

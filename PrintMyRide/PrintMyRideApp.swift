@@ -81,12 +81,13 @@ struct PrintMyRideApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                RootView()                         // your main app (Home/Create/Gallery/Settings)
-                    .environmentObject(appState)
-                    .environmentObject(oauth)
-                    .environmentObject(services)
-                    .opacity(showSplash ? 0 : 1)   // reveal after splash
-                    .onAppear {
+                if !showSplash {
+                    RootView()                         // your main app (Home/Create/Gallery/Settings)
+                        .environmentObject(appState)
+                        .environmentObject(oauth)
+                        .environmentObject(services)
+                        .allowsHitTesting(true)        // force-enable interactions
+                        .onAppear {
                         if ProcessInfo.processInfo.arguments.contains("--PMRTestMode") {
                             UserDefaults.standard.set(true, forKey: "pmr.testMode")
                             // Ensure deterministic first-run: clear local poster data and seeded flag
@@ -95,25 +96,59 @@ struct PrintMyRideApp: App {
                             let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
                             try? fm.removeItem(at: docs.appendingPathComponent("posters_index.json"))
                         }
-                        if !hasOnboarded { showOnboarding = true }
-                    }
-                    .onOpenURL { url in
-                        // Forward to OAuth handler; it checks scheme/host/path
-                        oauth.handleCallback(url: url)
-                    }
-                    // Overlay-based onboarding that doesn't block touch events
-                    .overlay(alignment: .center) {
-                        if showOnboarding {
-                            SimpleOnboardingView {
-                                withAnimation(.easeInOut) {
-                                    hasOnboarded = true
-                                    showOnboarding = false
-                                }
-                            }
-                            .transition(.opacity.combined(with: .scale))
-                            .zIndex(1000)
+                            if !hasOnboarded { showOnboarding = true }
                         }
+                        .onOpenURL { url in
+                            // Forward to OAuth handler; it checks scheme/host/path
+                            oauth.handleCallback(url: url)
+                        }
+                        // Overlay-based onboarding that doesn't block touch events
+                        .overlay(alignment: .center) {
+                            if showOnboarding {
+                                SimpleOnboardingView {
+                                    withAnimation(.easeInOut) {
+                                        hasOnboarded = true
+                                        showOnboarding = false
+                                    }
+                                }
+                                .transition(.opacity.combined(with: .scale))
+                                .zIndex(1000)
+                            }
+                        }
+                }
+                
+                // Health overlay for debugging (always enabled when not in splash)
+                if !showSplash {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .trailing, spacing: 4) {
+                                Text("🟢 Touch OK")
+                                    .font(.caption2)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(.green.opacity(0.8))
+                                    .cornerRadius(8)
+                                    .onTapGesture {
+                                        print("[Health] Touch test successful!")
+                                    }
+                                
+                                Text("Nav: \(hasOnboarded ? "Ready" : "Blocked")")
+                                    .font(.caption2)
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(hasOnboarded ? .green.opacity(0.8) : .red.opacity(0.8))
+                                    .cornerRadius(8)
+                            }
+                            .padding(.trailing, 12)
+                            .padding(.top, 60)
+                        }
+                        Spacer()
                     }
+                    .allowsHitTesting(true)
+                    .zIndex(2000)
+                }
                 
                 if showSplash {
                     SplashScreen { showSplash = false }

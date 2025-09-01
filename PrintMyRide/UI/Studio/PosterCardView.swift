@@ -37,21 +37,21 @@ struct PosterCardView: View {
                 }
                 
                 HStack(spacing: 8) {
-                    Button { onShare?() } label: {
-                        Image(systemName: "square.and.arrow.up").imageScale(.medium)
-                            .padding(8)
-                            .background(.ultraThinMaterial, in: Circle())
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                    Image(systemName: "square.and.arrow.up").imageScale(.medium)
+                        .padding(8)
+                        .background(.ultraThinMaterial, in: Circle())
+                        .onTapGesture {
+                            onShare?()
+                        }
                     
-                    Button { onFavorite?() } label: {
-                        Image(systemName: isFavorite ? "heart.fill" : "heart")
-                            .imageScale(.medium)
-                            .foregroundStyle(isFavorite ? .red : .primary)
-                            .padding(8)
-                            .background(.ultraThinMaterial, in: Circle())
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .imageScale(.medium)
+                        .foregroundStyle(isFavorite ? .red : .primary)
+                        .padding(8)
+                        .background(.ultraThinMaterial, in: Circle())
+                        .onTapGesture {
+                            onFavorite?()
+                        }
                 }
                 .padding(8)
             }

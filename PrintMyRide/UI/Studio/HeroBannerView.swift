@@ -146,13 +146,12 @@ struct HeroBannerView: View {
                     y: 2
                 )
             }
+            .buttonStyle(.plain)
             .scaleEffect(buttonPressed ? 0.95 : 1.0)
             .animation(DesignTokens.Animation.spring, value: buttonPressed)
-            .simultaneousGesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { _ in buttonPressed = true }
-                    .onEnded { _ in buttonPressed = false }
-            )
+            .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+                buttonPressed = pressing
+            }, perform: {})
             
             // Enhanced Settings link
             NavigationLink {
@@ -181,6 +180,7 @@ struct HeroBannerView: View {
                         .strokeBorder(.white.opacity(0.3), lineWidth: 1)
                 )
             }
+            .buttonStyle(.plain)
             
             Spacer()
         }
