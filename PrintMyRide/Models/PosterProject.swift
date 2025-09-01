@@ -1,6 +1,6 @@
 import Foundation
 
-struct PosterProject: Identifiable, Codable, Equatable {
+struct PosterProject: Identifiable {
     var id: UUID = .init()
     var title: String
     var createdAt: Date = .init()

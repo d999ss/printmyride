@@ -14,7 +14,7 @@ struct CanvasView: View {
                 // background
                 if drawBackground {
                     ctx.fill(Path(CGRect(origin: .zero, size: size)),
-                             with: .color(design.backgroundColor.color))
+                             with: .color(design.backgroundColor))
                 }
 
                 guard let coords = route?.coordinates, !coords.isEmpty else { 
@@ -70,15 +70,15 @@ struct CanvasView: View {
                 // 5) Stroke
                 let style = StrokeStyle(lineWidth: max(0.25, design.strokeWidthPt),
                                         lineCap: RenderMath.cgCap(from: design.lineCap))
-                ctx.stroke(path, with: .color(design.routeColor.color), style: style)
+                ctx.stroke(path, with: .color(design.routeColor), style: style)
 
                 // 6) Start/End markers (subtle)
                 if let first = pts.first, let last = pts.last {
                     let r: CGFloat = max(2, design.strokeWidthPt * 1.25)
                     let start = Path(ellipseIn: CGRect(x: map(first).x - r, y: map(first).y - r, width: 2*r, height: 2*r))
                     let end   = Path(ellipseIn: CGRect(x: map(last).x  - r, y: map(last).y  - r, width: 2*r, height: 2*r))
-                    ctx.fill(start, with: .color(design.routeColor.color.opacity(0.9)))
-                    ctx.stroke(end, with: .color(design.routeColor.color.opacity(0.7)))
+                    ctx.fill(start, with: .color(design.routeColor.opacity(0.9)))
+                    ctx.stroke(end, with: .color(design.routeColor.opacity(0.7)))
                 }
 
                 // Optional: grid overlay is drawn in PosterPreview

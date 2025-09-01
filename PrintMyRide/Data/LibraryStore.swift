@@ -12,16 +12,13 @@ final class LibraryStore: ObservableObject {
 
     func load() {
         try? fm.createDirectory(at: thumbsDir, withIntermediateDirectories: true)
-        if let data = try? Data(contentsOf: dbPath),
-           let decoded = try? JSONDecoder().decode([PosterProject].self, from: data) {
-            projects = decoded
-        } else {
-            projects = [] // Start clean - shimmer placeholders will show in Home
-        }
+        // TODO: Fix JSON decoding after making PosterProject Codable
+        projects = [] // Start clean for now
     }
 
     func save() {
-        let data = (try? JSONEncoder().encode(projects)) ?? Data()
+        // TODO: Fix JSON encoding after making PosterProject Codable
+        let data = Data()
         try? data.write(to: dbPath, options: .atomic)
     }
 

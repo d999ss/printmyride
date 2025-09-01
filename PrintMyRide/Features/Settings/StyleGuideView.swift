@@ -35,7 +35,7 @@ struct StyleGuideView: View {
                 ToolbarItem(placement: .cancellationAction) { Button("Close") { dismiss() } }
             }
         }
-        .background(settings.onboardingTheme == "studio" ? Color.black : DesignTokens.ColorToken.bg)
+        .background(settings.onboardingTheme == "studio" ? Color.black : DesignTokens.Colors.surface)
     }
 }
 
@@ -50,10 +50,10 @@ private struct TokensSection: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Colors").font(.headline)
                 HStack(spacing: 12) {
-                    ColorSwatch(name: "Background", color: DesignTokens.ColorToken.bg)
-                    ColorSwatch(name: "Label", color: DesignTokens.ColorToken.label)
-                    ColorSwatch(name: "Secondary", color: DesignTokens.ColorToken.secondary)
-                    ColorSwatch(name: "Accent", color: DesignTokens.ColorToken.accent)
+                    ColorSwatch(name: "Background", color: DesignTokens.Colors.surface)
+                    ColorSwatch(name: "Label", color: DesignTokens.Colors.onSurface)
+                    ColorSwatch(name: "Secondary", color: DesignTokens.Colors.secondary)
+                    ColorSwatch(name: "Accent", color: DesignTokens.Colors.accent)
                 }
             }
 
@@ -61,10 +61,10 @@ private struct TokensSection: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Typography").font(.headline)
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Title / Semibold").font(DesignTokens.FontToken.title)
-                    Text("Body / Regular").font(DesignTokens.FontToken.body)
-                    Text("Footnote / Regular").font(DesignTokens.FontToken.footnote).foregroundStyle(.secondary)
-                    HStack { Text("12.34").font(DesignTokens.FontToken.monoFootnote); Text("monospaced digits") }
+                    Text("Title / Semibold").font(DesignTokens.Typography.title)
+                    Text("Body / Regular").font(DesignTokens.Typography.body)
+                    Text("Footnote / Regular").font(DesignTokens.Typography.caption).foregroundStyle(.secondary)
+                    HStack { Text("12.34").font(.system(.caption, design: .monospaced)); Text("monospaced digits") }
                         .foregroundStyle(.secondary)
                 }
             }
@@ -73,9 +73,9 @@ private struct TokensSection: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Spacing").font(.headline)
                 HStack {
-                    SpacerChip(label: "s", value: DesignTokens.Spacing.s)
-                    SpacerChip(label: "m", value: DesignTokens.Spacing.m)
-                    SpacerChip(label: "l", value: DesignTokens.Spacing.l)
+                    SpacerChip(label: "s", value: DesignTokens.Spacing.sm)
+                    SpacerChip(label: "m", value: DesignTokens.Spacing.md)
+                    SpacerChip(label: "l", value: DesignTokens.Spacing.lg)
                 }
             }
         }
@@ -92,14 +92,16 @@ private struct ComponentsSection: View {
             // Tool pill
             VStack(alignment: .leading, spacing: 8) {
                 Text("Tool Pill").font(.headline)
-                HStack(spacing: DesignTokens.Spacing.l) {
+                HStack(spacing: DesignTokens.Spacing.lg) {
                     Image(systemName: "tray.and.arrow.down").imageScale(.large)
                     Image(systemName: "paintbrush").imageScale(.large)
                     Image(systemName: "textformat").imageScale(.large)
                     Image(systemName: "rectangle.and.pencil.and.ellipsis").imageScale(.large)
                     Image(systemName: "square.and.arrow.up").imageScale(.large)
                 }
-                .blurPill()
+                .padding(.horizontal, DesignTokens.Spacing.md)
+                .padding(.vertical, DesignTokens.Spacing.sm)
+                .background(.regularMaterial, in: Capsule())
             }
 
             // CTAs
@@ -183,7 +185,7 @@ private struct BehaviorSection: View {
                     Text("Dark").tag("dark")
                 }.pickerStyle(.segmented)
             }
-            .font(DesignTokens.FontToken.body)
+            .font(DesignTokens.Typography.body)
         }
     }
 }

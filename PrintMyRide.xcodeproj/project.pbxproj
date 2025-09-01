@@ -399,17 +399,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDocumentTypes = "";
-				INFOPLIST_KEY_CFBundleURLTypes = (
-					{
-						CFBundleURLName = pmr;
-						CFBundleURLSchemes = (
-							pmr,
-						);
-					},
-				);
-				INFOPLIST_KEY_LSApplicationQueriesSchemes = (
-					strava,
-				);
+				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleURLName = pmr;\n    CFBundleURLSchemes =     (\n        pmr\n    );\n}";
+				INFOPLIST_KEY_LSApplicationQueriesSchemes = strava;
 				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
 				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
 				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;
@@ -443,17 +434,8 @@
 				DEVELOPMENT_TEAM = 3864YR83JA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleURLTypes = (
-					{
-						CFBundleURLName = pmr;
-						CFBundleURLSchemes = (
-							pmr,
-						);
-					},
-				);
-				INFOPLIST_KEY_LSApplicationQueriesSchemes = (
-					strava,
-				);
+				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleURLName = pmr;\n    CFBundleURLSchemes =     (\n        pmr\n    );\n}";
+				INFOPLIST_KEY_LSApplicationQueriesSchemes = strava;
 				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
 				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
 				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;

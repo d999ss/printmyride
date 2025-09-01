@@ -1,0 +1,32 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Root/RootView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Studio",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 15
+        }
+      },
+      {
+        "comment": "",
+        "key": "Collections",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 20
+        }
+      },
+      {
+        "comment": "",
+        "key": "Settings",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 25
+        }
+      }
+    ]
+  },
+  "version": 1
+}

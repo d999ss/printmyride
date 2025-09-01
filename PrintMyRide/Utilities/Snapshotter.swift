@@ -5,7 +5,7 @@ enum Snapshotter {
     static func posterPNG(design: PosterDesign, route: GPXRoute?, size: CGSize = .init(width: 600, height: 800)) -> Data? {
         let v = PosterPreview(design: design, posterTitle: "My Ride", mode: .export, route: route, payload: nil)
             .frame(width: size.width, height: size.height)
-            .background(design.backgroundColor.color)
+            .background(design.backgroundColor)
         let r = ImageRenderer(content: v)
         r.scale = 2
         return r.uiImage?.pngData()
@@ -19,7 +19,7 @@ enum Snapshotter {
         cleanDesign.showGrid = false
         
         let v = ZStack {
-            Rectangle().fill(cleanDesign.backgroundColor.color)
+            Rectangle().fill(cleanDesign.backgroundColor)
             if let r = route {
                 CanvasView(design: cleanDesign, route: r)
             }

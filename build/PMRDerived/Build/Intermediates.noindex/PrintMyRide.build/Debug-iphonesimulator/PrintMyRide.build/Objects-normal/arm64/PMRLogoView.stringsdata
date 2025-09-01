@@ -1,0 +1,16 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Components/PMRLogoView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "PMR Logo",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 9
+        }
+      }
+    ]
+  },
+  "version": 1
+}

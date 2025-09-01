@@ -19,7 +19,7 @@ struct TextOverlay: View {
             if !text.title.isEmpty {
                 Text(text.title)
                     .font(.system(size: text.titleSizePt, weight: .semibold))
-                    .foregroundStyle(DesignTokens.Colors.label)
+                    .foregroundStyle(DesignTokens.Colors.onSurface)
             }
             let sub = [text.subtitle, statsLine].filter{ !$0.isEmpty }.joined(separator: "\n")
             if !sub.isEmpty {

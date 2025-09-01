@@ -8,41 +8,45 @@ enum StatsExtractor {
         var avgKmh: Double? { guard let dt = durationSec, dt > 0 else { return nil }
             return (distanceKm / (dt / 3600.0)) }
         let date: Date?
+        
+        static let zero = Stats(distanceKm: 0, ascentM: 0, durationSec: nil, date: nil)
     }
     
-    // Convenience overload for non-optional timestamps
-    static func compute(coords: [CLLocationCoordinate2D],
-                        elevations: [Double],
-                        timestamps: [Date]) -> Stats {
-        return compute(from: coords, elevations: elevations, timestamps: timestamps)
-    }
-
-    static func compute(from coords: [CLLocationCoordinate2D],
-                        elevations: [Double] = [],
-                        timestamps: [Date]? = nil) -> Stats {
-        // Distance (haversine)
+    /// Fully defensive. Empty or mismatched input never crashes.
+    static func compute(coords: [CLLocationCoordinate2D]?,
+                        elevations: [Double]?,
+                        timestamps: [Date]?) -> Stats {
+        let pts = coords ?? []
+        guard pts.count > 1 else {
+            PMRLog.export.log("[Stats] insufficient coords (\(pts.count))")
+            return .zero
+        }
+        
+        // Distance
         var distM = 0.0
-        for i in 1..<coords.count { distM += haversine(coords[i-1], coords[i]) }
-
-        // Ascent (simple up-sum)
+        if pts.count > 1 {
+            for i in 1..<pts.count { distM += haversine(pts[i-1], pts[i]) }
+        }
+        
+        // Ascent
         var ascent: Double = 0
-        if elevations.count > 1 {
-            for i in 1..<elevations.count {
-                let d = elevations[i] - elevations[i-1]
+        if let elev = elevations, elev.count > 1 {
+            for i in 1..<elev.count {
+                let d = elev[i] - elev[i-1]
                 if d > 0 { ascent += d }
             }
         }
-
-        // Duration (if we have timestamps)
-        var dur: Double? = nil
-        if let ts = timestamps, let first = ts.first, let last = ts.last, ts.count > 1 {
-            dur = last.timeIntervalSince(first)
+        
+        // Duration
+        var durSec: Double? = nil
+        if let ts = timestamps, ts.count > 1, let first = ts.first, let last = ts.last {
+            durSec = max(0, last.timeIntervalSince(first))
         }
-
-        // Date (use first timestamp if available)
+        
+        // Date
         let date = timestamps?.first
-
-        return .init(distanceKm: distM/1000.0, ascentM: ascent, durationSec: dur, date: date)
+        
+        return Stats(distanceKm: distM/1000.0, ascentM: ascent, durationSec: durSec, date: date)
     }
 
     private static func haversine(_ a: CLLocationCoordinate2D, _ b: CLLocationCoordinate2D) -> Double {

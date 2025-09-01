@@ -10,7 +10,9 @@ struct PosterCard: View {
                     .resizable()
                     .scaledToFill()
             } else {
-                Shimmer()
+                Rectangle()
+                    .fill(DesignTokens.Colors.shimmerBase)
+                    .shimmer()
             }
         }
         .frame(width: 160, height: 213.3) // 3:4 ratio

@@ -26,7 +26,7 @@ struct PurePoster: View {
                             .clipped()
                             .opacity(0.92) // muted, VSCO-like
                     } else {
-                        Rectangle().fill(design.backgroundColor.color).ignoresSafeArea()
+                        Rectangle().fill(design.backgroundColor).ignoresSafeArea()
                     }
                     
                     // Route layer (existing draw)
@@ -37,8 +37,8 @@ struct PurePoster: View {
                     
                     // Grid overlay (existing)
                     if design.showGrid || tempGrid {
-                        GridOverlay(spacing: design.gridSpacing, color: design.gridColor.color)
-                            .animation(DesignTokens.Motion.smooth, value: design.showGrid)
+                        GridOverlay(spacing: design.gridSpacing, color: design.gridColor)
+                            .animation(DesignTokens.Animation.standard, value: design.showGrid)
                             .transition(.opacity)
                     }
                 }

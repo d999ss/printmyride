@@ -22,7 +22,7 @@ struct InfoHUD: View {
             if zoomPercent != 100 {
                 Text("\(zoomPercent)%")
                     .font(DesignTokens.Typography.caption2)
-                    .foregroundColor(DesignTokens.ColorToken.accent)
+                    .foregroundColor(DesignTokens.Colors.accent)
             }
             Text("pts \(pointsPost)/\(pointsPre)")
                 .font(DesignTokens.Typography.caption2)

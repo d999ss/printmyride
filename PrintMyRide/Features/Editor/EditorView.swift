@@ -32,17 +32,13 @@ struct EditorView: View {
     }
     
     init() {
-        let base = PosterDesign(paperSize: DesignDefaults.paper(from: "18x24"),
-                                dpi: 300,
-                                margins: 0.10,
-                                orientation: .portrait,
+        let base = PosterDesign(paperSize: CGSize(width: 18, height: 24),
                                 showGrid: false,
+                                orientation: .portrait,
                                 strokeWidthPt: 2,
                                 lineCap: .round,
-                                dropShadowEnabled: false,
-                                dropShadowRadius: 12,
-                                routeColor: .init(.black),
-                                backgroundColor: .init(.white))
+                                routeColor: .black,
+                                backgroundColor: .white)
         _design = State(initialValue: base)
         _route = State(initialValue: nil)
         _textMeta = State(initialValue: PosterText())
@@ -66,7 +62,7 @@ struct EditorView: View {
                     PosterPreview(design: design, posterTitle: "My Ride", mode: .editor, route: r, payload: nil)
                         .overlay(alignment: .topLeading) {
                             let coords = r.coordinates
-                            let stats = coords.isEmpty ? nil : StatsExtractor.compute(from: coords)
+                            let stats = coords.isEmpty ? nil : StatsExtractor.compute(coords: coords, elevations: nil, timestamps: nil)
                             TextOverlay(text: textMeta, stats: stats)
                                 .allowsHitTesting(false)
                         }
@@ -75,12 +71,12 @@ struct EditorView: View {
                             if !alwaysShowControls { chrome.showTemporarily() }
                         }
                 } else {
-                    DesignTokens.ColorToken.bg
+                    DesignTokens.Colors.surface
                         .ignoresSafeArea()
                         .overlay {
                             Text("Import a GPX to start")
-                                .font(DesignTokens.FontToken.body)
-                                .foregroundStyle(DesignTokens.ColorToken.secondary)
+                                .font(DesignTokens.Typography.body)
+                                .foregroundStyle(DesignTokens.Colors.secondary)
                         }
                         .onTapGesture { 
                             if !alwaysShowControls { chrome.showTemporarily() }
@@ -103,32 +99,34 @@ struct EditorView: View {
                         }
                         Spacer()
                         Button("Save") { save() }
-                            .tint(DesignTokens.ColorToken.accent)
+                            .tint(DesignTokens.Colors.accent)
                     }
-                    .font(DesignTokens.FontToken.title)
+                    .font(DesignTokens.Typography.title)
                     .foregroundStyle(.white)
-                    .padding(.horizontal, DesignTokens.Spacing.m)
+                    .padding(.horizontal, DesignTokens.Spacing.md)
                     .padding(.top, 12)
                     .frame(maxHeight: .infinity, alignment: .top)
                 }
                 
                 // Floating icon-only tool pill
                 if chrome.visible {
-                    HStack(spacing: DesignTokens.Spacing.l) {
+                    HStack(spacing: DesignTokens.Spacing.lg) {
                         icon("tray.and.arrow.down", "Import") { showingImporter = true }
                         icon("paintbrush", "Style") { showingStyle = true }
                         icon("textformat", "Text") { showingText = true }
                         icon("rectangle.and.pencil.and.ellipsis", "Canvas") { showingCanvas = true }
                         icon("square.and.arrow.up", "Export", disabled: activeRoute == nil) { showingExport = true }
                     }
-                    .blurPill()
-                    .padding(.bottom, 20)
+                    .padding(.horizontal, DesignTokens.Spacing.md)
+                    .padding(.vertical, DesignTokens.Spacing.sm)
+                    .background(.regularMaterial, in: Capsule())
+                    .padding(.bottom, DesignTokens.Spacing.lg)
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     
                     // Tool hint bubble
                     if let hint = toolHint {
                         Text(hint)
-                            .font(DesignTokens.FontToken.footnote)
+                            .font(DesignTokens.Typography.caption)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 6)
                             .background(.ultraThinMaterial, in: Capsule())
@@ -205,7 +203,7 @@ struct EditorView: View {
                 .imageScale(.large)
         }
         .disabled(disabled)
-        .foregroundStyle(disabled ? DesignTokens.ColorToken.secondary : DesignTokens.ColorToken.label)
+        .foregroundStyle(disabled ? DesignTokens.Colors.secondary : DesignTokens.Colors.onSurface)
         .buttonStyle(.plain)
         .simultaneousGesture(
             LongPressGesture(minimumDuration: 0.2)

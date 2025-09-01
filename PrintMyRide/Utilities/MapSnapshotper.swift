@@ -9,7 +9,7 @@ enum MapSnapshotper {
     @MainActor
     static func snapshot(coords: [CLLocationCoordinate2D],
                          size: CGSize,
-                         scale: CGFloat = UIScreen.main.scale,
+                         scale: CGFloat = 3.0,
                          style: MapBackdropStyle = .standard) async -> UIImage? {
         guard !coords.isEmpty, size.width > 1, size.height > 1 else { return nil }
         let opts = MKMapSnapshotter.Options()

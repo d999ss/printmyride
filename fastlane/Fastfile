@@ -1,0 +1,12 @@
+default_platform(:ios)
+platform :ios do
+  desc "Build and run all tests for PMR"
+  lane :ci do
+    run_tests(
+      workspace: "PrintMyRide.xcworkspace",
+      scheme: "PrintMyRide",
+      devices: ["iPhone 16 Pro"],
+      clean: true
+    )
+  end
+end

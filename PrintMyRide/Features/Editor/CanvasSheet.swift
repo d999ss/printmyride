@@ -54,7 +54,7 @@ struct CanvasSheet: View {
                 Section("Paper Size") {
                     // Width
                     HStack { Text("Width"); Spacer()
-                        Text("\(Int(design.paperSize.width))\"").font(DesignTokens.FontToken.monoFootnote).foregroundStyle(.secondary)
+                        Text("\(Int(design.paperSize.width))\"").font(.system(.caption, design: .monospaced)).foregroundStyle(.secondary)
                     }
                     Slider(value: Binding(
                         get: { design.paperSize.width },
@@ -63,7 +63,7 @@ struct CanvasSheet: View {
 
                     // Height
                     HStack { Text("Height"); Spacer()
-                        Text("\(Int(design.paperSize.height))\"").font(DesignTokens.FontToken.monoFootnote).foregroundStyle(.secondary)
+                        Text("\(Int(design.paperSize.height))\"").font(.system(.caption, design: .monospaced)).foregroundStyle(.secondary)
                     }
                     Slider(value: Binding(
                         get: { design.paperSize.height },
@@ -73,7 +73,7 @@ struct CanvasSheet: View {
 
                 Section("Margins") {
                     HStack { Text("Margins"); Spacer()
-                        Text("\(Int(design.margins*100))%").font(DesignTokens.FontToken.monoFootnote).foregroundStyle(.secondary)
+                        Text("\(Int(design.margins*100))%").font(.system(.caption, design: .monospaced)).foregroundStyle(.secondary)
                     }
                     Slider(value: $design.margins, in: 0...0.2)
                 }
@@ -82,7 +82,7 @@ struct CanvasSheet: View {
                     Toggle("Show grid", isOn: $design.showGrid)
                     if design.showGrid {
                         HStack { Text("Grid spacing"); Spacer()
-                            Text("\(Int(design.gridSpacing)) pt").font(DesignTokens.FontToken.monoFootnote).foregroundStyle(.secondary)
+                            Text("\(Int(design.gridSpacing)) pt").font(.system(.caption, design: .monospaced)).foregroundStyle(.secondary)
                         }
                         Slider(value: $design.gridSpacing, in: 10...200, step: 10)
                     }

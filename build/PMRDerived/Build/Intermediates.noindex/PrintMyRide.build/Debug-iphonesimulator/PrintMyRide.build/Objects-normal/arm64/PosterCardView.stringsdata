@@ -1,0 +1,16 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/UI/Studio/PosterCardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Pro",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 26
+        }
+      }
+    ]
+  },
+  "version": 1
+}

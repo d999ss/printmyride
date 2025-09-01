@@ -1,0 +1,42 @@
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Strava/StravaMock.swift":
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaMock.swiftdeps"
+  const-values: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaMock.swiftconstvalues"
+  object: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaMock.o"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaMock.d"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaMock.dia"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/EditorV2.swift":
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/EditorV2.swiftdeps"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/EditorV2.d"
+  const-values: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/EditorV2.swiftconstvalues"
+  object: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/EditorV2.o"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/EditorV2.dia"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/UI/Debug/DebugHUD.swift":
+  object: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DebugHUD.o"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DebugHUD.swiftdeps"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DebugHUD.dia"
+  const-values: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DebugHUD.swiftconstvalues"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DebugHUD.d"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Components/PosterCard.swift":
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterCard.dia"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterCard.swiftdeps"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterCard.d"
+  const-values: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterCard.swiftconstvalues"
+  object: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterCard.o"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Home/StravaInfoSheet.swift":
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaInfoSheet.swiftdeps"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaInfoSheet.d"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaInfoSheet.dia"
+  const-values: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaInfoSheet.swiftconstvalues"
+  object: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaInfoSheet.o"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/PosterPreview.swift":
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreview.dia"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreview.d"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreview.swiftdeps"
+  object: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreview.o"
+  const-values: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreview.swiftconstvalues"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/UI/Studio/StudioHubView.swift":
+  const-values: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StudioHubView.swiftconstvalues"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StudioHubView.dia"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StudioHubView.d"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StudioHubView.swiftdeps"
+  object: "/Users/donnysmith/CC/printmyride/build/PMRDerived/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StudioHubView.o"

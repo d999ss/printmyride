@@ -1,0 +1,56 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/UI/Onboarding/OnboardingView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Turn rides into art.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Instant demo posters. Export hi-res with Try Pro. Print via demo checkout.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Starting…",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Demo",
+        "location": {
+          "startingColumn": 58,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Connect Strava",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 53
+        }
+      },
+      {
+        "comment": "",
+        "key": "Skip for now",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 61
+        }
+      }
+    ]
+  },
+  "version": 1
+}

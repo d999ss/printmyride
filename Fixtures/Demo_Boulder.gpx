@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="PrintMyRide Demo">
+  <metadata>
+    <name>Boulder Canyon Spin</name>
+    <desc>Demo ride through Boulder Canyon, Colorado</desc>
+  </metadata>
+  <trk>
+    <name>Boulder Canyon Spin</name>
+    <trkseg>
+      <trkpt lat="40.0150" lon="-105.2705">
+        <ele>1655</ele>
+        <time>2025-07-08T12:00:00Z</time>
+      </trkpt>
+      <trkpt lat="40.0155" lon="-105.2710">
+        <ele>1660</ele>
+        <time>2025-07-08T12:01:00Z</time>
+      </trkpt>
+      <trkpt lat="40.0162" lon="-105.2718">
+        <ele>1668</ele>
+        <time>2025-07-08T12:02:00Z</time>
+      </trkpt>
+      <trkpt lat="40.0170" lon="-105.2725">
+        <ele>1675</ele>
+        <time>2025-07-08T12:03:00Z</time>
+      </trkpt>
+      <trkpt lat="40.0178" lon="-105.2732">
+        <ele>1685</ele>
+        <time>2025-07-08T12:04:00Z</time>
+      </trkpt>
+      <trkpt lat="40.0185" lon="-105.2740">
+        <ele>1695</ele>
+        <time>2025-07-08T12:05:00Z</time>
+      </trkpt>
+      <trkpt lat="40.0192" lon="-105.2748">
+        <ele>1705</ele>
+        <time>2025-07-08T12:06:00Z</time>
+      </trkpt>
+      <trkpt lat="40.0200" lon="-105.2755">
+        <ele>1715</ele>
+        <time>2025-07-08T12:07:00Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

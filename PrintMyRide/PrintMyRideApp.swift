@@ -1,7 +1,13 @@
 import SwiftUI
+import UIKit
 
 @main
 struct PrintMyRideApp: App {
+    @StateObject private var appState = AppState()
+    @StateObject private var oauth = StravaOAuth()
+    @StateObject private var services = ServiceHub()
+    @AppStorage("pmr.hasOnboarded") private var hasOnboarded: Bool = false
+    @State private var showOnboarding = false
     @State private var showSplash = true
     
     init() {
@@ -76,10 +82,36 @@ struct PrintMyRideApp: App {
         WindowGroup {
             ZStack {
                 RootView()                         // your main app (Home/Create/Gallery/Settings)
+                    .environmentObject(appState)
+                    .environmentObject(oauth)
+                    .environmentObject(services)
                     .opacity(showSplash ? 0 : 1)   // reveal after splash
+                    .onAppear {
+                        if ProcessInfo.processInfo.arguments.contains("--PMRTestMode") {
+                            UserDefaults.standard.set(true, forKey: "pmr.testMode")
+                            // Ensure deterministic first-run: clear local poster data and seeded flag
+                            UserDefaults.standard.removeObject(forKey: "pmr.hasSeededSamplePoster")
+                            let fm = FileManager.default
+                            let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                            try? fm.removeItem(at: docs.appendingPathComponent("posters_index.json"))
+                        }
+                        if !hasOnboarded { showOnboarding = true }
+                    }
+                    .onOpenURL { url in
+                        // Forward to OAuth handler; it checks scheme/host/path
+                        oauth.handleCallback(url: url)
+                    }
                 if showSplash {
                     SplashScreen { showSplash = false }
                 }
+            }
+            .fullScreenCover(isPresented: $showOnboarding) {
+                OnboardingView()
+                    .environmentObject(services)
+                    .environmentObject(oauth)
+            }
+            .onChange(of: hasOnboarded) { done in
+                if done { showOnboarding = false }
             }
             .preferredColorScheme(.dark)
         }

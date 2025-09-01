@@ -18,8 +18,8 @@ struct StyleSheet: View {
                             design = copy
                             UISelectionFeedbackGenerator().selectionChanged()
                         }
-                        .font(DesignTokens.FontToken.body)
-                        .foregroundColor(DesignTokens.ColorToken.accent)
+                        .font(DesignTokens.Typography.body)
+                        .foregroundColor(DesignTokens.Colors.accent)
                     }
                 }
                 
@@ -27,11 +27,11 @@ struct StyleSheet: View {
                     VStack(spacing: DesignTokens.Spacing.sm) {
                         HStack {
                             Text("Width")
-                                .font(DesignTokens.FontToken.body)
+                                .font(DesignTokens.Typography.body)
                             Spacer()
                             Text("\(design.strokeWidthPt, specifier: "%.2f") pt")
-                                .font(DesignTokens.FontToken.monoFootnote)
-                                .foregroundStyle(DesignTokens.ColorToken.secondary)
+                                .font(.system(.caption, design: .monospaced))
+                                .foregroundStyle(DesignTokens.Colors.secondary)
                         }
                         
                         Slider(value: Binding(
@@ -46,13 +46,13 @@ struct StyleSheet: View {
                         set: { newVal in pushUndo(design); design.lineCap = newVal }
                     )) {
                         Text("Round")
-                            .font(DesignTokens.FontToken.footnote)
+                            .font(DesignTokens.Typography.caption)
                             .tag(PosterDesign.LineCap.round)
                         Text("Square")
-                            .font(DesignTokens.FontToken.footnote)
+                            .font(DesignTokens.Typography.caption)
                             .tag(PosterDesign.LineCap.square)
                         Text("Butt")
-                            .font(DesignTokens.FontToken.footnote)
+                            .font(DesignTokens.Typography.caption)
                             .tag(PosterDesign.LineCap.butt)
                     }.pickerStyle(.segmented)
                 }
@@ -62,17 +62,17 @@ struct StyleSheet: View {
                         get: { design.dropShadowEnabled },
                         set: { newVal in pushUndo(design); design.dropShadowEnabled = newVal }
                     ))
-                    .font(DesignTokens.FontToken.body)
+                    .font(DesignTokens.Typography.body)
                     
                     if design.dropShadowEnabled {
                         VStack(spacing: DesignTokens.Spacing.sm) {
                             HStack {
                                 Text("Radius")
-                                    .font(DesignTokens.FontToken.body)
+                                    .font(DesignTokens.Typography.body)
                                 Spacer()
                                 Text("\(Int(design.dropShadowRadius)) px")
-                                    .font(DesignTokens.FontToken.monoFootnote)
-                                    .foregroundStyle(DesignTokens.ColorToken.secondary)
+                                    .font(.system(.caption, design: .monospaced))
+                                    .foregroundStyle(DesignTokens.Colors.secondary)
                             }
                             
                             Slider(value: Binding(
@@ -96,15 +96,15 @@ struct StyleSheet: View {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .font(DesignTokens.FontToken.body)
+                    .font(DesignTokens.Typography.body)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Apply") {
                         dismiss()
                     }
-                    .font(DesignTokens.FontToken.title)
-                    .foregroundColor(DesignTokens.ColorToken.accent)
+                    .font(DesignTokens.Typography.title)
+                    .foregroundColor(DesignTokens.Colors.accent)
                 }
             }
         }
@@ -119,7 +119,7 @@ struct PreviewStrip: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                design.backgroundColor.color
+                design.backgroundColor
                 
                 Path { path in
                     let width = geo.size.width
@@ -129,13 +129,13 @@ struct PreviewStrip: View {
                     path.move(to: CGPoint(x: margin, y: height / 2))
                     path.addLine(to: CGPoint(x: width - margin, y: height / 2))
                 }
-                .stroke(design.routeColor.color, lineWidth: design.strokeWidthPt)
+                .stroke(design.routeColor, lineWidth: design.strokeWidthPt)
             }
         }
-        .cornerRadius(DesignTokens.Radius.sm)
+        .cornerRadius(DesignTokens.CornerRadius.sm)
         .overlay(
-            RoundedRectangle(cornerRadius: DesignTokens.Radius.sm)
-                .stroke(DesignTokens.Colors.separator, lineWidth: 0.5)
+            RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.sm)
+                .stroke(DesignTokens.Colors.cardBorder, lineWidth: 0.5)
         )
     }
 }

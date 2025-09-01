@@ -41,8 +41,8 @@ struct ExportSheet: View {
                         VStack {
                             ProgressView(value: progress)
                             Text("Exporting...")
-                                .font(DesignTokens.FontToken.footnote)
-                                .foregroundStyle(DesignTokens.ColorToken.secondary)
+                                .font(DesignTokens.Typography.caption)
+                                .foregroundStyle(DesignTokens.Colors.secondary)
                         }
                     }
                 }

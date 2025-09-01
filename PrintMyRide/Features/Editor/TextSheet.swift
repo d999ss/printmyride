@@ -9,16 +9,16 @@ struct TextSheet: View {
             Form {
                 Section("Title") {
                     TextField("Title", text: $text.title)
-                        .font(DesignTokens.FontToken.body)
+                        .font(DesignTokens.Typography.body)
                     
                     VStack(spacing: DesignTokens.Spacing.sm) {
                         HStack {
                             Text("Size")
-                                .font(DesignTokens.FontToken.body)
+                                .font(DesignTokens.Typography.body)
                             Spacer()
                             Text("\(Int(text.titleSizePt)) pt")
-                                .font(DesignTokens.FontToken.monoFootnote)
-                                .foregroundStyle(DesignTokens.ColorToken.secondary)
+                                .font(.system(.caption, design: .monospaced))
+                                .foregroundStyle(DesignTokens.Colors.secondary)
                         }
                         Slider(value: $text.titleSizePt, in: 18...48)
                     }
@@ -26,16 +26,16 @@ struct TextSheet: View {
                 
                 Section("Subtitle") {
                     TextField("Subtitle", text: $text.subtitle)
-                        .font(DesignTokens.FontToken.body)
+                        .font(DesignTokens.Typography.body)
                 }
                 
                 Section("Stats") {
                     Toggle("Show distance", isOn: $text.showDistance)
-                        .font(DesignTokens.FontToken.body)
+                        .font(DesignTokens.Typography.body)
                     Toggle("Show elevation", isOn: $text.showElevation)
-                        .font(DesignTokens.FontToken.body)
+                        .font(DesignTokens.Typography.body)
                     Toggle("Show date", isOn: $text.showDate)
-                        .font(DesignTokens.FontToken.body)
+                        .font(DesignTokens.Typography.body)
                 }
             }
             .navigationTitle("Text")
@@ -45,15 +45,15 @@ struct TextSheet: View {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .font(DesignTokens.FontToken.body)
+                    .font(DesignTokens.Typography.body)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Apply") {
                         dismiss()
                     }
-                    .font(DesignTokens.FontToken.title)
-                    .foregroundColor(DesignTokens.ColorToken.accent)
+                    .font(DesignTokens.Typography.title)
+                    .foregroundColor(DesignTokens.Colors.accent)
                 }
             }
         }
