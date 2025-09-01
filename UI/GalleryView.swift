@@ -13,9 +13,7 @@ struct GalleryView: View {
             LazyVGrid(columns: grid, spacing: 12) {
                 ForEach(store.posters) { poster in
                     NavigationLink {
-                        // For demo, try to locate a GPX matching the sample if it exists
-                        let coords = DemoCoordsLoader.coords(forTitle: poster.title)
-                        PosterDetailView(poster: poster, coords: coords)
+                        PosterDetailView(poster: poster)
                             .environmentObject(subscriptionGate)
                     } label: {
                         PosterCard(poster: poster, imageURL: store.imageURL(for: poster.thumbnailPath))

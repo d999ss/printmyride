@@ -5,33 +5,38 @@ import MapKit
 
 struct RouteRenderer {
     // Simple route image for demo seeding
-    static func renderImage(from coords: [CLLocationCoordinate2D], size: CGSize, lineWidth: CGFloat) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(size: size)
-        return renderer.image { context in
-            let cgContext = context.cgContext
-            cgContext.setFillColor(UIColor.systemBackground.cgColor)
-            cgContext.fill(CGRect(origin: .zero, size: size))
-            
-            // Simple route line drawing for demo
-            guard coords.count > 1 else { return }
-            cgContext.setStrokeColor(UIColor.systemBlue.cgColor)
-            cgContext.setLineWidth(lineWidth)
-            cgContext.setLineCap(.round)
-            
-            let path = UIBezierPath()
-            let firstPoint = CGPoint(x: size.width * 0.3, y: size.height * 0.2)
-            path.move(to: firstPoint)
-            
-            // Create a simple wavy path for demo
-            for i in 1..<min(coords.count, 20) {
-                let progress = CGFloat(i) / 20.0
-                let x = size.width * (0.3 + progress * 0.4)
-                let y = size.height * (0.2 + sin(progress * 3) * 0.3 + progress * 0.4)
-                path.addLine(to: CGPoint(x: x, y: y))
+    @MainActor
+    static func renderImage(from coords: [CLLocationCoordinate2D], size: CGSize, lineWidth: CGFloat) async -> UIImage? {
+        guard coords.count > 1 else { return nil }
+        
+        let routeView = RouteDrawingView(coords: coords, size: size, lineWidth: lineWidth)
+        
+        return await ImageRenderer(content: routeView).uiImage
+    }
+    
+    private struct RouteDrawingView: View {
+        let coords: [CLLocationCoordinate2D]
+        let size: CGSize
+        let lineWidth: CGFloat
+        
+        var body: some View {
+            Canvas { context, size in
+                let path = Path { path in
+                    let firstPoint = CGPoint(x: size.width * 0.3, y: size.height * 0.2)
+                    path.move(to: firstPoint)
+                    
+                    for i in 1..<min(coords.count, 20) {
+                        let progress = CGFloat(i) / 20.0
+                        let x = size.width * (0.3 + progress * 0.4)
+                        let y = size.height * (0.2 + sin(progress * 3) * 0.3 + progress * 0.4)
+                        path.addLine(to: CGPoint(x: x, y: y))
+                    }
+                }
+                
+                context.stroke(path, with: .color(.blue), style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
             }
-            
-            cgContext.addPath(path.cgPath)
-            cgContext.strokePath()
+            .frame(width: size.width, height: size.height)
+            .background(Color(.systemBackground))
         }
     }
     
@@ -44,6 +49,31 @@ struct RouteRenderer {
         size: CGSize = CGSize(width: 400, height: 600),
         style: MapBackdropStyle = .standard,
         useMapBackground: Bool = false
+    ) async -> UIImage? {
+        // Move heavy rendering off main thread
+        return await Task.detached(priority: .userInitiated) {
+            await _renderPoster(
+                coordinates: coordinates,
+                title: title,
+                distance: distance,
+                duration: duration,
+                date: date,
+                size: size,
+                style: style,
+                useMapBackground: useMapBackground
+            )
+        }.value
+    }
+    
+    private static func _renderPoster(
+        coordinates: [CLLocationCoordinate2D],
+        title: String,
+        distance: String,
+        duration: String,
+        date: String,
+        size: CGSize,
+        style: MapBackdropStyle,
+        useMapBackground: Bool
     ) async -> UIImage? {
         guard !coordinates.isEmpty else { return nil }
         
@@ -69,7 +99,7 @@ struct RouteRenderer {
             )
         } else {
             // Use simple route rendering without map background
-            return renderImage(from: coordinates, size: size, lineWidth: 4)
+            return await renderImage(from: coordinates, size: size, lineWidth: 4)
         }
     }
     

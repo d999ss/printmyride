@@ -4,10 +4,26 @@
     "Localizable": [
       {
         "comment": "",
+        "key": "Generate Poster Image",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generating poster...",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
         "key": "Route Map",
         "location": {
           "startingColumn": 38,
-          "startingLine": 34
+          "startingLine": 69
         }
       },
       {
@@ -15,7 +31,7 @@
         "key": "Open in Apple Maps",
         "location": {
           "startingColumn": 40,
-          "startingLine": 49
+          "startingLine": 84
         }
       },
       {
@@ -23,7 +39,7 @@
         "key": "Save Map Snapshot for Poster",
         "location": {
           "startingColumn": 40,
-          "startingLine": 55
+          "startingLine": 90
         }
       },
       {
@@ -31,7 +47,7 @@
         "key": "Export High-Res (PDF)",
         "location": {
           "startingColumn": 28,
-          "startingLine": 85
+          "startingLine": 120
         }
       },
       {
@@ -39,7 +55,7 @@
         "key": "Print Poster (Demo Checkout)",
         "location": {
           "startingColumn": 36,
-          "startingLine": 95
+          "startingLine": 130
         }
       },
       {
@@ -47,7 +63,7 @@
         "key": "Share Poster Image",
         "location": {
           "startingColumn": 28,
-          "startingLine": 99
+          "startingLine": 134
         }
       }
     ]

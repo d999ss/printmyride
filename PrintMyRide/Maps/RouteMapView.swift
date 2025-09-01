@@ -13,13 +13,24 @@ struct RouteMapView: View {
                     let poly = MKPolyline(coordinates: coords, count: coords.count)
                     MapPolyline(poly)
                         .stroke(.white, lineWidth: 4)
+                } else {
+                    // Debug: Show when coords are empty
+                    MapCircle(center: CLLocationCoordinate2D(latitude: 40.6461, longitude: -111.4980), radius: 1000)
+                        .foregroundStyle(.red.opacity(0.3))
                 }
             }
             .mapStyle(.standard(elevation: .flat))
             .onAppear {
                 if !coords.isEmpty {
                     region = RouteMapHelpers.region(fitting: coords)
+                } else {
+                    // Debug: Set default region when coords are empty
+                    region = MKCoordinateRegion(
+                        center: CLLocationCoordinate2D(latitude: 40.6461, longitude: -111.4980),
+                        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    )
                 }
+                print("RouteMapView: coords.count = \(coords.count)")
             }
         } else {
             // Fallback for iOS 16 and below

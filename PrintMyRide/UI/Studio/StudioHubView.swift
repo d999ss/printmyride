@@ -43,7 +43,7 @@ struct StudioHubView: View {
     private var demoGrid: some View {
         LazyVGrid(columns: cols, spacing: DesignTokens.Spacing.gridSpacing) {
             ForEach(Array(store.posters.enumerated()), id: \.element.id) { idx, poster in
-                let coords = DemoCoordsLoader.coords(forTitle: poster.title)
+                let coords = poster.coordinates ?? DemoCoordsLoader.coords(forTitle: poster.title)
                 let isLockedPro = (idx == store.posters.count - 1) && !gate.isSubscribed
 
                 // Card
@@ -68,7 +68,7 @@ struct StudioHubView: View {
                     }
                     .buttonStyle(CardPressStyle(pressed: $pressed))
                 } else {
-                    NavigationLink(destination: PosterDetailView(poster: poster, coords: coords).environmentObject(gate)) {
+                    NavigationLink(destination: PosterDetailView(poster: poster).environmentObject(gate)) {
                         PosterCardView(
                             title: poster.title,
                             thumbPath: poster.thumbnailPath,
@@ -120,9 +120,9 @@ struct StudioHubView: View {
             let names = ["Park City Loop","Boulder Canyon Spin","City Night Ride","Coastal Sprint","Forest Switchbacks","Alpine Climb"]
             for n in names {
                 let coords = DemoCoordsLoader.coords(forTitle: n)
-                let full = RouteRenderer.renderImage(from: coords, size: CGSize(width: 2500, height: 3500), lineWidth: 10)
-                let thumb = RouteRenderer.renderImage(from: coords, size: CGSize(width: 600, height: 840), lineWidth: 6)
-                try? await PosterStoreWrapper(store: store).savePosterFromImages(title: n, full: full, thumb: thumb)
+                let full = await RouteRenderer.renderImage(from: coords, size: CGSize(width: 2500, height: 3500), lineWidth: 10)
+                let thumb = await RouteRenderer.renderImage(from: coords, size: CGSize(width: 600, height: 840), lineWidth: 6)
+                try? await PosterStoreWrapper(store: store).savePosterFromImages(title: n, full: full, thumb: thumb, coordinates: coords)
             }
             toast = "Loaded demo posters"
             PMRLog.ui.log("[Studio] seeded demo posters")
@@ -197,7 +197,7 @@ struct StudioHubView: View {
         for p in store.posters {
             let thumbURL = docs.appendingPathComponent(p.thumbnailPath)
             if !fm.fileExists(atPath: thumbURL.path) {
-                let coords = DemoCoordsLoader.coords(forTitle: p.title)
+                let coords = p.coordinates ?? DemoCoordsLoader.coords(forTitle: p.title)
                 // Prefer Apple Maps snapshot with route overlay
                 if let snap = await withCheckedContinuation({ cont in
                     MapSnapshotService.snapshot(coords: coords, size: CGSize(width: 600, height: 840)) { cont.resume(returning: $0) }
@@ -207,7 +207,7 @@ struct StudioHubView: View {
                     }
                 } else {
                     // Fallback to route render if snapshot fails or coords empty
-                    if let thumb = RouteRenderer.renderImage(from: coords, size: CGSize(width: 600, height: 840), lineWidth: 6),
+                    if let thumb = await RouteRenderer.renderImage(from: coords, size: CGSize(width: 600, height: 840), lineWidth: 6),
                        let data = thumb.jpegData(compressionQuality: 0.9) {
                         try? data.write(to: thumbURL, options: .atomic)
                     }

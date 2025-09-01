@@ -9,6 +9,7 @@ struct PurePoster: View {
     @AppStorage("showHUD") private var showHUD = true
     @AppStorage("showMapBackground") private var showMapBackground = false
     @AppStorage("mapBackdropStyle") private var mapBackdropStyle = 0
+    @AppStorage("useOptimizedRenderer") private var useOptimizedRenderer = true
     @State private var tempGrid = false
     @State private var mapImage: UIImage?
     

@@ -7,7 +7,7 @@
         "key": "About",
         "location": {
           "startingColumn": 30,
-          "startingLine": 23
+          "startingLine": 25
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "PrintMyRide",
         "location": {
           "startingColumn": 22,
-          "startingLine": 50
+          "startingLine": 52
         }
       },
       {
@@ -23,7 +23,39 @@
         "key": "Transform Your Rides Into Art",
         "location": {
           "startingColumn": 22,
-          "startingLine": 53
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "App Info",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "Version",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Build",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "PMR Build 2 • %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 89
         }
       },
       {
@@ -31,7 +63,7 @@
         "key": "About the App",
         "location": {
           "startingColumn": 18,
-          "startingLine": 70
+          "startingLine": 103
         }
       },
       {
@@ -39,7 +71,7 @@
         "key": "PrintMyRide transforms your cycling adventures into beautiful poster art. Import GPX tracks from your favorite rides, customize the design, and create high-quality prints to commemorate your journeys.",
         "location": {
           "startingColumn": 18,
-          "startingLine": 73
+          "startingLine": 106
         }
       },
       {
@@ -47,7 +79,7 @@
         "key": "Whether it's a scenic route through the mountains, a challenging urban ride, or your daily commute, every journey has a story worth preserving.",
         "location": {
           "startingColumn": 18,
-          "startingLine": 78
+          "startingLine": 111
         }
       },
       {
@@ -55,7 +87,7 @@
         "key": "Made with ❤️",
         "location": {
           "startingColumn": 30,
-          "startingLine": 130
+          "startingLine": 163
         }
       },
       {
@@ -63,7 +95,7 @@
         "key": "View credits & acknowledgments",
         "location": {
           "startingColumn": 30,
-          "startingLine": 134
+          "startingLine": 167
         }
       },
       {
@@ -71,7 +103,7 @@
         "key": "Legal",
         "location": {
           "startingColumn": 18,
-          "startingLine": 155
+          "startingLine": 188
         }
       },
       {
@@ -79,7 +111,7 @@
         "key": "Credits",
         "location": {
           "startingColumn": 30,
-          "startingLine": 224
+          "startingLine": 257
         }
       },
       {
@@ -87,7 +119,7 @@
         "key": "Development",
         "location": {
           "startingColumn": 30,
-          "startingLine": 187
+          "startingLine": 220
         }
       },
       {
@@ -95,7 +127,7 @@
         "key": "• SwiftUI & MapKit for native iOS experience",
         "location": {
           "startingColumn": 34,
-          "startingLine": 191
+          "startingLine": 224
         }
       },
       {
@@ -103,7 +135,7 @@
         "key": "• CoreLocation for GPX processing",
         "location": {
           "startingColumn": 34,
-          "startingLine": 192
+          "startingLine": 225
         }
       },
       {
@@ -111,7 +143,7 @@
         "key": "• StoreKit for subscription management",
         "location": {
           "startingColumn": 34,
-          "startingLine": 193
+          "startingLine": 226
         }
       },
       {
@@ -119,7 +151,7 @@
         "key": "• OSLog for debugging & analytics",
         "location": {
           "startingColumn": 34,
-          "startingLine": 194
+          "startingLine": 227
         }
       },
       {
@@ -127,7 +159,7 @@
         "key": "Inspiration",
         "location": {
           "startingColumn": 30,
-          "startingLine": 201
+          "startingLine": 234
         }
       },
       {
@@ -135,7 +167,7 @@
         "key": "Built for cyclists, by cyclists. Every feature is designed with the riding community in mind.",
         "location": {
           "startingColumn": 30,
-          "startingLine": 204
+          "startingLine": 237
         }
       },
       {
@@ -143,7 +175,7 @@
         "key": "Special Thanks",
         "location": {
           "startingColumn": 30,
-          "startingLine": 210
+          "startingLine": 243
         }
       },
       {
@@ -151,7 +183,7 @@
         "key": "• Beta testers who provided invaluable feedback",
         "location": {
           "startingColumn": 34,
-          "startingLine": 214
+          "startingLine": 247
         }
       },
       {
@@ -159,7 +191,7 @@
         "key": "• The cycling community for inspiration",
         "location": {
           "startingColumn": 34,
-          "startingLine": 215
+          "startingLine": 248
         }
       },
       {
@@ -167,7 +199,7 @@
         "key": "• Open source contributors worldwide",
         "location": {
           "startingColumn": 34,
-          "startingLine": 216
+          "startingLine": 249
         }
       },
       {
@@ -175,7 +207,7 @@
         "key": "Done",
         "location": {
           "startingColumn": 28,
-          "startingLine": 228
+          "startingLine": 261
         }
       }
     ]

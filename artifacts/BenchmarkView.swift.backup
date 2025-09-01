@@ -1,0 +1,275 @@
+import SwiftUI
+
+/// Live benchmark UI for poster rendering performance testing
+struct BenchmarkView: View {
+    @StateObject private var benchmark = LivePosterBenchmark()
+    @State private var showingResults = false
+    
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 20) {
+                // Header
+                VStack(spacing: 8) {
+                    Image(systemName: "speedometer")
+                        .font(.system(size: 40, weight: .light))
+                        .foregroundColor(.blue)
+                    
+                    Text("Poster Render Benchmark")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    
+                    Text("Performance testing for optimized rendering")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.top, 20)
+                
+                // Test Controls
+                VStack(spacing: 16) {
+                    testButton(
+                        title: "Full Benchmark Suite",
+                        subtitle: "Compare optimized vs legacy rendering",
+                        icon: "chart.bar.xaxis",
+                        action: { Task { await benchmark.runFullBenchmark() } }
+                    )
+                    
+                    testButton(
+                        title: "Memory Stress Test",
+                        subtitle: "Large posters and memory usage",
+                        icon: "memorychip",
+                        action: { Task { await benchmark.runMemoryStressTest() } }
+                    )
+                    
+                    testButton(
+                        title: "Cache Performance",
+                        subtitle: "Measure cache hit rates",
+                        icon: "externaldrive.connected.to.line.below",
+                        action: { Task { await benchmark.runCachePerformanceTest() } }
+                    )
+                }
+                .disabled(benchmark.isRunning)
+                
+                // Progress Indicator
+                if benchmark.isRunning {
+                    VStack(spacing: 12) {
+                        ProgressView(value: benchmark.progress)
+                            .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                        
+                        Text(benchmark.currentTest)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.horizontal)
+                }
+                
+                Spacer()
+                
+                // Results Button
+                if !benchmark.results.isEmpty {
+                    Button(action: { showingResults = true }) {
+                        HStack {
+                            Image(systemName: "chart.line.uptrend.xyaxis")
+                            Text("View Results (\(benchmark.results.count))")
+                        }
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                    }
+                }
+            }
+            .padding()
+            .navigationTitle("Performance Testing")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $showingResults) {
+                BenchmarkResultsView(results: benchmark.results)
+            }
+        }
+    }
+    
+    private func testButton(title: String, subtitle: String, icon: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 16) {
+                Image(systemName: icon)
+                    .font(.title2)
+                    .foregroundColor(.blue)
+                    .frame(width: 30)
+                
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+struct BenchmarkResultsView: View {
+    let results: [LivePosterBenchmark.BenchmarkResult]
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        NavigationView {
+            List {
+                // Summary Section
+                Section("Performance Summary") {
+                    summaryCard
+                }
+                
+                // Detailed Results
+                Section("Test Results") {
+                    ForEach(Array(results.enumerated()), id: \.offset) { index, result in
+                        resultRow(result)
+                    }
+                }
+            }
+            .navigationTitle("Benchmark Results")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
+        }
+    }
+    
+    private var summaryCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // Performance Comparison
+            if let optimizedAvg = optimizedAverage,
+               let legacyAvg = legacyAverage {
+                let improvement = ((legacyAvg - optimizedAvg) / legacyAvg) * 100
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Performance Improvement")
+                            .font(.headline)
+                        Text("\(String(format: "%.1f", improvement))% faster")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.green)
+                    }
+                    Spacer()
+                    Image(systemName: "speedometer")
+                        .font(.title)
+                        .foregroundColor(.blue)
+                }
+            }
+            
+            Divider()
+            
+            // Key Metrics
+            HStack(spacing: 20) {
+                metricView(title: "Total Tests", value: "\(results.count)")
+                metricView(title: "Avg Time", value: averageTime)
+                metricView(title: "Best Time", value: bestTime)
+            }
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+    
+    private func resultRow(_ result: LivePosterBenchmark.BenchmarkResult) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(result.testName)
+                    .font(.headline)
+                Spacer()
+                if result.optimizedRenderer {
+                    Image(systemName: "bolt.fill")
+                        .foregroundColor(.yellow)
+                        .font(.caption)
+                }
+            }
+            
+            HStack(spacing: 16) {
+                Label(result.formattedTime, systemImage: "clock")
+                Label(result.formattedMemory, systemImage: "memorychip")
+                Label("\(result.pointsProcessed)", systemImage: "point.3.connected.trianglepath.dotted")
+            }
+            .font(.caption)
+            .foregroundColor(.secondary)
+            
+            HStack {
+                Text("\(Int(result.size.width))×\(Int(result.size.height))")
+                    .font(.caption2)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 2)
+                    .background(Color(.systemGray5))
+                    .cornerRadius(4)
+                
+                if result.cacheHit {
+                    Text("CACHE HIT")
+                        .font(.caption2)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(Color.green.opacity(0.2))
+                        .foregroundColor(.green)
+                        .cornerRadius(4)
+                }
+                
+                Spacer()
+            }
+        }
+        .padding(.vertical, 4)
+    }
+    
+    private func metricView(title: String, value: String) -> some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Text(value)
+                .font(.headline)
+                .fontWeight(.semibold)
+        }
+    }
+    
+    // MARK: - Computed Properties
+    
+    private var optimizedAverage: Double? {
+        let optimized = results.filter { $0.optimizedRenderer }
+        guard !optimized.isEmpty else { return nil }
+        return optimized.map(\.renderTime).reduce(0, +) / Double(optimized.count)
+    }
+    
+    private var legacyAverage: Double? {
+        let legacy = results.filter { !$0.optimizedRenderer }
+        guard !legacy.isEmpty else { return nil }
+        return legacy.map(\.renderTime).reduce(0, +) / Double(legacy.count)
+    }
+    
+    private var averageTime: String {
+        guard !results.isEmpty else { return "N/A" }
+        let avg = results.map(\.renderTime).reduce(0, +) / Double(results.count)
+        return String(format: "%.1f ms", avg)
+    }
+    
+    private var bestTime: String {
+        guard let best = results.min(by: { $0.renderTime < $1.renderTime }) else { return "N/A" }
+        return best.formattedTime
+    }
+}
+
+#Preview {
+    BenchmarkView()
+}

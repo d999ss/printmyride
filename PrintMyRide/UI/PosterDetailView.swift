@@ -6,22 +6,57 @@ import MapKit
 
 struct PosterDetailView: View {
     let poster: Poster
-    let coords: [CLLocationCoordinate2D] // pass parsed GPX coords if available
+    private var coords: [CLLocationCoordinate2D] { 
+        poster.coordinates ?? DemoCoordsLoader.coords(forTitle: poster.title) 
+    } // pass parsed GPX coords if available
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var gate: SubscriptionGate
     @State private var exporting = false
     @State private var exportMessage: String?
     @State private var showPaywall = false
     @AppStorage("pmr.useMapBackground") private var useMapBackground: Bool = false
+    @AppStorage("useOptimizedRenderer") private var useOptimizedRenderer = true
+    @State private var generatedPosterImage: UIImage?
+    @State private var isGeneratingPoster = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Full preview
-                AsyncImage(url: documentsURL().appendingPathComponent(poster.filePath)) { phase in
-                    switch phase {
-                    case .success(let img): img.resizable().scaledToFit()
-                    default: Color.black.opacity(0.1)
+                // Full preview with self-healing
+                Group {
+                    if let generatedImage = generatedPosterImage {
+                        Image(uiImage: generatedImage)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        AsyncImage(url: documentsURL().appendingPathComponent(poster.filePath)) { phase in
+                            switch phase {
+                            case .success(let img): 
+                                img.resizable().scaledToFit()
+                            default: 
+                                ZStack {
+                                    Color.black.opacity(0.1)
+                                    if isGeneratingPoster {
+                                        VStack(spacing: 12) {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                            Text("Generating poster...")
+                                                .font(.caption)
+                                                .foregroundColor(.white)
+                                        }
+                                    } else {
+                                        Button("Generate Poster Image") {
+                                            Task { await generatePosterImage() }
+                                        }
+                                        .buttonStyle(.borderedProminent)
+                                    }
+                                }
+                            }
+                        }
+                        .task {
+                            // Auto-generate if missing
+                            await autoGeneratePosterIfMissing()
+                        }
                     }
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -208,6 +243,92 @@ struct PosterDetailView: View {
                     ErrorBus.shared.report("[MapSnapshot] nil image for \(poster.title)")
                 }
             }
+        }
+    }
+    
+    // MARK: - Self-Healing Poster Generation
+    
+    private func autoGeneratePosterIfMissing() async {
+        // Only auto-generate if the file doesn't exist
+        let posterURL = documentsURL().appendingPathComponent(poster.filePath)
+        
+        // Check if file exists and is valid
+        if FileManager.default.fileExists(atPath: posterURL.path),
+           let _ = UIImage(contentsOfFile: posterURL.path) {
+            return // Poster exists and is valid
+        }
+        
+        // Auto-generate missing poster
+        await generatePosterImage()
+    }
+    
+    @MainActor
+    private func generatePosterImage() async {
+        guard !coords.isEmpty else { return }
+        
+        isGeneratingPoster = true
+        defer { isGeneratingPoster = false }
+        
+        // Create a basic poster design
+        let design = createPosterDesign()
+        let points = coords.map { GPXRoute.Point(lat: $0.latitude, lon: $0.longitude) }
+        let route = GPXRoute(points: points, distanceMeters: 0, duration: nil)
+        let size = CGSize(width: 800, height: 1000) // Standard poster size
+        
+        do {
+            if useOptimizedRenderer {
+                // Use optimized renderer for blazing fast generation
+                generatedPosterImage = await PosterRenderService.shared.renderPoster(
+                    design: design,
+                    route: route,
+                    size: size,
+                    quality: .standard
+                )
+            } else {
+                // Fallback to legacy renderer
+                generatedPosterImage = await RouteRenderer.renderPoster(
+                    coordinates: coords,
+                    title: poster.title,
+                    distance: "Unknown Distance",
+                    duration: "Unknown Duration", 
+                    date: poster.createdAt.formatted(date: .abbreviated, time: .omitted),
+                    size: size,
+                    style: .standard,
+                    useMapBackground: useMapBackground
+                )
+            }
+            
+            // Save generated image to disk
+            if let image = generatedPosterImage {
+                await savePosterToDisk(image: image)
+                exportMessage = "✅ Poster image generated successfully"
+            }
+            
+        } catch {
+            exportMessage = "❌ Failed to generate poster: \(error.localizedDescription)"
+        }
+    }
+    
+    private func createPosterDesign() -> PosterDesign {
+        var design = PosterDesign()
+        design.paperSize = CGSize(width: 8, height: 10) // 8x10 inches
+        design.backgroundColor = .black
+        design.routeColor = .white
+        design.strokeWidthPt = 3.0
+        // Note: margins property might need different format depending on PosterDesign structure
+        return design
+    }
+    
+    private func savePosterToDisk(image: UIImage) async {
+        guard let imageData = image.jpegData(compressionQuality: 0.9) else { return }
+        
+        let posterURL = documentsURL().appendingPathComponent(poster.filePath)
+        
+        do {
+            try imageData.write(to: posterURL)
+            PMRLog.export.log("[SelfHealing] Generated and saved poster for \(poster.title)")
+        } catch {
+            PMRLog.export.error("[SelfHealing] Failed to save poster: \(error)")
         }
     }
 }

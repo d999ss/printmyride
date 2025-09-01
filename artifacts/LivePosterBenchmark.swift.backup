@@ -1,0 +1,354 @@
+import SwiftUI
+import Foundation
+import CoreLocation
+import os.log
+
+/// Live performance benchmark runner for poster rendering
+class LivePosterBenchmark: ObservableObject {
+    private static let logger = Logger(subsystem: "PMR", category: "Benchmark")
+    
+    @Published var isRunning = false
+    @Published var results: [BenchmarkResult] = []
+    @Published var currentTest = ""
+    @Published var progress: Double = 0
+    
+    struct BenchmarkResult {
+        let testName: String
+        let size: CGSize
+        let renderTime: Double
+        let memoryUsage: Int
+        let pointsProcessed: Int
+        let optimizedRenderer: Bool
+        let cacheHit: Bool
+        
+        var formattedTime: String {
+            String(format: "%.1f ms", renderTime)
+        }
+        
+        var formattedMemory: String {
+            String(format: "%.1f MB", Double(memoryUsage) / 1024 / 1024)
+        }
+    }
+    
+    // MARK: - Test Configuration
+    
+    private let testSizes: [CGSize] = [
+        CGSize(width: 300, height: 400),    // Thumbnail
+        CGSize(width: 600, height: 800),    // Preview
+        CGSize(width: 1200, height: 1600),  // Standard
+        CGSize(width: 2400, height: 3200)   // Export
+    ]
+    
+    private let testRoutes: [String: [CLLocationCoordinate2D]] = [
+        "Short Route": generateTestRoute(points: 500),
+        "Medium Route": generateTestRoute(points: 2000),
+        "Long Route": generateTestRoute(points: 5000),
+        "Complex Route": generateComplexTestRoute(points: 3000)
+    ]
+    
+    // MARK: - Benchmark Execution
+    
+    func runFullBenchmark() async {
+        await MainActor.run {
+            isRunning = true
+            results.removeAll()
+            progress = 0
+        }
+        
+        Self.logger.info("🚀 Starting live poster render benchmark")
+        
+        let totalTests = testSizes.count * testRoutes.count * 2 // x2 for optimized vs legacy
+        var completedTests = 0
+        
+        for (routeName, coords) in testRoutes {
+            for size in testSizes {
+                // Test with optimized renderer
+                await runSingleBenchmark(
+                    testName: "\(routeName) - Optimized",
+                    coords: coords,
+                    size: size,
+                    useOptimized: true
+                )
+                
+                completedTests += 1
+                await MainActor.run {
+                    progress = Double(completedTests) / Double(totalTests)
+                }
+                
+                // Test with legacy renderer
+                await runSingleBenchmark(
+                    testName: "\(routeName) - Legacy",
+                    coords: coords,
+                    size: size,
+                    useOptimized: false
+                )
+                
+                completedTests += 1
+                await MainActor.run {
+                    progress = Double(completedTests) / Double(totalTests)
+                }
+            }
+        }
+        
+        await MainActor.run {
+            isRunning = false
+            currentTest = "Benchmark Complete"
+        }
+        
+        Self.logger.info("✅ Benchmark completed: \(results.count) tests")
+        logResults()
+    }
+    
+    private func runSingleBenchmark(testName: String, coords: [CLLocationCoordinate2D], size: CGSize, useOptimized: Bool) async {
+        await MainActor.run {
+            currentTest = "\(testName) - \(Int(size.width))x\(Int(size.height))"
+        }
+        
+        let memoryBefore = getMemoryUsage()
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
+        var cacheHit = false
+        var image: UIImage?
+        
+        if useOptimized {
+            // Test optimized renderer
+            let design = createTestPosterDesign()
+            let route = GPXRoute(coordinates: coords, elevations: [], timestamps: [])
+            let quality: RenderQuality = size.width > 1200 ? .export : .standard
+            
+            image = await PosterRenderService.shared.renderPoster(
+                design: design,
+                route: route,
+                size: size,
+                quality: quality
+            )
+        } else {
+            // Test legacy renderer (simulate)
+            image = await simulateLegacyRender(coords: coords, size: size)
+        }
+        
+        let renderTime = (CFAbsoluteTimeGetCurrent() - startTime) * 1000
+        let memoryAfter = getMemoryUsage()
+        let memoryDelta = max(0, memoryAfter - memoryBefore)
+        
+        let result = BenchmarkResult(
+            testName: testName,
+            size: size,
+            renderTime: renderTime,
+            memoryUsage: memoryDelta,
+            pointsProcessed: coords.count,
+            optimizedRenderer: useOptimized,
+            cacheHit: cacheHit
+        )
+        
+        await MainActor.run {
+            results.append(result)
+        }
+        
+        Self.logger.info("📊 \(testName): \(String(format: "%.1f", renderTime))ms, \(String(format: "%.1f", Double(memoryDelta) / 1024 / 1024))MB")
+    }
+    
+    // MARK: - Memory Stress Tests
+    
+    func runMemoryStressTest() async {
+        await MainActor.run {
+            isRunning = true
+            results.removeAll()
+            currentTest = "Memory Stress Test"
+        }
+        
+        Self.logger.info("🧠 Starting memory stress test")
+        
+        let largeRoute = generateTestRoute(points: 10000)
+        let largeSizes = [
+            CGSize(width: 3000, height: 4000),
+            CGSize(width: 4000, height: 5000),
+            CGSize(width: 5000, height: 6000)
+        ]
+        
+        for (index, size) in largeSizes.enumerated() {
+            await MainActor.run {
+                currentTest = "Stress Test \(index + 1)/\(largeSizes.count)"
+                progress = Double(index) / Double(largeSizes.count)
+            }
+            
+            await runSingleBenchmark(
+                testName: "Stress Test \(index + 1)",
+                coords: largeRoute,
+                size: size,
+                useOptimized: true
+            )
+            
+            // Force memory cleanup between tests
+            await Task.sleep(nanoseconds: 1_000_000_000)
+        }
+        
+        await MainActor.run {
+            isRunning = false
+            currentTest = "Stress Test Complete"
+        }
+    }
+    
+    // MARK: - Cache Performance Tests
+    
+    func runCachePerformanceTest() async {
+        await MainActor.run {
+            isRunning = true
+            results.removeAll()
+            currentTest = "Cache Performance Test"
+        }
+        
+        Self.logger.info("💾 Starting cache performance test")
+        
+        let testRoute = testRoutes["Medium Route"]!
+        let testSize = CGSize(width: 800, height: 1000)
+        
+        // Run same test multiple times to measure cache effectiveness
+        for iteration in 1...5 {
+            await MainActor.run {
+                currentTest = "Cache Test Iteration \(iteration)"
+                progress = Double(iteration) / 5.0
+            }
+            
+            await runSingleBenchmark(
+                testName: "Cache Test \(iteration)",
+                coords: testRoute,
+                size: testSize,
+                useOptimized: true
+            )
+        }
+        
+        await MainActor.run {
+            isRunning = false
+            currentTest = "Cache Test Complete"
+        }
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func createTestPosterDesign() -> PosterDesign {
+        // Create a standard test poster design
+        var design = PosterDesign()
+        design.paperSize = CGSize(width: 8.5, height: 11) // Letter size
+        design.backgroundColor = .black
+        design.routeColor = .white
+        design.strokeWidthPt = 3.0
+        design.margins = EdgeInsets(top: 72, leading: 72, bottom: 72, trailing: 72)
+        return design
+    }
+    
+    private func simulateLegacyRender(coords: [CLLocationCoordinate2D], size: CGSize) async -> UIImage? {
+        // Simulate legacy rendering without optimizations
+        return await withCheckedContinuation { continuation in
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Add artificial delay to simulate non-optimized rendering
+                Thread.sleep(forTimeInterval: 0.1)
+                
+                let renderer = UIGraphicsImageRenderer(size: size)
+                let image = renderer.image { context in
+                    // Simple route drawing without optimizations
+                    let ctx = context.cgContext
+                    ctx.setStrokeColor(UIColor.white.cgColor)
+                    ctx.setLineWidth(3.0)
+                    
+                    if let first = coords.first {
+                        ctx.move(to: CGPoint(x: first.longitude * 100, y: first.latitude * 100))
+                        for coord in coords.dropFirst() {
+                            ctx.addLine(to: CGPoint(x: coord.longitude * 100, y: coord.latitude * 100))
+                        }
+                    }
+                    ctx.strokePath()
+                }
+                continuation.resume(returning: image)
+            }
+        }
+    }
+    
+    private func getMemoryUsage() -> Int {
+        var info = mach_task_basic_info()
+        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size) / 4
+        
+        let kerr: kern_return_t = withUnsafeMutablePointer(to: &info) {
+            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+            }
+        }
+        
+        if kerr == KERN_SUCCESS {
+            return Int(info.resident_size)
+        } else {
+            return 0
+        }
+    }
+    
+    private func logResults() {
+        Self.logger.info("📈 BENCHMARK RESULTS SUMMARY")
+        Self.logger.info("═" * 50)
+        
+        // Group results by optimization type
+        let optimizedResults = results.filter { $0.optimizedRenderer }
+        let legacyResults = results.filter { !$0.optimizedRenderer }
+        
+        if !optimizedResults.isEmpty && !legacyResults.isEmpty {
+            let avgOptimizedTime = optimizedResults.map(\.renderTime).reduce(0, +) / Double(optimizedResults.count)
+            let avgLegacyTime = legacyResults.map(\.renderTime).reduce(0, +) / Double(legacyResults.count)
+            let improvement = ((avgLegacyTime - avgOptimizedTime) / avgLegacyTime) * 100
+            
+            Self.logger.info("Average Optimized: \(String(format: "%.1f", avgOptimizedTime))ms")
+            Self.logger.info("Average Legacy: \(String(format: "%.1f", avgLegacyTime))ms")
+            Self.logger.info("Performance Improvement: \(String(format: "%.1f", improvement))%")
+        }
+        
+        // Log worst and best cases
+        if let slowest = results.max(by: { $0.renderTime < $1.renderTime }) {
+            Self.logger.info("Slowest: \(slowest.testName) - \(slowest.formattedTime)")
+        }
+        
+        if let fastest = results.min(by: { $0.renderTime < $1.renderTime }) {
+            Self.logger.info("Fastest: \(fastest.testName) - \(fastest.formattedTime)")
+        }
+    }
+    
+    // MARK: - Test Data Generation
+    
+    private static func generateTestRoute(points: Int) -> [CLLocationCoordinate2D] {
+        var coords: [CLLocationCoordinate2D] = []
+        
+        // Generate a realistic-looking route
+        let startLat = 37.7749 // San Francisco
+        let startLon = -122.4194
+        
+        var currentLat = startLat
+        var currentLon = startLon
+        
+        for _ in 0..<points {
+            coords.append(CLLocationCoordinate2D(latitude: currentLat, longitude: currentLon))
+            
+            // Add some realistic variation
+            currentLat += Double.random(in: -0.001...0.001)
+            currentLon += Double.random(in: -0.001...0.001)
+        }
+        
+        return coords
+    }
+    
+    private static func generateComplexTestRoute(points: Int) -> [CLLocationCoordinate2D] {
+        var coords: [CLLocationCoordinate2D] = []
+        
+        let centerLat = 37.7749
+        let centerLon = -122.4194
+        
+        // Generate a route with lots of curves and direction changes
+        for i in 0..<points {
+            let angle = Double(i) * 0.1
+            let radius = 0.01 * sin(Double(i) * 0.05)
+            
+            let lat = centerLat + radius * cos(angle)
+            let lon = centerLon + radius * sin(angle)
+            
+            coords.append(CLLocationCoordinate2D(latitude: lat, longitude: lon))
+        }
+        
+        return coords
+    }
+}

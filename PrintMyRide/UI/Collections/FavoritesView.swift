@@ -79,7 +79,7 @@ struct FavoritesView: View {
                 let coords = DemoCoordsLoader.coords(forTitle: poster.title)
                 
                 NavigationLink {
-                    PosterDetailView(poster: poster, coords: coords)
+                    PosterDetailView(poster: poster)
                         .environmentObject(gate)
                 } label: {
                     PosterCardView(

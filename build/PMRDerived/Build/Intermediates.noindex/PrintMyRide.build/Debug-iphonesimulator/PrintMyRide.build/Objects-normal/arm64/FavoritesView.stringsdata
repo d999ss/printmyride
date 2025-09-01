@@ -47,7 +47,7 @@
         "key": "Share",
         "location": {
           "startingColumn": 31,
-          "startingLine": 104
+          "startingLine": 105
         }
       },
       {
@@ -55,7 +55,7 @@
         "key": "Remove from Favorites",
         "location": {
           "startingColumn": 31,
-          "startingLine": 113
+          "startingLine": 114
         }
       },
       {
@@ -63,7 +63,7 @@
         "key": "Print",
         "location": {
           "startingColumn": 31,
-          "startingLine": 119
+          "startingLine": 120
         }
       },
       {
@@ -71,7 +71,7 @@
         "key": "No Favorites Yet",
         "location": {
           "startingColumn": 22,
-          "startingLine": 164
+          "startingLine": 165
         }
       },
       {
@@ -79,7 +79,7 @@
         "key": "Tap the heart icon on any poster to save it to your collection",
         "location": {
           "startingColumn": 22,
-          "startingLine": 168
+          "startingLine": 169
         }
       },
       {
@@ -87,7 +87,7 @@
         "key": "Browse Posters",
         "location": {
           "startingColumn": 27,
-          "startingLine": 178
+          "startingLine": 179
         }
       }
     ]

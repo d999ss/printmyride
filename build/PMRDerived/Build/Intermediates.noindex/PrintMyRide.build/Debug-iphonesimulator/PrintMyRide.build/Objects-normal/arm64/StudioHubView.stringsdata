@@ -7,7 +7,7 @@
         "key": "Studio",
         "location": {
           "startingColumn": 26,
-          "startingLine": 27
+          "startingLine": 28
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Pro Active",
         "location": {
           "startingColumn": 43,
-          "startingLine": 142
+          "startingLine": 145
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Try Pro",
         "location": {
           "startingColumn": 58,
-          "startingLine": 142
+          "startingLine": 145
         }
       }
     ]

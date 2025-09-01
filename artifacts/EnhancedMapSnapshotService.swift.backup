@@ -1,0 +1,344 @@
+import Foundation
+import MapKit
+import UIKit
+import SwiftUI
+import os.log
+
+/// Enhanced map snapshot service with aggressive performance optimizations
+actor EnhancedMapSnapshotService {
+    private static let logger = Logger(subsystem: "PMR", category: "MapSnapshot")
+    
+    // MARK: - Enhanced Caching System
+    
+    private var cache: [String: CacheEntry] = [:]
+    private let maxCacheSize = 100
+    private let maxMemoryMB = 150
+    private let maxAge: TimeInterval = 7200 // 2 hours
+    
+    private struct CacheEntry {
+        let image: UIImage
+        let timestamp: Date
+        let memorySize: Int
+        let accessCount: Int
+        let lastAccess: Date
+    }
+    
+    static let shared = EnhancedMapSnapshotService()
+    
+    // MARK: - Priority-Based Snapshot Generation
+    
+    func snapshot(coords: [CLLocationCoordinate2D], size: CGSize, priority: TaskPriority = .medium) async -> UIImage? {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        let cacheKey = generateCacheKey(coords: coords, size: size)
+        
+        // Check cache with LRU update
+        if let cached = await getCachedImage(for: cacheKey) {
+            let duration = (CFAbsoluteTimeGetCurrent() - startTime) * 1000
+            Self.logger.info("Map snapshot cache hit (\(String(format: "%.1f", duration))ms)")
+            return cached
+        }
+        
+        Self.logger.info("Generating map snapshot: \(Int(size.width))x\(Int(size.height))")
+        
+        // Generate with specified priority
+        let result = await withTaskGroup(of: UIImage?.self) { group in
+            group.addTask(priority: priority) {
+                await self.performOptimizedSnapshot(coords: coords, size: size)
+            }
+            
+            for await result in group {
+                if let image = result {
+                    group.cancelAll()
+                    return image
+                }
+            }
+            return nil
+        }
+        
+        // Cache successful result
+        if let image = result {
+            await cacheImage(image, for: cacheKey)
+        }
+        
+        let duration = (CFAbsoluteTimeGetCurrent() - startTime) * 1000
+        Self.logger.info("Map snapshot completed: \(String(format: "%.1f", duration))ms")
+        
+        return result
+    }
+    
+    // MARK: - Batch Snapshot Generation
+    
+    func batchSnapshot(requests: [(coords: [CLLocationCoordinate2D], size: CGSize, id: String)]) async -> [String: UIImage] {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        Self.logger.info("Starting batch snapshot generation: \(requests.count) requests")
+        
+        let results = await withTaskGroup(of: (String, UIImage?).self) { group in
+            for request in requests {
+                group.addTask(priority: .high) {
+                    let image = await self.snapshot(coords: request.coords, size: request.size, priority: .high)
+                    return (request.id, image)
+                }
+            }
+            
+            var batchResults: [String: UIImage] = [:]
+            for await (id, image) in group {
+                if let image = image {
+                    batchResults[id] = image
+                }
+            }
+            return batchResults
+        }
+        
+        let duration = (CFAbsoluteTimeGetCurrent() - startTime) * 1000
+        Self.logger.info("Batch snapshot completed: \(results.count)/\(requests.count) successful (\(String(format: "%.1f", duration))ms)")
+        
+        return results
+    }
+    
+    // MARK: - Advanced Snapshot Generation
+    
+    private func performOptimizedSnapshot(coords: [CLLocationCoordinate2D], size: CGSize) async -> UIImage? {
+        guard !coords.isEmpty, size.width > 0, size.height > 0 else { return nil }
+        
+        return await withCheckedContinuation { continuation in
+            let options = MKMapSnapshotter.Options()
+            
+            // Optimized region calculation
+            options.region = calculateOptimalRegion(for: coords)
+            options.size = size
+            options.showsBuildings = false
+            options.pointOfInterestFilter = .excludingAll
+            
+            // Performance optimizations available in iOS 17+
+            if #available(iOS 17.0, *) {
+                options.preferredConfiguration = MKStandardMapConfiguration()
+            }
+            
+            let snapshotter = MKMapSnapshotter(options: options)
+            
+            snapshotter.start { [weak snapshotter] snapshot, error in
+                defer { snapshotter?.cancel() }
+                
+                guard let snapshot = snapshot, error == nil else {
+                    Self.logger.error("Map snapshot failed: \(error?.localizedDescription ?? "unknown")")
+                    continuation.resume(returning: nil)
+                    return
+                }
+                
+                // Generate composite image with route overlay
+                Task { @MainActor in
+                    let composite = await self.createCompositeImage(
+                        baseImage: snapshot.image,
+                        snapshot: snapshot,
+                        coords: coords,
+                        size: size
+                    )
+                    continuation.resume(returning: composite)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Composite Image Generation
+    
+    @MainActor
+    private func createCompositeImage(baseImage: UIImage, snapshot: MKMapSnapshotter.Snapshot, coords: [CLLocationCoordinate2D], size: CGSize) async -> UIImage? {
+        let overlayView = OptimizedRouteOverlayView(
+            baseImage: baseImage,
+            coords: coords,
+            mapSnapshot: snapshot,
+            size: size
+        )
+        
+        let renderer = ImageRenderer(content: overlayView)
+        renderer.scale = UIScreen.main.scale
+        
+        return renderer.uiImage
+    }
+    
+    // MARK: - Optimized Region Calculation
+    
+    private func calculateOptimalRegion(for coords: [CLLocationCoordinate2D]) -> MKCoordinateRegion {
+        guard !coords.isEmpty else { return MKCoordinateRegion() }
+        
+        let latitudes = coords.map(\.latitude)
+        let longitudes = coords.map(\.longitude)
+        
+        let minLat = latitudes.min()!
+        let maxLat = latitudes.max()!
+        let minLon = longitudes.min()!
+        let maxLon = longitudes.max()!
+        
+        let center = CLLocationCoordinate2D(
+            latitude: (minLat + maxLat) / 2,
+            longitude: (minLon + maxLon) / 2
+        )
+        
+        // Adaptive padding based on route size
+        let latDelta = maxLat - minLat
+        let lonDelta = maxLon - minLon
+        
+        let padding = max(0.01, min(0.2, max(latDelta, lonDelta) * 0.15))
+        
+        return MKCoordinateRegion(
+            center: center,
+            span: MKCoordinateSpan(
+                latitudeDelta: latDelta + padding,
+                longitudeDelta: lonDelta + padding
+            )
+        )
+    }
+    
+    // MARK: - Enhanced Cache Management
+    
+    private func getCachedImage(for key: String) async -> UIImage? {
+        cleanupExpiredEntries()
+        
+        guard let entry = cache[key] else { return nil }
+        
+        // Update LRU data
+        let updatedEntry = CacheEntry(
+            image: entry.image,
+            timestamp: entry.timestamp,
+            memorySize: entry.memorySize,
+            accessCount: entry.accessCount + 1,
+            lastAccess: Date()
+        )
+        cache[key] = updatedEntry
+        
+        return entry.image
+    }
+    
+    private func cacheImage(_ image: UIImage, for key: String) {
+        let memorySize = estimateMemorySize(image)
+        let entry = CacheEntry(
+            image: image,
+            timestamp: Date(),
+            memorySize: memorySize,
+            accessCount: 1,
+            lastAccess: Date()
+        )
+        
+        cache[key] = entry
+        enforceMemoryLimits()
+    }
+    
+    private func estimateMemorySize(_ image: UIImage) -> Int {
+        guard let cgImage = image.cgImage else { return 0 }
+        return cgImage.width * cgImage.height * 4 // 4 bytes per pixel (RGBA)
+    }
+    
+    private func cleanupExpiredEntries() {
+        let now = Date()
+        cache = cache.filter { now.timeIntervalSince($0.value.timestamp) < maxAge }
+    }
+    
+    private func enforceMemoryLimits() {
+        let maxBytes = maxMemoryMB * 1024 * 1024
+        let currentMemory = cache.values.reduce(0) { $0 + $1.memorySize }
+        
+        guard currentMemory > maxBytes || cache.count > maxCacheSize else { return }
+        
+        // Sort by LRU (least recently used first, then least frequently used)
+        let sortedEntries = cache.sorted { entry1, entry2 in
+            let (key1, value1) = entry1
+            let (key2, value2) = entry2
+            
+            if value1.lastAccess != value2.lastAccess {
+                return value1.lastAccess < value2.lastAccess
+            }
+            return value1.accessCount < value2.accessCount
+        }
+        
+        var remainingMemory = currentMemory
+        var remainingCount = cache.count
+        
+        for (key, entry) in sortedEntries {
+            guard remainingMemory > maxBytes || remainingCount > maxCacheSize else { break }
+            cache.removeValue(forKey: key)
+            remainingMemory -= entry.memorySize
+            remainingCount -= 1
+        }
+        
+        Self.logger.info("Cache cleanup: \(self.cache.count) entries, ~\(remainingMemory / (1024 * 1024))MB")
+    }
+    
+    private func generateCacheKey(coords: [CLLocationCoordinate2D], size: CGSize) -> String {
+        // Use bounding box for consistent caching
+        let region = calculateOptimalRegion(for: coords)
+        return String(format: "snap_%.6f_%.6f_%.6f_%.6f_%dx%d",
+                     region.center.latitude,
+                     region.center.longitude,
+                     region.span.latitudeDelta,
+                     region.span.longitudeDelta,
+                     Int(size.width),
+                     Int(size.height))
+    }
+    
+    // MARK: - Cache Statistics
+    
+    func getCacheStats() -> (count: Int, memoryMB: Int, hitRate: Double) {
+        let totalMemory = cache.values.reduce(0) { $0 + $1.memorySize }
+        let totalAccesses = cache.values.reduce(0) { $0 + $1.accessCount }
+        let cacheHits = cache.values.filter { $0.accessCount > 1 }.count
+        
+        return (
+            count: cache.count,
+            memoryMB: totalMemory / (1024 * 1024),
+            hitRate: totalAccesses > 0 ? Double(cacheHits) / Double(totalAccesses) : 0
+        )
+    }
+}
+
+// MARK: - Optimized Route Overlay View
+
+private struct OptimizedRouteOverlayView: View {
+    let baseImage: UIImage
+    let coords: [CLLocationCoordinate2D]
+    let mapSnapshot: MKMapSnapshotter.Snapshot
+    let size: CGSize
+    
+    var body: some View {
+        Canvas { context, canvasSize in
+            // Draw base map
+            context.draw(Image(uiImage: baseImage), in: CGRect(origin: .zero, size: canvasSize))
+            
+            // Draw optimized route overlay
+            drawRouteOverlay(context: context, size: canvasSize)
+        }
+        .frame(width: size.width, height: size.height)
+    }
+    
+    private func drawRouteOverlay(context: GraphicsContext, size: CGSize) {
+        guard coords.count > 1 else { return }
+        
+        // Convert coordinates to screen points
+        let points = coords.compactMap { coord in
+            mapSnapshot.point(for: coord)
+        }
+        
+        guard points.count > 1 else { return }
+        
+        // Create optimized path
+        var path = Path()
+        path.move(to: points[0])
+        
+        // Use quadratic curves for smoother lines with fewer points
+        if points.count > 2 {
+            for i in 1..<points.count {
+                let current = points[i]
+                path.addLine(to: current)
+            }
+        } else {
+            path.addLine(to: points[1])
+        }
+        
+        // Draw route with glow effect
+        var shadowContext = context
+        shadowContext.addFilter(.shadow(color: .black.opacity(0.8), radius: 6))
+        shadowContext.stroke(path, with: .color(.white), style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+        
+        // Draw inner line for contrast  
+        context.stroke(path, with: .color(.blue), style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
+    }
+}

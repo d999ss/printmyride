@@ -1,0 +1,40 @@
+{
+  "timestamp": 1756700292,
+  "test_suite": "PrintMyRide Performance Testing",
+  "device_id": "9544C4B4-1C3E-4F29-A0E8-E2C8E3813972",
+  "results": [
+    {
+      "test": "App Launch",
+      "launch_time_ms": 195.7,
+      "success": true,
+      "output": "d999ss.PrintMyRide: 84405"
+    },
+    {
+      "test": "Poster Generation",
+      "screenshots": [
+        "poster_gen_start",
+        "poster_gen_mid",
+        "poster_gen_end"
+      ],
+      "estimated_render_time_ms": 3000,
+      "workflow_completed": true
+    },
+    {
+      "test": "Memory Usage",
+      "memory_samples": 5,
+      "monitoring_duration_sec": 5,
+      "stable_operation": true
+    },
+    {
+      "test": "UI Responsiveness",
+      "average_screenshot_time_ms": 179.1,
+      "samples": 3,
+      "responsive": true
+    }
+  ],
+  "summary": {
+    "total_tests": 4,
+    "successful": 4,
+    "failed": 0
+  }
+}
