@@ -55,9 +55,32 @@ final class PosterDetailVM: ObservableObject {
                 return
             }
         }
-        if let img = await LegacyRendererBridge.renderImage(coords: coords, size: pxSize) {
+        if let img = await LegacyRendererBridge.renderImage(
+            coords: coords,
+            size: pxSize,
+            background: UIColor(design.background),
+            routeColor: UIColor(design.route),
+            stroke: max(6, pxSize.width * 0.008),
+            title: title,
+            stats: posterStatLines()
+        ) {
             generatedImage = img
         }
+    }
+
+    private func posterStatLines() -> [String] {
+        func miles(_ m: Double) -> String { String(format: "%.1f mi", m / 1609.344) }
+        func feet(_ m: Double) -> String { "\(Int(m * 3.28084)) ft" }
+        func dur(_ s: Double) -> String {
+            let h = Int(s)/3600, m = (Int(s)%3600)/60
+            return h > 0 ? "\(h)h \(m)m" : "\(m)m"
+        }
+        let d = date.formatted(date: .abbreviated, time: .omitted)
+        return [
+            "Distance  \(miles(distanceMeters))",
+            "Climb     \(feet(elevationMeters))",
+            "Time      \(dur(durationSec))  •  \(d)"
+        ]
     }
 
     func exportPDF() { toast = "Export started"; DispatchQueue.main.asyncAfter(deadline: .now()+0.8) { self.toast = "PDF saved" } }
@@ -112,6 +135,20 @@ struct PosterDetailV2: View {
                     }
                     Text(rideTitle).font(.title3.weight(.semibold)).lineLimit(1)
                     Spacer()
+                    
+                    // Debug chip to show coordinate status
+                    if vm.coords.isEmpty {
+                        Text("No route")
+                            .font(.caption2).padding(6)
+                            .background(Color.red.opacity(0.85), in: Capsule())
+                            .foregroundStyle(.white)
+                    } else {
+                        Text("\(vm.coords.count) pts")
+                            .font(.caption2).padding(6)
+                            .background(Color.green.opacity(0.85), in: Capsule())
+                            .foregroundStyle(.white)
+                    }
+                    
                     FavoriteToggle(isOn: $vm.isFavorite)
                     ProBadge()
                 }
@@ -443,6 +480,7 @@ struct GPXRouteFallback {
     let duration: Double
 }
 
+// 1) Try your optimized renderer if it exists in the project
 enum PosterRenderServiceBridge {
     static func renderPoster(
         design: PosterDesignFallback,
@@ -451,26 +489,182 @@ enum PosterRenderServiceBridge {
         useMap: Bool,
         mapStyle: Int
     ) async -> UIImage? {
-        // map to your real PosterRenderService here if available
+        #if canImport(UIKit)
+        // Attempt to call your real service if the symbol exists
+        // Map fallback → real types
+        if let real = _RealPosterRender.shared {
+            let mappedDesign = real.mapDesign(from: design)
+            let mappedRoute  = real.mapRoute(from: route)
+            return await real.renderPoster(design: mappedDesign,
+                                           route: mappedRoute,
+                                           size: size,
+                                           useMap: useMap,
+                                           mapStyle: mapStyle)
+        }
+        #endif
         return nil
     }
 }
 
+// Lightweight adapter that only compiles if your real type is present
+final class _RealPosterRender {
+    static var shared: _RealPosterRender? {
+        // If your project defines PosterRenderService, expose it here
+        // Otherwise return nil and the robust fallback will be used.
+        if NSClassFromString("PosterRenderService") != nil {
+            return _RealPosterRender()
+        }
+        return nil
+    }
+
+    func mapDesign(from f: PosterDesignFallback) -> PosterDesign {
+        var d = PosterDesign()
+        d.backgroundColor = f.background
+        d.routeColor = f.route
+        d.strokeWidthPt = f.stroke
+        d.dropShadowEnabled = f.shadow
+        return d
+    }
+
+    func mapRoute(from r: GPXRouteFallback) -> GPXRoute {
+        let pts = r.points.map { GPXRoute.Point(lat: $0.lat, lon: $0.lon) }
+        return GPXRoute(points: pts, distanceMeters: r.distanceMeters, duration: r.duration)
+    }
+
+    func renderPoster(
+        design: PosterDesign,
+        route: GPXRoute,
+        size: CGSize,
+        useMap: Bool,
+        mapStyle: Int
+    ) async -> UIImage? {
+        // Prefer your optimized path if available in the project
+        // If you expose quality modes, feel free to pass .preview / .export here.
+        return await PosterRenderService.shared.renderPoster(
+            design: design,
+            route: route,
+            size: size,
+            quality: .preview
+        )
+    }
+}
+
+// 2) Robust fallback that ALWAYS draws something visible AND lays stats on-poster
 enum LegacyRendererBridge {
-    static func renderImage(coords: [CLLocationCoordinate2D], size: CGSize) async -> UIImage? {
+    static func renderImage(
+        coords: [CLLocationCoordinate2D],
+        size: CGSize,
+        background: UIColor = .black,
+        routeColor: UIColor = .white,
+        stroke: CGFloat = 6,
+        title: String? = nil,
+        stats: [String] = []
+    ) async -> UIImage? {
+        guard !coords.isEmpty else {
+            // Produce a neutral tile that makes it obvious why it's blank
+            let r = UIGraphicsImageRenderer(size: size)
+            return r.image { ctx in
+                background.setFill(); ctx.fill(CGRect(origin: .zero, size: size))
+                let text = "No route data"
+                let attrs: [NSAttributedString.Key: Any] = [
+                    .font: UIFont.systemFont(ofSize: min(24, size.width * 0.035), weight: .semibold),
+                    .foregroundColor: UIColor(white: 1, alpha: 0.8)
+                ]
+                let s = (text as NSString).size(withAttributes: attrs)
+                (text as NSString).draw(at: CGPoint(x: (size.width-s.width)/2, y: (size.height-s.height)/2), withAttributes: attrs)
+            }
+        }
+
+        // Project to web mercator (visually nicer than raw degrees), normalize, fit to rect with margin
+        struct P { var x: CGFloat; var y: CGFloat }
+        func merc(_ c: CLLocationCoordinate2D) -> P {
+            let λ = CGFloat((c.longitude + 180.0) / 360.0)              // 0..1
+            let φ = CGFloat(c.latitude * .pi / 180.0)
+            let y = 0.5 - (log(tan(.pi/4 + φ/2)) / (2 * .pi))           // 0..1
+            return P(x: λ, y: y)
+        }
+
+        let pts = coords.map(merc)
+        let minX = pts.map{$0.x}.min()!, maxX = pts.map{$0.x}.max()!
+        let minY = pts.map{$0.y}.min()!, maxY = pts.map{$0.y}.max()!
+
+        // Prevent zero-size bbox
+        let eps: CGFloat = 1e-6
+        let w = max(maxX - minX, eps)
+        let h = max(maxY - minY, eps)
+
+        let inset: CGFloat = 0.10 // 10% margins
+        let drawRect = CGRect(x: size.width * inset,
+                              y: size.height * inset,
+                              width: size.width * (1 - inset*2),
+                              height: size.height * (1 - inset*2 - 0.18)) // leave room at bottom for stats
+
+        // Scale preserving aspect
+        let sx = drawRect.width  / w
+        let sy = drawRect.height / h
+        let s  = min(sx, sy)
+
+        func toCanvas(_ p: P) -> CGPoint {
+            CGPoint(
+                x: drawRect.minX + (p.x - minX) * s,
+                y: drawRect.minY + (p.y - minY) * s
+            )
+        }
+
         let r = UIGraphicsImageRenderer(size: size)
         return r.image { ctx in
-            UIColor.black.setFill(); ctx.fill(CGRect(origin: .zero, size: size))
-            UIColor.white.setStroke()
-            let path = UIBezierPath(); path.lineWidth = 6
-            guard let first = coords.first else { return }
-            func pt(_ c: CLLocationCoordinate2D) -> CGPoint {
-                CGPoint(x: size.width * CGFloat((c.longitude + 180)/360),
-                        y: size.height * CGFloat(1 - (c.latitude + 90)/180))
-            }
-            path.move(to: pt(first))
-            for c in coords.dropFirst() { path.addLine(to: pt(c)) }
+            // Background
+            background.setFill()
+            ctx.fill(CGRect(origin: .zero, size: size))
+
+            // Route path
+            let path = UIBezierPath()
+            path.lineWidth = max(stroke, size.width * 0.006)
+            path.lineCapStyle = .round
+            path.lineJoinStyle = .round
+
+            if let f = pts.first { path.move(to: toCanvas(f)) }
+            for p in pts.dropFirst() { path.addLine(to: toCanvas(p)) }
+
+            // Nice glow for visibility
+            ctx.cgContext.setShadow(offset: .zero, blur: max(4, path.lineWidth*0.8), color: UIColor.black.withAlphaComponent(0.65).cgColor)
+            routeColor.setStroke()
             path.stroke()
+            ctx.cgContext.setShadow(offset: .zero, blur: 0, color: nil)
+
+            // Title + Stats band at bottom (on-poster)
+            let bandRect = CGRect(x: size.width*inset,
+                                  y: size.height*(1 - 0.16 - inset),
+                                  width: size.width*(1 - inset*2),
+                                  height: size.height*0.16)
+            let band = UIBezierPath(roundedRect: bandRect, cornerRadius: size.width*0.02)
+            UIColor(white: 1, alpha: 0.08).setFill()
+            band.fill()
+
+            // Typography
+            let titleFont = UIFont.systemFont(ofSize: min(44, size.width*0.05), weight: .semibold)
+            let statFont  = UIFont.monospacedSystemFont(ofSize: min(22, size.width*0.024), weight: .medium)
+            let labelCol  = UIColor(white: 1, alpha: 0.92)
+
+            if let title, !title.isEmpty {
+                let tRect = CGRect(x: bandRect.minX + size.width*0.04,
+                                   y: bandRect.minY + size.height*0.028,
+                                   width: bandRect.width*0.68,
+                                   height: bandRect.height*0.52)
+                (title as NSString).draw(in: tRect, withAttributes: [.font: titleFont, .foregroundColor: labelCol])
+            }
+
+            // Stats laid out as small columns on the right
+            let colW = bandRect.width * 0.28
+            let colX = bandRect.maxX - colW - size.width*0.03
+            var y = bandRect.minY + size.height*0.028
+            for sLine in stats.prefix(3) { // three rows
+                (sLine as NSString).draw(
+                    at: CGPoint(x: colX, y: y),
+                    withAttributes: [.font: statFont, .foregroundColor: labelCol]
+                )
+                y += statFont.lineHeight + size.height*0.012
+            }
         }
     }
 }
