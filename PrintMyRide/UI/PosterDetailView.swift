@@ -14,7 +14,7 @@ struct PosterDetailView: View {
     @State private var exporting = false
     @State private var exportMessage: String?
     @State private var showPaywall = false
-    @AppStorage("pmr.useMapBackground") private var useMapBackground: Bool = false
+    @AppStorage("pmr.useMapBackground") private var useMapBackground: Bool = true
     @AppStorage("useOptimizedRenderer") private var useOptimizedRenderer = true
     @State private var generatedPosterImage: UIImage?
     @State private var isGeneratingPoster = false

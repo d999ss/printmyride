@@ -8,7 +8,7 @@ struct SettingsView: View {
     @AppStorage("defaultGridSpacing") private var defaultGrid: Double = 50
     @AppStorage("defaultPaperPreset") private var defaultPaper: String = "18x24"
     @AppStorage("pmr.mockStrava") private var mockStrava: Bool = false
-    @AppStorage("pmr.useMapBackground") private var useMapBackground: Bool = false
+    @AppStorage("pmr.useMapBackground") private var useMapBackground: Bool = true
     @State private var showStyleGuide = false
 
     var body: some View {
