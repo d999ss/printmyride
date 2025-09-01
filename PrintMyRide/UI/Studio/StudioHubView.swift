@@ -17,10 +17,9 @@ struct StudioHubView: View {
         ToastHost(message: $toast) {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 16) {
-                header
                 demoGrid
             }
-            // Give the banner breathing room and align grid with safe spacing
+            // Clean grid layout without banner
             .padding(.horizontal, 16)
             .padding(.top, 8)
             .padding(.bottom, 16)
@@ -34,10 +33,6 @@ struct StudioHubView: View {
         .overlay(alignedCTA, alignment: .bottomTrailing)
     }
     
-    private var header: some View {
-        HeroBannerView(toast: $toast, onTryPro: tryPro)
-            .environmentObject(gate)
-    }
 
 
     private var demoGrid: some View {
