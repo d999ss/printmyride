@@ -91,26 +91,48 @@ enum PlaceholderPosters {
     
     /// Try to load by exact name first (e.g., "alpine_climb")
     static func image(for key: String) -> UIImage? {
+        print("🎯 [PlaceholderPosters] Attempting to load image for key: '\(key)'")
+        
         // Try direct asset catalog loading first
-        if let nameHit = UIImage(named: key) { return nameHit }
+        if let nameHit = UIImage(named: key) { 
+            print("✅ [PlaceholderPosters] Found via UIImage(named: '\(key)')")
+            return nameHit 
+        }
+        print("❌ [PlaceholderPosters] UIImage(named: '\(key)') returned nil")
         
         // Try with common extensions  
-        if let pngHit = UIImage(named: "\(key).png") { return pngHit }
-        if let jpgHit = UIImage(named: "\(key).jpg") { return jpgHit }
+        if let pngHit = UIImage(named: "\(key).png") { 
+            print("✅ [PlaceholderPosters] Found via UIImage(named: '\(key).png')")
+            return pngHit 
+        }
+        if let jpgHit = UIImage(named: "\(key).jpg") { 
+            print("✅ [PlaceholderPosters] Found via UIImage(named: '\(key).jpg')")
+            return jpgHit 
+        }
+        print("❌ [PlaceholderPosters] Extension variants '\(key).png/jpg' not found")
         
         // Also try namespaced path if you kept the folder as a blue folder ref:
         if let path = Bundle.main.path(forResource: key, ofType: "png", inDirectory: bundleFolder) {
+            print("✅ [PlaceholderPosters] Found via bundle path: \(path)")
             return UIImage(contentsOfFile: path)
         }
         if let path = Bundle.main.path(forResource: key, ofType: "jpg", inDirectory: bundleFolder) {
+            print("✅ [PlaceholderPosters] Found via bundle path: \(path)")
+            return UIImage(contentsOfFile: path)
+        }
+        print("❌ [PlaceholderPosters] Bundle paths in '\(bundleFolder)' not found")
+        
+        // Generic fallback
+        if let generic = UIImage(named: "poster_placeholder") { 
+            print("✅ [PlaceholderPosters] Using generic fallback 'poster_placeholder'")
+            return generic 
+        }
+        if let path = Bundle.main.path(forResource: "poster_placeholder", ofType: "png", inDirectory: bundleFolder) {
+            print("✅ [PlaceholderPosters] Using generic fallback from bundle path")
             return UIImage(contentsOfFile: path)
         }
         
-        // Generic fallback
-        if let generic = UIImage(named: "poster_placeholder") { return generic }
-        if let path = Bundle.main.path(forResource: "poster_placeholder", ofType: "png", inDirectory: bundleFolder) {
-            return UIImage(contentsOfFile: path)
-        }
+        print("💀 [PlaceholderPosters] Complete failure - no image found for '\(key)'")
         return nil
     }
     
@@ -138,12 +160,40 @@ struct PosterTile: View {
     let poster: Poster
     
     var snapshotOrPlaceholder: UIImage? {
+        print("🔍 [PosterTile] Loading image for poster: '\(poster.title)'")
+        
         // 1) try disk snapshot
-        if let snap = PosterSnapshotStore.loadSnapshot(named: poster.snapshotFilename) {
+        if let snap = PosterSnapshotStore.shared.loadSnapshot(for: poster) {
+            print("✅ [PosterTile] Loaded snapshot for '\(poster.title)'")
             return snap
         }
-        // 2) fallback to bundled placeholder
-        return PlaceholderPosters.image(for: poster.placeholderKey)
+        print("📂 [PosterTile] No snapshot found for '\(poster.title)'")
+        
+        // 2) Test if we can load any image at all from asset catalog
+        if let testImage = UIImage(named: "alpine_climb") {
+            print("✅ [PosterTile] TEST SUCCESS: Can load alpine_climb from asset catalog")
+        } else {
+            print("❌ [PosterTile] TEST FAIL: Cannot load alpine_climb from asset catalog")
+        }
+        
+        // 3) fallback to bundled placeholder
+        let placeholderKey = poster.placeholderKey
+        print("🔍 [PosterTile] Looking for placeholder with key: '\(placeholderKey)'")
+        
+        if let placeholder = PlaceholderPosters.image(for: placeholderKey) {
+            print("✅ [PosterTile] Loaded placeholder '\(placeholderKey)' for '\(poster.title)'")
+            return placeholder
+        }
+        
+        print("❌ [PosterTile] No placeholder found for key '\(placeholderKey)' (poster: '\(poster.title)')")
+        
+        // 4) Force load alpine_climb for debugging
+        if let forceImage = UIImage(named: "alpine_climb") {
+            print("🚀 [PosterTile] FORCE SUCCESS: Using alpine_climb for all posters as test")
+            return forceImage
+        }
+        
+        return nil
     }
     
     var body: some View {
