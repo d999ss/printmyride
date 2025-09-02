@@ -26,7 +26,9 @@ final class PosterMapService {
         // Use standard map type for compatibility
         options.mapType = .standard
         options.showsBuildings = false
-        options.showsPointsOfInterest = false
+        if #available(iOS 13.0, *) {
+            options.pointOfInterestFilter = .excludingAll
+        }
 
         let snapshot = try await MKMapSnapshotter(options: options).start()
         let image = snapshot.image

@@ -47,9 +47,7 @@ struct PosterStoreWrapper {
         )
         poster.coordinates = coordinates
         
-        await MainActor.run {
-            store.add(poster)
-        }
+        await store.add(poster)
     }
 }
 

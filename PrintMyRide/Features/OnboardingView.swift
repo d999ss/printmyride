@@ -80,7 +80,9 @@ struct OnboardingView: View {
         }
         .onAppear {
             // Ensure this view captures taps (avoid phantom overlays)
-            UIApplication.shared.windows.first?.endEditing(true)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                windowScene.windows.first?.endEditing(true)
+            }
         }
     }
 
