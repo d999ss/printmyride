@@ -16,6 +16,7 @@ extension Poster {
         case "alpine climb":       return "alpine_climb"
         case "forest switchbacks": return "forest_switchbacks"
         case "coastal sprint":     return "coastal_sprint"
+        case "city night ride":    return "city_night_ride"
         default:                   return "poster_placeholder" // generic fallback
         }
     }
@@ -79,18 +80,24 @@ struct PosterSnapshotStore {
 
 // MARK: - Bundled placeholders
 enum PlaceholderPosters {
-    /// Folder you dragged into Xcode: "Placeholder Posters"
+    /// Folder you dragged into Xcode: "PlaceholderPosters"
     /// Ensure "Add to targets: ✅ YourApp" and "Create folder references" OR a file group.
-    static let bundleFolder = "Placeholder Posters"
+    static let bundleFolder = "PlaceholderPosters"
     
     /// Get the placeholder name for a poster
     static func name(for poster: Poster) -> String {
         return poster.placeholderKey
     }
     
-    /// Try to load by exact name first (e.g., "alpine_climb.png")
+    /// Try to load by exact name first (e.g., "alpine_climb")
     static func image(for key: String) -> UIImage? {
+        // Try direct asset catalog loading first
         if let nameHit = UIImage(named: key) { return nameHit }
+        
+        // Try with common extensions  
+        if let pngHit = UIImage(named: "\(key).png") { return pngHit }
+        if let jpgHit = UIImage(named: "\(key).jpg") { return jpgHit }
+        
         // Also try namespaced path if you kept the folder as a blue folder ref:
         if let path = Bundle.main.path(forResource: key, ofType: "png", inDirectory: bundleFolder) {
             return UIImage(contentsOfFile: path)
@@ -98,6 +105,7 @@ enum PlaceholderPosters {
         if let path = Bundle.main.path(forResource: key, ofType: "jpg", inDirectory: bundleFolder) {
             return UIImage(contentsOfFile: path)
         }
+        
         // Generic fallback
         if let generic = UIImage(named: "poster_placeholder") { return generic }
         if let path = Bundle.main.path(forResource: "poster_placeholder", ofType: "png", inDirectory: bundleFolder) {
