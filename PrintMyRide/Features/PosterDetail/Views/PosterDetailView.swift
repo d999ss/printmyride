@@ -18,87 +18,44 @@ struct PosterDetailView: View {
     @AppStorage("useOptimizedRenderer") private var useOptimizedRenderer = true
     @State private var generatedPosterImage: UIImage?
     @State private var isGeneratingPoster = false
-    
-    // New artistic poster settings
-    @State private var selectedStyle: ArtisticPosterRenderer.PosterStyle = .minimalist
-    @State private var selectedPalette: ArtisticPosterRenderer.ColorPalette = .monochrome
-    @State private var showStylePicker = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Artistic Poster Preview
-                VStack(spacing: 12) {
-                    // Style selection buttons
-                    HStack(spacing: 8) {
-                        Text("Style:")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 8) {
-                                ForEach(ArtisticPosterRenderer.PosterStyle.allCases, id: \.rawValue) { style in
-                                    Button(style.displayName) {
-                                        selectedStyle = style
+                // Full preview with self-healing
+                Group {
+                    if let generatedImage = generatedPosterImage {
+                        Image(uiImage: generatedImage)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        AsyncImage(url: documentsURL().appendingPathComponent(poster.filePath)) { phase in
+                            switch phase {
+                            case .success(let img): 
+                                img.resizable().scaledToFit()
+                            default: 
+                                ZStack {
+                                    Color.black.opacity(0.1)
+                                    if isGeneratingPoster {
+                                        VStack(spacing: 12) {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                            Text("Generating poster...")
+                                                .font(.caption)
+                                                .foregroundColor(.white)
+                                        }
+                                    } else {
+                                        Button("Generate Poster Image") {
+                                            Task { await generatePosterImage() }
+                                        }
+                                        .buttonStyle(.borderedProminent)
                                     }
-                                    .buttonStyle(.bordered)
-                                    .controlSize(.small)
-                                    .tint(selectedStyle == style ? .primary : .secondary)
-                                }
-                            }
-                            .padding(.horizontal, 4)
-                        }
-                        
-                        Spacer()
-                    }
-                    
-                    // Color palette selection
-                    HStack(spacing: 8) {
-                        Text("Colors:")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
-                        HStack(spacing: 6) {
-                            ForEach(ArtisticPosterRenderer.ColorPalette.allCases, id: \.rawValue) { palette in
-                                Button {
-                                    selectedPalette = palette
-                                } label: {
-                                    Circle()
-                                        .fill(palette.colors.route)
-                                        .frame(width: 20, height: 20)
-                                        .overlay(
-                                            Circle()
-                                                .stroke(selectedPalette == palette ? Color.primary : Color.clear, lineWidth: 2)
-                                        )
                                 }
                             }
                         }
-                        
-                        Spacer()
-                    }
-                    
-                    // Live artistic poster preview
-                    Group {
-                        if let generatedImage = generatedPosterImage {
-                            Image(uiImage: generatedImage)
-                                .resizable()
-                                .scaledToFit()
-                        } else {
-                            AsyncArtisticPosterView(
-                                title: poster.title,
-                                coordinates: coords,
-                                distance: "14.2 MI", // TODO: Calculate from coords
-                                duration: "1H 23M", // TODO: Calculate from data
-                                elevation: "2,847 FT", // TODO: Calculate elevation gain
-                                date: poster.createdAt.formatted(date: .abbreviated, time: .omitted),
-                                location: "Colorado", // TODO: Reverse geocode from coords
-                                style: selectedStyle,
-                                palette: selectedPalette
-                            )
-                            .task {
-                                // Auto-generate artistic poster
-                                await generateArtisticPoster()
-                            }
+                        .task {
+                            // Auto-generate if missing
+                            await autoGeneratePosterIfMissing()
                         }
                     }
                 }
@@ -312,71 +269,24 @@ struct PosterDetailView: View {
         isGeneratingPoster = true
         defer { isGeneratingPoster = false }
         
-        // Create a basic poster design
-        let design = createPosterDesign()
-        let points = coords.map { GPXRoute.Point(lat: $0.latitude, lon: $0.longitude) }
-        let route = GPXRoute(points: points, distanceMeters: 0, duration: nil)
-        let size = CGSize(width: 800, height: 1000) // Standard poster size
-        
-        do {
-            if useOptimizedRenderer {
-                // Use optimized renderer for blazing fast generation
-                generatedPosterImage = await PosterRenderService.shared.renderPoster(
-                    design: design,
-                    route: route,
-                    size: size,
-                    quality: .standard
-                )
-            } else {
-                // Fallback to legacy renderer
-                generatedPosterImage = await RouteRenderer.renderPoster(
-                    coordinates: coords,
-                    title: poster.title,
-                    distance: "Unknown Distance",
-                    duration: "Unknown Duration", 
-                    date: poster.createdAt.formatted(date: .abbreviated, time: .omitted),
-                    size: size,
-                    style: .standard,
-                    useMapBackground: useMapBackground
-                )
-            }
-            
-            // Save generated image to disk
-            if let image = generatedPosterImage {
-                await savePosterToDisk(image: image)
-                exportMessage = "✅ Poster image generated successfully"
-            }
-            
-        } catch {
-            exportMessage = "❌ Failed to generate poster: \(error.localizedDescription)"
-        }
-    }
-    
-    @MainActor
-    private func generateArtisticPoster() async {
-        guard !coords.isEmpty else { return }
-        
-        isGeneratingPoster = true
-        defer { isGeneratingPoster = false }
-        
-        // Generate artistic poster with current style settings
+        // Generate beautiful artistic poster instead of basic map
         generatedPosterImage = await ArtisticPosterRenderer.renderArtisticPoster(
             title: poster.title,
             coordinates: coords,
             distance: "14.2 MI", // TODO: Calculate from coords
-            duration: "1H 23M", // TODO: Calculate from data  
+            duration: "1H 23M", // TODO: Calculate from data
             elevation: "2,847 FT", // TODO: Calculate elevation gain
             date: poster.createdAt.formatted(date: .abbreviated, time: .omitted),
             location: "Colorado", // TODO: Reverse geocode from coords
-            style: selectedStyle,
-            palette: selectedPalette,
+            style: .minimalist,
+            palette: .monochrome,
             size: CGSize(width: 800, height: 1200) // Portrait poster
         )
         
         // Save generated image to disk
         if let image = generatedPosterImage {
             await savePosterToDisk(image: image)
-            exportMessage = "✅ Artistic poster generated successfully"
+            exportMessage = "✅ Beautiful artistic poster generated successfully"
         } else {
             exportMessage = "❌ Failed to generate artistic poster"
         }
@@ -403,85 +313,5 @@ struct PosterDetailView: View {
         } catch {
             PMRLog.export.error("[SelfHealing] Failed to save poster: \(error)")
         }
-    }
-}
-
-// MARK: - Async Artistic Poster Preview
-
-private struct AsyncArtisticPosterView: View {
-    let title: String
-    let coordinates: [CLLocationCoordinate2D]
-    let distance: String
-    let duration: String
-    let elevation: String
-    let date: String
-    let location: String
-    let style: ArtisticPosterRenderer.PosterStyle
-    let palette: ArtisticPosterRenderer.ColorPalette
-    
-    @State private var posterImage: UIImage?
-    @State private var isGenerating = false
-    
-    var body: some View {
-        Group {
-            if let image = posterImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-            } else if isGenerating {
-                ZStack {
-                    Color.gray.opacity(0.1)
-                    VStack(spacing: 12) {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                        Text("Generating artistic poster...")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                }
-                .frame(height: 300)
-            } else {
-                ZStack {
-                    Color.gray.opacity(0.1)
-                    Text("Tap to generate artistic poster")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                .frame(height: 300)
-                .onTapGesture {
-                    Task { await generatePoster() }
-                }
-            }
-        }
-        .onChange(of: style) { _, _ in
-            Task { await generatePoster() }
-        }
-        .onChange(of: palette) { _, _ in
-            Task { await generatePoster() }
-        }
-        .task {
-            await generatePoster()
-        }
-    }
-    
-    @MainActor
-    private func generatePoster() async {
-        guard !isGenerating else { return }
-        
-        isGenerating = true
-        defer { isGenerating = false }
-        
-        posterImage = await ArtisticPosterRenderer.renderArtisticPoster(
-            title: title,
-            coordinates: coordinates,
-            distance: distance,
-            duration: duration,
-            elevation: elevation,
-            date: date,
-            location: location,
-            style: style,
-            palette: palette,
-            size: CGSize(width: 600, height: 900) // Smaller preview size
-        )
     }
 }
