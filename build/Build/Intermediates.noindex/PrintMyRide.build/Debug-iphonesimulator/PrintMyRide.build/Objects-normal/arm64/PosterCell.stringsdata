@@ -1,0 +1,40 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Gallery/PosterCell.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Export",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Print",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "♥",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 39
+        }
+      }
+    ]
+  },
+  "version": 1
+}

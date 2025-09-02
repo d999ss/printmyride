@@ -1,0 +1,96 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/PosterDetail/Views/PosterDetailV2.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Generate Poster",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 415
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generating poster...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 406
+        }
+      },
+      {
+        "comment": "",
+        "key": "Use Map Background",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 463
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map Style",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 472
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map Style",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 476
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show Buildings",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 489
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show Points of Interest",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 495
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save Map Snapshot",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 504
+        }
+      },
+      {
+        "comment": "",
+        "key": "Style Presets",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 518
+        }
+      },
+      {
+        "comment": "",
+        "key": "Paper",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 537
+        }
+      },
+      {
+        "comment": "",
+        "key": "18×24 • %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 539
+        }
+      }
+    ]
+  },
+  "version": 1
+}

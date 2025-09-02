@@ -46,17 +46,7 @@ struct StudioHubView: View {
                     Button {
                         NotificationCenter.default.post(name: .pmrRequestPaywall, object: nil)
                     } label: {
-                        PosterCardView(
-                            title: poster.title,
-                            thumbPath: poster.thumbnailPath,
-                            coords: coords,
-                            locked: isLockedPro,
-                            onShare: { sharePoster(poster) },
-                            onFavorite: { favs.toggle(poster.id) },
-                            isFavorite: favs.contains(poster.id),
-                            matchedID: "poster-\(poster.id)",
-                            ns: posterNS
-                        )
+                        PosterTile(poster: poster)
                             .contentShape(Rectangle())
                             .scaleEffect(pressed ? 0.98 : 1.0)
                             .animation(.spring(response: 0.35, dampingFraction: 0.9), value: pressed)
@@ -64,17 +54,7 @@ struct StudioHubView: View {
                     .buttonStyle(.plain)
                 } else {
                     NavigationLink(destination: destinationView(for: poster, coords: coords)) {
-                        PosterCardView(
-                            title: poster.title,
-                            thumbPath: poster.thumbnailPath,
-                            coords: coords,
-                            locked: isLockedPro,
-                            onShare: { sharePoster(poster) },
-                            onFavorite: { favs.toggle(poster.id) },
-                            isFavorite: favs.contains(poster.id),
-                            matchedID: "poster-\(poster.id)",
-                            ns: posterNS
-                        )
+                        PosterTile(poster: poster)
                             .contentShape(Rectangle())
                             .scaleEffect(pressed ? 0.98 : 1.0)
                             .animation(.spring(response: 0.35, dampingFraction: 0.9), value: pressed)

@@ -1,0 +1,208 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Editor/CanvasSheet.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Canvas",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "Paper Preset",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Paper Size",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Margins",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "Grid",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "Poster Style",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "Backdrop (preview)",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 45
+        }
+      },
+      {
+        "comment": "",
+        "key": "Width",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld\"",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "Height",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld\"",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "Margins",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show grid",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show info HUD",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 89
+        }
+      },
+      {
+        "comment": "",
+        "key": "Grid spacing",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld pt",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "Poster",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map is preview-only. Exports remain clean unless you choose to include map later.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map background",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Style",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Standard",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 104
+        }
+      },
+      {
+        "comment": "",
+        "key": "Hybrid",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "Satellite",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 106
+        }
+      }
+    ]
+  },
+  "version": 1
+}

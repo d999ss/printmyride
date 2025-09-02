@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="PrintMyRide Demo">
+  <metadata>
+    <name>Park City Loop</name>
+    <desc>Demo ride through Park City, Utah</desc>
+  </metadata>
+  <trk>
+    <name>Park City Loop</name>
+    <trkseg>
+      <trkpt lat="40.6461" lon="-111.4980">
+        <ele>2103</ele>
+        <time>2025-08-15T14:00:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6465" lon="-111.4985">
+        <ele>2108</ele>
+        <time>2025-08-15T14:01:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6470" lon="-111.4990">
+        <ele>2115</ele>
+        <time>2025-08-15T14:02:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6478" lon="-111.4995">
+        <ele>2125</ele>
+        <time>2025-08-15T14:03:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6485" lon="-111.5002">
+        <ele>2140</ele>
+        <time>2025-08-15T14:04:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6492" lon="-111.5008">
+        <ele>2155</ele>
+        <time>2025-08-15T14:05:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6500" lon="-111.5015">
+        <ele>2170</ele>
+        <time>2025-08-15T14:06:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6505" lon="-111.5025">
+        <ele>2185</ele>
+        <time>2025-08-15T14:07:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6510" lon="-111.5035">
+        <ele>2200</ele>
+        <time>2025-08-15T14:08:00Z</time>
+      </trkpt>
+      <trkpt lat="40.6512" lon="-111.5045">
+        <ele>2210</ele>
+        <time>2025-08-15T14:09:00Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

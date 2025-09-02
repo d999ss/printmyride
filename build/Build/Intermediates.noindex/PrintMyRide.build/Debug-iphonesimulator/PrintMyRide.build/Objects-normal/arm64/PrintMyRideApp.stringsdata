@@ -1,0 +1,24 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/App/PrintMyRideApp.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "🟢 Touch OK",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nav: %@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 142
+        }
+      }
+    ]
+  },
+  "version": 1
+}
