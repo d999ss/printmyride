@@ -1,0 +1,48 @@
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Utilities/Haptics.swift":
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Haptics.swiftconstvalues"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Haptics.swiftdeps"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Haptics.dia"
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Haptics.o"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Haptics.d"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Services/AccountService.swift":
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AccountService.o"
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AccountService.swiftconstvalues"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AccountService.swiftdeps"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AccountService.dia"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AccountService.d"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Styles/StyleRegistry.swift":
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StyleRegistry.swiftconstvalues"
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StyleRegistry.o"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StyleRegistry.swiftdeps"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StyleRegistry.dia"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StyleRegistry.d"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Components/VSCOButtons.swift":
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/VSCOButtons.swiftconstvalues"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/VSCOButtons.dia"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/VSCOButtons.d"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/VSCOButtons.swiftdeps"
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/VSCOButtons.o"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Poster/DemoCoordsLoader.swift":
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DemoCoordsLoader.swiftdeps"
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DemoCoordsLoader.swiftconstvalues"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DemoCoordsLoader.d"
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DemoCoordsLoader.o"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DemoCoordsLoader.dia"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Utilities/Snapshotter.swift":
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Snapshotter.d"
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Snapshotter.swiftconstvalues"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Snapshotter.dia"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Snapshotter.swiftdeps"
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Snapshotter.o"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Domain/Strava/StravaAPI.swift":
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaAPI.swiftconstvalues"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaAPI.dia"
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaAPI.swiftdeps"
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaAPI.o"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaAPI.d"
+"/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Render/CanvasView.swift":
+  swift-dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CanvasView.swiftdeps"
+  dependencies: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CanvasView.d"
+  diagnostics: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CanvasView.dia"
+  const-values: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CanvasView.swiftconstvalues"
+  object: "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CanvasView.o"

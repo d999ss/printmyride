@@ -1,0 +1,16 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Debug/DebugHUD.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "PMR Debug",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 21
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -6,6 +6,8 @@ struct RootView: View {
     @StateObject private var router = AppRouter()
     @StateObject private var services = ServiceHub()
     @StateObject private var gate = SubscriptionGate()
+    @StateObject private var accountStore = AccountStore.shared
+    @State private var showPaywall = false
     
     var body: some View {
         TabView(selection: $router.selectedTab) {
@@ -28,7 +30,16 @@ struct RootView: View {
         .environmentObject(router)
         .environmentObject(services)
         .environmentObject(gate)
+        .environmentObject(accountStore)
         .preferredColorScheme(preferredScheme(settings.appearance))
+        .onReceive(NotificationCenter.default.publisher(for: .pmrRequestPaywall)) { _ in
+            if !accountStore.account.isPro { 
+                showPaywall = true 
+            }
+        }
+        .sheet(isPresented: $showPaywall) { 
+            PaywallPlaceholder() 
+        }
         // Build watermark moved to Settings › About
         #if DEBUG
         .overlay(DebugHUD()) // triple-tap to toggle debug panel

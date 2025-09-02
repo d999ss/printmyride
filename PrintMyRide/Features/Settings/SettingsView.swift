@@ -13,6 +13,9 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            // Account is now first-class
+            AccountSection()
+            
             Section("Preview") {
                 NavigationLink("Preview Demo Experience") {
                     StudioHubView()
@@ -55,25 +58,6 @@ struct SettingsView: View {
                             .foregroundStyle(DesignTokens.Colors.secondary)
                     }
                 }
-            }
-            
-            Section("Subscription") {
-                HStack {
-                    Label(gate.isSubscribed ? "Pro Active" : "Not Subscribed", systemImage: gate.isSubscribed ? "crown.fill" : "crown")
-                        .foregroundStyle(gate.isSubscribed ? DesignTokens.Colors.accent : DesignTokens.Colors.secondary)
-                        .font(DesignTokens.Typography.body)
-                    Spacer()
-                    Button("Manage") { 
-                        // For demo - would normally show App Store subscriptions
-                    }
-                    .font(DesignTokens.Typography.body)
-                    .foregroundStyle(DesignTokens.Colors.primary)
-                }
-                
-                Button("Restore Purchases") { 
-                    Task { await gate.refresh() } 
-                }
-                .font(DesignTokens.Typography.body)
             }
             
             Section("Design") {

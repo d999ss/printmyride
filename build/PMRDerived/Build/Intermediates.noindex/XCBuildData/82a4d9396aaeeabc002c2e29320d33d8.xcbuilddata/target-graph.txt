@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'PrintMyRide' in project 'PrintMyRide' (no dependencies)

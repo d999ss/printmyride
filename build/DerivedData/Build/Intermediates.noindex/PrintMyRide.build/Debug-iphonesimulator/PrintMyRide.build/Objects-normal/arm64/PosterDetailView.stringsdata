@@ -1,0 +1,72 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/PosterDetail/Views/PosterDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Generate Poster Image",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generating poster...",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Route Map",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 69
+        }
+      },
+      {
+        "comment": "",
+        "key": "Open in Apple Maps",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save Map Snapshot for Poster",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "Export High-Res (PDF)",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 120
+        }
+      },
+      {
+        "comment": "",
+        "key": "Print Poster (Demo Checkout)",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 130
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share Poster Image",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 134
+        }
+      }
+    ]
+  },
+  "version": 1
+}

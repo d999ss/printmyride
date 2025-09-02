@@ -1,0 +1,120 @@
+{
+  "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/PosterDetail/Views/PosterDetailV2.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "No route",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld pts",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 170
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generating poster",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 258
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ride stats",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 296
+        }
+      },
+      {
+        "comment": "",
+        "key": "Style presets",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 345
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 371
+        }
+      },
+      {
+        "comment": "",
+        "key": "Apple Maps background",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 372
+        }
+      },
+      {
+        "comment": "",
+        "key": "Captions",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 400
+        }
+      },
+      {
+        "comment": "",
+        "key": "Poster title",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 401
+        }
+      },
+      {
+        "comment": "",
+        "key": "Subtitle",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 404
+        }
+      },
+      {
+        "comment": "",
+        "key": "Apply",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 408
+        }
+      },
+      {
+        "comment": "",
+        "key": "Variants",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 418
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pro",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 454
+        }
+      },
+      {
+        "comment": "",
+        "key": "Go Pro",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 461
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,104 @@
+name: Regression Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  regression-tests:
+    runs-on: macos-latest
+    timeout-minutes: 20
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Select Xcode Version
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Cache Build Artifacts
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/Library/Developer/Xcode/DerivedData
+          build
+        key: ${{ runner.os }}-xcode-${{ hashFiles('**/*.xcodeproj') }}
+        restore-keys: |
+          ${{ runner.os }}-xcode-
+
+    - name: Boot iOS Simulator
+      run: |
+        xcrun simctl create "Test iPhone" com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro com.apple.CoreSimulator.SimRuntime.iOS-18-5 || true
+        xcrun simctl boot "Test iPhone" || true
+
+    - name: Build App
+      run: |
+        xcodebuild \
+          -project PrintMyRide.xcodeproj \
+          -scheme PrintMyRide \
+          -destination "platform=iOS Simulator,name=Test iPhone" \
+          -configuration Debug \
+          clean build \
+          | xcpretty
+
+    - name: Run Regression Tests
+      run: |
+        xcodebuild \
+          -project PrintMyRide.xcodeproj \
+          -scheme PrintMyRide \
+          -destination "platform=iOS Simulator,name=Test iPhone" \
+          -only-testing:PrintMyRideUITests/RegressionTests \
+          -resultBundlePath ./build/test-results \
+          test | xcpretty --report junit --output ./build/results.xml
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: regression-test-results
+        path: |
+          ./build/results.xml
+          ./build/test-results
+
+    - name: Comment PR with Results
+      uses: actions/github-script@v6
+      if: github.event_name == 'pull_request' && always()
+      with:
+        script: |
+          const fs = require('fs');
+          let resultsFile = './build/results.xml';
+          let comment = '## 🧪 Regression Test Results\n\n';
+          
+          if (fs.existsSync(resultsFile)) {
+            const xml = fs.readFileSync(resultsFile, 'utf8');
+            const failures = (xml.match(/<failure/g) || []).length;
+            const tests = (xml.match(/<testcase/g) || []).length;
+            
+            if (failures === 0) {
+              comment += `✅ All ${tests} regression tests passed!\n\n`;
+              comment += 'Safe to merge - no regressions detected.';
+            } else {
+              comment += `❌ ${failures}/${tests} tests failed\n\n`;
+              comment += 'Please review test failures before merging.';
+            }
+          } else {
+            comment += '⚠️ Test results not found - check build logs.';
+          }
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+    - name: Fail on Test Failures
+      if: failure()
+      run: |
+        echo "❌ Regression tests failed - blocking merge"
+        echo "Check the test results artifact for details"
+        exit 1
