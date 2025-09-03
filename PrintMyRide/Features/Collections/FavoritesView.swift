@@ -85,7 +85,7 @@ struct FavoritesView: View {
     private var favoritesGrid: some View {
         LazyVGrid(columns: cols, spacing: DesignTokens.Spacing.gridSpacing) {
             ForEach(favoritedPosters) { poster in
-                NavigationLink(destination: RouteDetailView(poster: poster)) {
+                NavigationLink(destination: RideDetailView(poster: poster)) {
                     let coords = DemoCoordsLoader.coords(forTitle: poster.title)
                     PosterCardView(
                         title: poster.title,

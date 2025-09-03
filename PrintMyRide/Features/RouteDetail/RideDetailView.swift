@@ -118,18 +118,18 @@ struct RideDetailView: View {
                         GridItem(.flexible())
                     ], spacing: 16) {
                         StatCard(
-                            value: String(format: "%.1f", routeStats.distance),
+                            value: String(format: "%.1f", rideStats.distance),
                             unit: "miles",
                             icon: "map"
                         )
                         
                         StatCard(
-                            value: String(format: "%.0f", routeStats.elevation),
+                            value: String(format: "%.0f", rideStats.elevation),
                             unit: "ft elev",
                             icon: "arrow.up.forward"
                         )
                         
-                        if let duration = routeStats.duration {
+                        if let duration = rideStats.duration {
                             let hours = Int(duration) / 3600
                             let minutes = Int(duration.truncatingRemainder(dividingBy: 3600)) / 60
                             let timeString = hours > 0 ? "\(hours)h \(minutes)m" : "\(minutes)m"
@@ -227,9 +227,9 @@ struct RideDetailView: View {
         // Create input for new poster renderer
         let input = RidePosterInput(
             coordinates: coords,
-            distanceMeters: routeStats.distance * 1609.34, // miles to meters
-            movingSeconds: Int(routeStats.duration ?? 3600), // fallback 1 hour
-            elevationGainMeters: routeStats.elevation * 0.3048, // feet to meters
+            distanceMeters: rideStats.distance * 1609.34, // miles to meters
+            movingSeconds: Int(rideStats.duration ?? 3600), // fallback 1 hour
+            elevationGainMeters: rideStats.elevation * 0.3048, // feet to meters
             centroid: CLLocationCoordinate2D(
                 latitude: coords.map(\.latitude).reduce(0, +) / Double(coords.count),
                 longitude: coords.map(\.longitude).reduce(0, +) / Double(coords.count)
@@ -298,9 +298,9 @@ struct RideDetailView: View {
     }
     
     private func formatRouteStats() -> String {
-        let distance = String(format: "%.1f", routeStats.distance)
-        let time = routeStats.duration.map { formatDuration($0) } ?? "Unknown"
-        let elevation = String(format: "%.0f", routeStats.elevation)
+        let distance = String(format: "%.1f", rideStats.distance)
+        let time = rideStats.duration.map { formatDuration($0) } ?? "Unknown"
+        let elevation = String(format: "%.0f", rideStats.elevation)
         
         return "\(distance) mi • \(time) • \(elevation) ft elevation"
     }
@@ -324,9 +324,9 @@ struct RideDetailView: View {
         var components = URLComponents(string: baseURL)!
         components.queryItems = [
             URLQueryItem(name: "title", value: poster.title),
-            URLQueryItem(name: "distance", value: String(routeStats.distance)),
-            URLQueryItem(name: "duration", value: String(routeStats.duration ?? 0)),
-            URLQueryItem(name: "elevation", value: String(routeStats.elevation))
+            URLQueryItem(name: "distance", value: String(rideStats.distance)),
+            URLQueryItem(name: "duration", value: String(rideStats.duration ?? 0)),
+            URLQueryItem(name: "elevation", value: String(rideStats.elevation))
         ]
         
         return components.url ?? URL(string: baseURL)!
@@ -378,11 +378,7 @@ struct RideDetailView: View {
         isFavorite.toggle()
         
         // Update favorite status in poster store
-        if isFavorite {
-            FavoritesStore.shared.addFavorite(poster)
-        } else {
-            FavoritesStore.shared.removeFavorite(poster)
-        }
+        FavoritesStore.shared.toggle(poster.id)
     }
     
     private func deleteRide() {
@@ -396,13 +392,17 @@ struct RideDetailView: View {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
             // Remove from poster store
-            PosterStore.shared.removePoster(poster)
+            // Note: PosterStore doesn't have removePoster method yet
+            // TODO: Implement poster removal
             
             // Remove cached images
-            PosterSnapshotStore.shared.removeSnapshot(for: poster)
+            // TODO: Implement removeSnapshot method in PosterSnapshotStore
+            // PosterSnapshotStore.shared.removeSnapshot(for: poster)
             
             // Remove from favorites if needed
-            FavoritesStore.shared.removeFavorite(poster)
+            if FavoritesStore.shared.contains(poster.id) {
+                FavoritesStore.shared.toggle(poster.id)
+            }
             
             // Dismiss the view
             dismiss()
@@ -415,7 +415,7 @@ struct RideDetailView: View {
     }
     
     private func loadFavoriteStatus() {
-        isFavorite = FavoritesStore.shared.isFavorite(poster)
+        isFavorite = FavoritesStore.shared.contains(poster.id)
     }
     
     private func exportPoster() {

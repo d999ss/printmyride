@@ -60,7 +60,7 @@ struct RidesListView: View {
                         .font(.headline)
                     
                     HStack(spacing: 20) {
-                        Label("\(thisMonthStats.routes) rides", systemImage: "bicycle")
+                        Label("\(thisMonthStats.rides) rides", systemImage: "bicycle")
                         Label(String(format: "%.0f mi", thisMonthStats.miles), systemImage: "map")
                         Label(String(format: "%.0f ft", thisMonthStats.elevation), systemImage: "arrow.up.forward")
                     }
@@ -73,7 +73,7 @@ struct RidesListView: View {
                 
                 // Custom segmented control for perfect TapDoctor compliance
                 HStack(spacing: 0) {
-                    ForEach(RouteFilter.allCases, id: \.self) { filter in
+                    ForEach(RideFilter.allCases, id: \.self) { filter in
                         Button {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 selectedFilter = filter
@@ -115,10 +115,10 @@ struct RidesListView: View {
                     .listRowSeparator(.visible)
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button {
-                            FavoritesStore.shared.toggle(route.id)
+                            FavoritesStore.shared.toggle(ride.id)
                             UIImpactFeedbackGenerator(style: .light).impactOccurred()
                         } label: {
-                            let isFavorite = FavoritesStore.shared.contains(route.id)
+                            let isFavorite = FavoritesStore.shared.contains(ride.id)
                             Label(isFavorite ? "Unfavorite" : "Favorite",
                                   systemImage: isFavorite ? "heart.slash" : "heart.fill")
                         }

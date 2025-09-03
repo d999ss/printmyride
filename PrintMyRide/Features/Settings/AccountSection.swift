@@ -101,7 +101,3 @@ struct AccountSection: View {
     }
 }
 
-// MARK: - Notification Extension
-extension Notification.Name { 
-    static let pmrRequestPaywall = Notification.Name("pmrRequestPaywall") 
-}
