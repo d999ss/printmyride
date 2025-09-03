@@ -1,47 +1,47 @@
 import SwiftUI
 import CoreLocation
 
-// MARK: - RouteListView (Native iOS List)
-struct RouteListView: View {
+// MARK: - RidesListView (Native iOS List)
+struct RidesListView: View {
     @ObservedObject private var posterStore = PosterStore.shared
-    @State private var selectedFilter: RouteFilter = .all
+    @State private var selectedFilter: RideFilter = .all
     @StateObject private var subscriptionGate = SubscriptionGate()
     @State private var showingRecordingView = false
     
-    private enum RouteFilter: String, CaseIterable {
+    private enum RideFilter: String, CaseIterable {
         case all = "All"
         case favorites = "Favorites"  
         case thisMonth = "This Month"
     }
     
-    private var filteredRoutes: [Poster] {
-        let routes = posterStore.posters
+    private var filteredRides: [Poster] {
+        let rides = posterStore.posters
         switch selectedFilter {
         case .all:
-            return routes
+            return rides
         case .favorites:
-            return routes.filter { FavoritesStore.shared.contains($0.id) }
+            return rides.filter { FavoritesStore.shared.contains($0.id) }
         case .thisMonth:
             let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
-            return routes.filter { $0.createdAt > thirtyDaysAgo }
+            return rides.filter { $0.createdAt > thirtyDaysAgo }
         }
     }
     
-    private var thisMonthStats: (routes: Int, miles: Double, elevation: Double) {
+    private var thisMonthStats: (rides: Int, miles: Double, elevation: Double) {
         let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
-        let thisMonthRoutes = posterStore.posters.filter { $0.createdAt > thirtyDaysAgo }
+        let thisMonthRides = posterStore.posters.filter { $0.createdAt > thirtyDaysAgo }
         
-        let totalMiles = thisMonthRoutes.compactMap { route -> Double? in
-            guard let coords = route.coordinates else { return nil }
+        let totalMiles = thisMonthRides.compactMap { ride -> Double? in
+            guard let coords = ride.coordinates else { return nil }
             return RouteStatsCalculator.distance(coords: coords)
         }.reduce(0, +)
         
-        let totalElevation = thisMonthRoutes.compactMap { route -> Double? in
-            guard let coords = route.coordinates else { return nil }
+        let totalElevation = thisMonthRides.compactMap { ride -> Double? in
+            guard let coords = ride.coordinates else { return nil }
             return RouteStatsCalculator.elevationGain(coords: coords)
         }.reduce(0, +)
         
-        return (thisMonthRoutes.count, totalMiles, totalElevation)
+        return (thisMonthRides.count, totalMiles, totalElevation)
     }
     
     var body: some View {
@@ -107,9 +107,9 @@ struct RouteListView: View {
                 .padding(.vertical, 16)
                 
                 // Clean list
-                List(filteredRoutes) { route in
-                    NavigationLink(destination: RouteDetailView(poster: route)) {
-                        RouteRowView(route: route, subscriptionGate: subscriptionGate)
+                List(filteredRides) { ride in
+                    NavigationLink(destination: RideDetailView(poster: ride)) {
+                        RideRowView(ride: ride, subscriptionGate: subscriptionGate)
                     }
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.visible)
@@ -129,7 +129,7 @@ struct RouteListView: View {
                 .scrollContentBackground(.hidden)
                 .background(.clear)
             }
-            .navigationTitle("Routes")
+            .navigationTitle("Rides")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -318,14 +318,14 @@ private struct StatView: View {
     }
 }
 
-// MARK: - Native Route Row
-private struct RouteRowView: View {
-    let route: Poster
+// MARK: - Native Ride Row
+private struct RideRowView: View {
+    let ride: Poster
     let subscriptionGate: SubscriptionGate
     @State private var isFavorite: Bool = false
     
-    private var routeStats: (distance: Double, elevation: Double, duration: TimeInterval?) {
-        guard let coords = route.coordinates else { 
+    private var rideStats: (distance: Double, elevation: Double, duration: TimeInterval?) {
+        guard let coords = ride.coordinates else { 
             return (0, 0, nil)
         }
         
@@ -338,7 +338,7 @@ private struct RouteRowView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            // Route thumbnail with glass background
+            // Ride thumbnail with glass background
             Image(systemName: "map")
                 .symbolRenderingMode(.hierarchical)
                 .font(.title2)
@@ -348,13 +348,13 @@ private struct RouteRowView: View {
                         .fill(Color(.quaternarySystemFill))
                 }
             
-            // Route info
+            // Ride info
             VStack(alignment: .leading, spacing: 2) {
-                Text(route.title)
+                Text(ride.title)
                     .font(.headline)
                     .lineLimit(1)
                 
-                Text("\(String(format: "%.1f mi", routeStats.distance)) • \(String(format: "%.0f ft", routeStats.elevation)) • \(formatDuration(routeStats.duration))")
+                Text("\(String(format: "%.1f mi", rideStats.distance)) • \(String(format: "%.0f ft", rideStats.elevation)) • \(formatDuration(rideStats.duration))")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -363,12 +363,12 @@ private struct RouteRowView: View {
             
             // Apple-style favorite button
             FavoriteButton(isFav: $isFavorite) {
-                FavoritesStore.shared.toggle(route.id)
+                FavoritesStore.shared.toggle(ride.id)
             }
         }
         .padding(.vertical, 8)
         .onAppear {
-            isFavorite = FavoritesStore.shared.contains(route.id)
+            isFavorite = FavoritesStore.shared.contains(ride.id)
         }
     }
     

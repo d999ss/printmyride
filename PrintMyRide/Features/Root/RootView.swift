@@ -16,7 +16,7 @@ struct RootView: View {
                 case 0:
                     StudioHubView()
                 case 1:
-                    FavoritesView()
+                    RidesListView()
                 case 2:
                     SettingsView()
                 default:

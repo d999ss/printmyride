@@ -1,24 +1,25 @@
 import SwiftUI
 import CoreLocation
 
-/// Native route detail view that handles poster rendering lazily
-struct RouteDetailView: View {
+/// Native ride detail view that handles poster rendering lazily
+struct RideDetailView: View {
     let poster: Poster
     @State private var posterImage: UIImage?
     @State private var isGeneratingPoster = false
     @State private var exportMessage: String?
     @State private var showPaywall = false
     @State private var showPosterFocus = false
+    @State private var isFavorite = false
     @Environment(\.dismiss) private var dismiss
     @StateObject private var subscriptionGate = SubscriptionGate()
     
     private var coords: [CLLocationCoordinate2D] {
         let result = poster.coordinates ?? DemoCoordsLoader.coords(forTitle: poster.title)
-        print("[RouteDetailView] Loaded \(result.count) coordinates for poster '\(poster.title)'")
+        print("[RideDetailView] Loaded \(result.count) coordinates for poster '\(poster.title)'")
         return result
     }
     
-    private var routeStats: (distance: Double, elevation: Double, duration: TimeInterval?) {
+    private var rideStats: (distance: Double, elevation: Double, duration: TimeInterval?) {
         guard !coords.isEmpty else { return (0, 0, nil) }
         
         let distance = RouteStatsCalculator.distance(coords: coords)
@@ -143,47 +144,67 @@ struct RouteDetailView: View {
                 }
                 .glass()
                 
-                // Actions Section (Only visible when poster exists)
-                if posterImage != nil {
-                    VStack(spacing: 12) {
+                // Primary CTA Section
+                VStack(spacing: 12) {
+                    // Primary CTA: Send to Studio
+                    Button {
+                        sendToStudio()
+                    } label: {
+                        Label("Send to Studio", systemImage: "photo.on.rectangle")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                }
+                .glass()
+                
+                // Secondary Actions Section
+                VStack(spacing: 12) {
+                    HStack(spacing: 12) {
+                        // Share GPX
                         Button {
-                            sharePoster()
+                            shareGPX()
                         } label: {
-                            Label("Share Poster", systemImage: "square.and.arrow.up")
+                            Label("Share GPX", systemImage: "square.and.arrow.up")
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 44)
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bordered)
                         
+                        // Favorite
                         Button {
-                            if subscriptionGate.isSubscribed {
-                                exportPoster()
-                            } else {
-                                showPaywall = true
-                            }
+                            toggleFavorite()
                         } label: {
-                            HStack {
-                                Label("Export High-Res", systemImage: "square.and.arrow.down")
-                                if !subscriptionGate.isSubscribed {
-                                    Image(systemName: "crown.fill")
-                                        .foregroundStyle(.yellow)
-                                        .font(.caption)
-                                }
-                            }
+                            Label(isFavorite ? "Remove Favorite" : "Add Favorite", 
+                                  systemImage: isFavorite ? "heart.fill" : "heart")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 44)
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(isFavorite ? .pink : .primary)
+                    }
+                    
+                    // Delete
+                    Button {
+                        deleteRide()
+                    } label: {
+                        Label("Delete Ride", systemImage: "trash")
                             .frame(maxWidth: .infinity)
                             .frame(height: 44)
-                        }
-                        .buttonStyle(.borderedProminent)
                     }
-                    .glass()
+                    .buttonStyle(.bordered)
+                    .tint(.red)
                 }
+                .glass()
             }
             .padding()
         }
-        .navigationTitle(poster.title)
+        .navigationTitle("Ride")
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await loadCachedPoster()
+            loadFavoriteStatus()
         }
         .sheet(isPresented: $showPaywall) {
             PaywallCardView()
@@ -309,6 +330,92 @@ struct RouteDetailView: View {
         ]
         
         return components.url ?? URL(string: baseURL)!
+    }
+    
+    private func sendToStudio() {
+        // Navigate to Studio tab with this ride selected
+        // This will be handled by the router/navigation system
+        NotificationCenter.default.post(
+            name: .pmrStudioRideSelected,
+            object: poster
+        )
+        dismiss()
+    }
+    
+    private func shareGPX() {
+        guard !coords.isEmpty else { return }
+        
+        // Create GPX content
+        let gpxContent = GPXGenerator.generate(
+            coordinates: coords,
+            title: poster.title,
+            description: formatRouteStats()
+        )
+        
+        // Create temporary file
+        let tempURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("\(poster.title.isEmpty ? "ride" : poster.title).gpx")
+        
+        do {
+            try gpxContent.write(to: tempURL, atomically: true, encoding: .utf8)
+            
+            // Present share sheet
+            let activityVC = UIActivityViewController(
+                activityItems: [tempURL],
+                applicationActivities: nil
+            )
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                window.rootViewController?.present(activityVC, animated: true)
+            }
+        } catch {
+            print("Failed to create GPX file: \(error)")
+        }
+    }
+    
+    private func toggleFavorite() {
+        isFavorite.toggle()
+        
+        // Update favorite status in poster store
+        if isFavorite {
+            FavoritesStore.shared.addFavorite(poster)
+        } else {
+            FavoritesStore.shared.removeFavorite(poster)
+        }
+    }
+    
+    private func deleteRide() {
+        // Show confirmation alert first
+        let alert = UIAlertController(
+            title: "Delete Ride",
+            message: "This will permanently delete this ride and cannot be undone.",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
+            // Remove from poster store
+            PosterStore.shared.removePoster(poster)
+            
+            // Remove cached images
+            PosterSnapshotStore.shared.removeSnapshot(for: poster)
+            
+            // Remove from favorites if needed
+            FavoritesStore.shared.removeFavorite(poster)
+            
+            // Dismiss the view
+            dismiss()
+        })
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController?.present(alert, animated: true)
+        }
+    }
+    
+    private func loadFavoriteStatus() {
+        isFavorite = FavoritesStore.shared.isFavorite(poster)
     }
     
     private func exportPoster() {
