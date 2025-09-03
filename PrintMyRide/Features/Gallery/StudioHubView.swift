@@ -9,6 +9,14 @@ struct StudioHubView: View {
             if let selectedRide = selectedRide {
                 // Show editor with selected ride
                 PosterDetailView(poster: selectedRide)
+                    .navigationBarBackButtonHidden(false)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("Back to Rides") {
+                                self.selectedRide = nil
+                            }
+                        }
+                    }
             } else {
                 // Show ride selector
                 RidesListView()
@@ -20,6 +28,12 @@ struct StudioHubView: View {
                 selectedRide = poster
                 // Switch to Studio tab
                 router.selectedTab = 0
+            }
+        }
+        .onChange(of: router.selectedTab) { newTab in
+            // Clear selected ride when switching away from Studio tab
+            if newTab != 0 {
+                selectedRide = nil
             }
         }
     }
