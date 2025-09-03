@@ -1,0 +1,4 @@
+app_identifier("com.bttr.printmyride")
+apple_id("owner@email.example")        # Apple ID email for the team
+itc_team_id("APP_STORE_CONNECT_TEAM")  # numeric; if unknown leave as placeholder
+team_id("DEVELOPER_TEAM_ID")           # 10-char dev portal team id

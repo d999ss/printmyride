@@ -1,0 +1,65 @@
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    app_store_connect_api_key(
+      key_id: "MF59B82MMF",
+      issuer_id: ENV["ASC_ISSUER_ID"],
+      key_filepath: "ios/keys/PrintMyRide_ASC.p8",
+      duration: 1200,
+      in_house: false
+    )
+  end
+
+  desc "Build the app (App Store export)"
+  lane :build do
+    gym(
+      scheme: "PrintMyRide",
+      export_method: "app-store",
+      configuration: "Release"
+    )
+  end
+
+  desc "Ship to TestFlight"
+  lane :beta do
+    increment_build_number(xcodeproj: "PrintMyRide.xcodeproj")
+    build
+    upload_to_testflight(
+      changelog: ENV["TF_NOTES"] || "Performance improvements and polish.",
+      distribute_external: true,
+      groups: ["External Beta"]
+    )
+  end
+
+  desc "Quick deploy: commit, tag, and push to TestFlight"
+  lane :deploy do |options|
+    # Get commit message
+    commit_message = options[:message] || "App update"
+    
+    # Commit changes
+    sh("git add .")
+    sh("git commit -m '#{commit_message}'")
+    
+    # Get current version and increment build
+    version = get_version_number(xcodeproj: "PrintMyRide.xcodeproj")
+    build_num = increment_build_number(xcodeproj: "PrintMyRide.xcodeproj")
+    
+    # Create tag
+    tag = "v#{version}-#{build_num}"
+    sh("git tag #{tag}")
+    
+    # Push everything
+    sh("git push origin main")
+    sh("git push origin #{tag}")
+    
+    # Build and upload
+    build
+    upload_to_testflight(
+      changelog: commit_message,
+      distribute_external: true,
+      groups: ["External Beta"]
+    )
+    
+    puts "🎉 Deployed #{tag} to TestFlight!"
+  end
+end

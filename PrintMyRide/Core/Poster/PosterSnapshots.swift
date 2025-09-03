@@ -160,38 +160,30 @@ struct PosterTile: View {
     let poster: Poster
     
     var snapshotOrPlaceholder: UIImage? {
+        #if DEBUG
         print("🔍 [PosterTile] Loading image for poster: '\(poster.title)'")
+        #endif
         
-        // 1) try disk snapshot
+        // 1) Try disk snapshot first (cached)
         if let snap = PosterSnapshotStore.shared.loadSnapshot(for: poster) {
-            print("✅ [PosterTile] Loaded snapshot for '\(poster.title)'")
+            #if DEBUG
+            print("✅ [PosterTile] Loaded cached snapshot for '\(poster.title)'")
+            #endif
             return snap
         }
-        print("📂 [PosterTile] No snapshot found for '\(poster.title)'")
         
-        // 2) Test if we can load any image at all from asset catalog
-        if let testImage = UIImage(named: "alpine_climb") {
-            print("✅ [PosterTile] TEST SUCCESS: Can load alpine_climb from asset catalog")
-        } else {
-            print("❌ [PosterTile] TEST FAIL: Cannot load alpine_climb from asset catalog")
-        }
-        
-        // 3) fallback to bundled placeholder
+        // 2) Fallback to bundled placeholder
         let placeholderKey = poster.placeholderKey
-        print("🔍 [PosterTile] Looking for placeholder with key: '\(placeholderKey)'")
-        
         if let placeholder = PlaceholderPosters.image(for: placeholderKey) {
+            #if DEBUG
             print("✅ [PosterTile] Loaded placeholder '\(placeholderKey)' for '\(poster.title)'")
+            #endif
             return placeholder
         }
         
-        print("❌ [PosterTile] No placeholder found for key '\(placeholderKey)' (poster: '\(poster.title)')")
-        
-        // 4) Force load alpine_climb for debugging
-        if let forceImage = UIImage(named: "alpine_climb") {
-            print("🚀 [PosterTile] FORCE SUCCESS: Using alpine_climb for all posters as test")
-            return forceImage
-        }
+        #if DEBUG
+        print("❌ [PosterTile] No image found for '\(poster.title)'")
+        #endif
         
         return nil
     }

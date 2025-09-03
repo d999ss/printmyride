@@ -9,5 +9,6 @@ struct HeroHeadlineOverlay: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 12)
             .allowsHitTesting(false)
+            .decorative()  // Mark as decorative for TapDoctor
     }
 }

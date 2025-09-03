@@ -6,13 +6,21 @@ struct PrintMyRideApp: App {
     @StateObject private var appState = AppState()
     @StateObject private var oauth = StravaOAuth()
     @StateObject private var services = ServiceHub()
-    @AppStorage("pmr.hasOnboarded") private var hasOnboarded: Bool = true
+    @AppStorage("hasOnboarded") private var hasOnboarded: Bool = false
     @State private var showOnboarding = false
     @State private var showSplash = true
     
     init() {
+        // Configure true Liquid Glass chrome via UIKit
+        configureLiquidGlassChrome()
+        
         // Initialize poster snapshot system
         AppBootstrap.run()
+        
+        // Enable TapDoctor for DEBUG builds
+        #if DEBUG
+        TapDoctor.shared.enableAutoScanAndFix()
+        #endif
         
         // Defaults: dark + studio + show onboarding for new users
         UserDefaults.standard.register(defaults: [
@@ -62,23 +70,6 @@ struct PrintMyRideApp: App {
             )
             #endif
         }
-        
-        // Configure monochrome tab bar appearance
-        let tab = UITabBarAppearance(); tab.configureWithOpaqueBackground()
-        tab.backgroundColor = .black; tab.shadowColor = .clear
-        func style(_ a: UITabBarItemAppearance) {
-            a.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            a.selected.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            a.normal.iconColor = .secondaryLabel
-            a.selected.iconColor = .label
-        }
-        style(tab.stackedLayoutAppearance)
-        style(tab.inlineLayoutAppearance)
-        style(tab.compactInlineLayoutAppearance)
-        UITabBar.appearance().standardAppearance = tab
-        if #available(iOS 15, *) { UITabBar.appearance().scrollEdgeAppearance = tab }
-        UITabBar.appearance().tintColor = .label
-        UITabBar.appearance().unselectedItemTintColor = .secondaryLabel
     }
 
     var body: some Scene {
@@ -91,7 +82,7 @@ struct PrintMyRideApp: App {
                         .environmentObject(services)
                         .allowsHitTesting(true)        // force-enable interactions
                         // System-native global polish
-                        .tint(.orange)  // Brand accent color applied globally
+                        .tint(.accentColor)  // System accent color applied globally
                         .onAppear {
                         if ProcessInfo.processInfo.arguments.contains("--PMRTestMode") {
                             UserDefaults.standard.set(true, forKey: "pmr.testMode")
@@ -101,70 +92,82 @@ struct PrintMyRideApp: App {
                             let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
                             try? fm.removeItem(at: docs.appendingPathComponent("posters_index.json"))
                         }
-                            if !hasOnboarded { showOnboarding = true }
+                            if !hasOnboarded { 
+                                AnalyticsService.shared.startOnboardingTimer()
+                                showOnboarding = true 
+                            }
                         }
                         .onOpenURL { url in
-                            // Forward to OAuth handler; it checks scheme/host/path
-                            oauth.handleCallback(url: url)
-                        }
-                        // Overlay-based onboarding that doesn't block touch events
-                        .overlay(alignment: .center) {
-                            if showOnboarding {
-                                SimpleOnboardingView {
-                                    withAnimation(.easeInOut) {
-                                        hasOnboarded = true
-                                        showOnboarding = false
-                                    }
-                                }
-                                .transition(.opacity.combined(with: .scale))
-                                .zIndex(1000)
+                            // Handle different URL schemes
+                            if url.scheme == "printmyride" {
+                                handleDeepLink(url: url)
+                            } else {
+                                // Forward to OAuth handler; it checks scheme/host/path
+                                oauth.handleCallback(url: url)
                             }
+                        }
+                        // Full-screen onboarding coordinator
+                        .fullScreenCover(isPresented: $showOnboarding) {
+                            OnboardingCoordinator()
                         }
                 }
                 
-                // Health overlay for debugging (hidden automatically in focus modes)
-                if !showSplash && !ProcessInfo.processInfo.arguments.contains("--hideDebugPills") {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            VStack(alignment: .trailing, spacing: 4) {
-                                Text("🟢 Touch OK")
-                                    .font(.caption2)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(.green.opacity(0.8))
-                                    .cornerRadius(8)
-                                    .onTapGesture {
-                                        print("[Health] Touch test successful!")
-                                    }
-                                    .allowsHitTesting(true)
-                                
-                                Text("Nav: \(hasOnboarded ? "Ready" : "Blocked")")
-                                    .font(.caption2)
-                                    .foregroundStyle(.white)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(hasOnboarded ? .green.opacity(0.8) : .red.opacity(0.8))
-                                    .cornerRadius(8)
-                            }
-                            .padding(.trailing, 12)
-                            .padding(.top, 60)
-                        }
-                        Spacer()
-                    }
-                    .allowsHitTesting(false) // Container doesn't block touches
-                    .zIndex(1500) // Lower than focus mode overlays
-                }
                 
                 if showSplash {
                     SplashScreen { showSplash = false }
                 }
             }
             .onChange(of: hasOnboarded) { done in
-                if done { showOnboarding = false }
+                if done { 
+                    showOnboarding = false 
+                    AnalyticsService.shared.trackOnboardingCompleted()
+                }
             }
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
         }
+    }
+    
+    // MARK: - Deep Link Handling
+    private func handleDeepLink(url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
+        
+        switch components.host {
+        case "route":
+            handleRouteDeepLink(components: components)
+        case "poster":
+            handlePosterDeepLink(components: components)
+        default:
+            print("Unknown deep link: \(url)")
+        }
+    }
+    
+    private func handleRouteDeepLink(components: URLComponents) {
+        // Extract route parameters
+        let queryItems = components.queryItems ?? []
+        var routeData: [String: String] = [:]
+        
+        for item in queryItems {
+            routeData[item.name] = item.value
+        }
+        
+        // Show route information or navigate to relevant view
+        // For now, just navigate to the main app and let user find the route
+        print("Received route deep link with data: \(routeData)")
+        
+        // You could implement navigation to a specific route here
+        // by posting a notification that the main views can observe
+        NotificationCenter.default.post(name: .init("PMRRouteDeepLink"), 
+                                      object: nil, 
+                                      userInfo: routeData)
+    }
+    
+    private func handlePosterDeepLink(components: URLComponents) {
+        // Handle poster-specific deep links
+        print("Received poster deep link: \(components.url?.absoluteString ?? "")")
+        
+        NotificationCenter.default.post(name: .init("PMRPosterDeepLink"), 
+                                      object: nil, 
+                                      userInfo: ["url": components.url?.absoluteString ?? ""])
     }
 }
 
@@ -185,4 +188,39 @@ struct StravaConfig {
         else { return nil }
         return .init(clientId: id, exchangeURL: exURL, refreshURL: rfURL, redirectHTTPS: rdURL)
     }
+}
+
+// MARK: - True Liquid Glass Configuration
+func configureLiquidGlassChrome() {
+    // Navigation Bar - Apple Music style liquid glass
+    let nav = UINavigationBarAppearance()
+    nav.configureWithDefaultBackground()
+    
+    // iOS 17+ liquid glass background effect
+    if #available(iOS 17.0, *) {
+        nav.backgroundEffect = UIBlurEffect(style: .systemChromeMaterial)
+    } else {
+        nav.backgroundEffect = UIBlurEffect(style: .systemThickMaterial)
+    }
+    
+    nav.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+    nav.shadowColor = UIColor.separator.withAlphaComponent(0.2)
+    nav.titleTextAttributes = [.foregroundColor: UIColor.label]
+    nav.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
+    UINavigationBar.appearance().standardAppearance = nav
+    UINavigationBar.appearance().scrollEdgeAppearance = nav
+    UINavigationBar.appearance().compactAppearance = nav
+    UINavigationBar.appearance().tintColor = .label
+    
+    // Hide system tab bar since we're using custom floating glass one
+    UITabBar.appearance().isHidden = true
+    
+    // Toolbar - consistent glass treatment
+    let tool = UIToolbarAppearance()
+    tool.configureWithTransparentBackground()
+    tool.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+    tool.backgroundColor = .clear
+    UIToolbar.appearance().standardAppearance = tool
+    UIToolbar.appearance().compactAppearance = tool
+    UIToolbar.appearance().tintColor = .label
 }

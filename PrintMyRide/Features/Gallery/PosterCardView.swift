@@ -46,7 +46,8 @@ struct PosterCardView: View {
                     
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .imageScale(.medium)
-                        .foregroundStyle(isFavorite ? .red : .primary)
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(isFavorite ? Color.accentColor : .primary)
                         .padding(8)
                         .background(.ultraThinMaterial, in: Circle())
                         .onTapGesture {

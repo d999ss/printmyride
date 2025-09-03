@@ -37,6 +37,56 @@
 			<key>swiftSymbol</key>
 			<string>pmrLogo</string>
 		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/donnysmith/CC/printmyride/PrintMyRide/Shared/Resources/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameAlpineClimb</string>
+			<key>relativePath</key>
+			<string>./alpine_climb.imageset</string>
+			<key>swiftSymbol</key>
+			<string>alpineClimb</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/donnysmith/CC/printmyride/PrintMyRide/Shared/Resources/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameCityNightRide</string>
+			<key>relativePath</key>
+			<string>./city_night_ride.imageset</string>
+			<key>swiftSymbol</key>
+			<string>cityNightRide</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/donnysmith/CC/printmyride/PrintMyRide/Shared/Resources/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameCoastalSprint</string>
+			<key>relativePath</key>
+			<string>./coastal_sprint.imageset</string>
+			<key>swiftSymbol</key>
+			<string>coastalSprint</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/donnysmith/CC/printmyride/PrintMyRide/Shared/Resources/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameForestSwitchbacks</string>
+			<key>relativePath</key>
+			<string>./forest_switchbacks.imageset</string>
+			<key>swiftSymbol</key>
+			<string>forestSwitchbacks</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/donnysmith/CC/printmyride/PrintMyRide/Shared/Resources/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNamePosterPlaceholder</string>
+			<key>relativePath</key>
+			<string>./poster_placeholder.imageset</string>
+			<key>swiftSymbol</key>
+			<string>posterPlaceholder</string>
+		</dict>
 	</array>
 	<key>symbols</key>
 	<array/>

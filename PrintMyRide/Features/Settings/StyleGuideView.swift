@@ -35,7 +35,7 @@ struct StyleGuideView: View {
                 ToolbarItem(placement: .cancellationAction) { Button("Close") { dismiss() } }
             }
         }
-        .background(settings.onboardingTheme == "studio" ? Color.black : DesignTokens.Colors.surface)
+        .background(.clear)
     }
 }
 

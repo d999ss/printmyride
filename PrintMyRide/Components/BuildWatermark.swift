@@ -20,6 +20,7 @@ struct BuildWatermark: View {
             .foregroundStyle(.secondary)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
             .allowsHitTesting(false)
+            .decorative()  // Mark as decorative for TapDoctor
     }
     #else
     var body: some View { EmptyView() }

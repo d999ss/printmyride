@@ -19,7 +19,7 @@ struct OnboardingView: View {
             VStack(spacing: 20) {
                 // Hero
                 VStack(alignment: .leading, spacing: 12) {
-                    RoundedRectangle(cornerRadius: 18)
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
                         .fill(.ultraThinMaterial)
                         .frame(height: 180)
                         .overlay(
@@ -28,6 +28,10 @@ struct OnboardingView: View {
                                     .imageScale(.large)
                                     .foregroundStyle(.secondary)
                             }
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                .stroke(.white.opacity(0.18), lineWidth: 1)
                         )
                     Text("Turn rides into art.")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -44,8 +48,10 @@ struct OnboardingView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
-                        .background(.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .background(
+                            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                .fill(.blue)
+                        )
                         .contentShape(Rectangle())
                         .onTapGesture {
                             guard !isWorking else { return }
@@ -58,8 +64,14 @@ struct OnboardingView: View {
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
-                            .background(.gray.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .background(
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                            .stroke(.white.opacity(0.18), lineWidth: 1)
+                                    )
+                            )
                     }
                     .buttonStyle(.plain)
 

@@ -1,24 +1,5 @@
 {
   "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Gallery/StudioHubView.swift",
-  "tables": {
-    "Localizable": [
-      {
-        "comment": "",
-        "key": "Studio",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 27
-        }
-      },
-      {
-        "comment": "",
-        "key": "Try Pro",
-        "location": {
-          "startingColumn": 27,
-          "startingLine": 152
-        }
-      }
-    ]
-  },
+  "tables": {},
   "version": 1
 }

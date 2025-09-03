@@ -1,7 +1,7 @@
 import SwiftUI
 import AuthenticationServices
 
-final class StravaService: NSObject, ASWebAuthenticationPresentationContextProviding {
+final class StravaService: NSObject, ObservableObject, ASWebAuthenticationPresentationContextProviding {
     static let shared = StravaService()
     
     // Configure these before calling connect()
@@ -9,6 +9,8 @@ final class StravaService: NSObject, ASWebAuthenticationPresentationContextProvi
     var backendExchange: URL = URL(string:"https://placeholder.invalid/api/strava/exchange")!
     var backendRefresh:  URL = URL(string:"https://placeholder.invalid/api/strava/refresh")!
     var redirectHTTPS: URL = URL(string:"https://placeholder.invalid/oauth/strava/callback")!
+    
+    @Published private(set) var token: String?
     
     func connect() async throws -> StravaTokens {
         #if DEBUG
@@ -123,5 +125,42 @@ extension StravaService {
         let latlng: [[Double]]?
         let altitude: [Double]?
         let time: [Double]?
+    }
+}
+
+// MARK: - Onboarding Integration
+extension StravaService {
+    var isAuthenticated: Bool {
+        token != nil || UserDefaults.standard.string(forKey: "strava_access_token") != nil
+    }
+    
+    func authenticate() async throws {
+        let tokens = try await connect()
+        await MainActor.run {
+            self.token = tokens.accessToken
+            save(tokens)
+        }
+    }
+    
+    func fetchRecentRides(limit: Int = 10) async throws -> [Ride] {
+        guard isAuthenticated else {
+            throw StravaError.notAuthenticated
+        }
+        
+        // For onboarding demo, return sample data
+        // In production, this would make real API calls
+        try await Task.sleep(for: .seconds(1))
+        return DemoRides.default
+    }
+}
+
+enum StravaError: LocalizedError {
+    case notAuthenticated
+    
+    var errorDescription: String? {
+        switch self {
+        case .notAuthenticated:
+            return "Please connect to Strava first"
+        }
     }
 }

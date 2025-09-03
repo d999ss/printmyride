@@ -4,114 +4,90 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "No route",
+        "key": "Generate Poster",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 415
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generating poster...",
         "location": {
           "startingColumn": 30,
-          "startingLine": 165
+          "startingLine": 406
         }
       },
       {
         "comment": "",
-        "key": "%lld pts",
-        "location": {
-          "startingColumn": 30,
-          "startingLine": 170
-        }
-      },
-      {
-        "comment": "",
-        "key": "Generating poster",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 258
-        }
-      },
-      {
-        "comment": "",
-        "key": "Ride stats",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 296
-        }
-      },
-      {
-        "comment": "",
-        "key": "Style presets",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 345
-        }
-      },
-      {
-        "comment": "",
-        "key": "Map",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 371
-        }
-      },
-      {
-        "comment": "",
-        "key": "Apple Maps background",
+        "key": "Use Map Background",
         "location": {
           "startingColumn": 20,
-          "startingLine": 372
+          "startingLine": 463
         }
       },
       {
         "comment": "",
-        "key": "Captions",
+        "key": "Map Style",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 472
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map Style",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 476
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show Buildings",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 489
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show Points of Interest",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 495
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save Map Snapshot",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 504
+        }
+      },
+      {
+        "comment": "",
+        "key": "Style Presets",
         "location": {
           "startingColumn": 18,
-          "startingLine": 400
+          "startingLine": 518
         }
       },
       {
         "comment": "",
-        "key": "Poster title",
-        "location": {
-          "startingColumn": 23,
-          "startingLine": 401
-        }
-      },
-      {
-        "comment": "",
-        "key": "Subtitle",
-        "location": {
-          "startingColumn": 23,
-          "startingLine": 404
-        }
-      },
-      {
-        "comment": "",
-        "key": "Apply",
-        "location": {
-          "startingColumn": 24,
-          "startingLine": 408
-        }
-      },
-      {
-        "comment": "",
-        "key": "Variants",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 418
-        }
-      },
-      {
-        "comment": "",
-        "key": "Pro",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 454
-        }
-      },
-      {
-        "comment": "",
-        "key": "Go Pro",
+        "key": "Paper",
         "location": {
           "startingColumn": 22,
-          "startingLine": 461
+          "startingLine": 537
+        }
+      },
+      {
+        "comment": "",
+        "key": "18×24 • %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 539
         }
       }
     ]

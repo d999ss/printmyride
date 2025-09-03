@@ -10,28 +10,41 @@ struct RootView: View {
     @State private var showPaywall = false
     
     var body: some View {
-        TabView(selection: $router.selectedTab) {
-            // 1) Studio (primary)
-            NavigationStack { StudioHubView() }
-                .tag(0)
-                .tabItem { Label("Studio", systemImage: "scribble.variable") }
-            
-            // 2) Collections (Favorites)
-            FavoritesView()
-                .tag(1)
-                .tabItem { Label("Collections", systemImage: "heart.fill") }
-            
-            // 3) Settings
-            NavigationStack { SettingsView() }
-                .tag(2)
-                .tabItem { Label("Settings", systemImage: "gearshape.fill") }
+        NavigationStack {
+            Group {
+                switch router.selectedTab {
+                case 0:
+                    StudioHubView()
+                case 1:
+                    FavoritesView()
+                case 2:
+                    SettingsView()
+                default:
+                    StudioHubView()
+                }
+            }
+            .listStyle(.plain)
+            .scrollIndicators(.hidden)
+            .scrollContentBackground(.hidden)   // no group plate
+            .listRowBackground(Color.clear)
+            .background(.clear)
         }
+        .toolbar(.hidden, for: .tabBar)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            PrintMyRideTabBar(selection: $router.selectedTab)
+                .padding(.horizontal, 12)
+                .padding(.bottom, 6)
+                .background(.clear)
+        }
+        // Optional: fill the empty bottom area with clear content so glass samples something
+        .background(Color.clear.ignoresSafeArea(edges: .bottom))
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .environmentObject(library)
         .environmentObject(router)
         .environmentObject(services)
         .environmentObject(gate)
         .environmentObject(accountStore)
-        .preferredColorScheme(preferredScheme(settings.appearance))
+        .preferredColorScheme(.light) // Force light mode for Apple Glass
         .onReceive(NotificationCenter.default.publisher(for: .pmrRequestPaywall)) { _ in
             if !accountStore.account.isPro { 
                 showPaywall = true 
@@ -48,3 +61,4 @@ struct RootView: View {
 
     private func preferredScheme(_ m: String) -> ColorScheme? { m=="light" ? .light : m=="dark" ? .dark : nil }
 }
+

@@ -401,6 +401,7 @@
 				INFOPLIST_KEY_CFBundleDocumentTypes = "";
 				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleURLName = pmr;\n    CFBundleURLSchemes =     (\n        pmr\n    );\n}";
 				INFOPLIST_KEY_LSApplicationQueriesSchemes = strava;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "PrintMyRide uses HealthKit to import your workout data and create beautiful route posters from your fitness activities.";
 				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
 				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
 				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;
@@ -436,6 +437,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleURLName = pmr;\n    CFBundleURLSchemes =     (\n        pmr\n    );\n}";
 				INFOPLIST_KEY_LSApplicationQueriesSchemes = strava;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "PrintMyRide uses HealthKit to import your workout data and create beautiful route posters from your fitness activities.";
 				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
 				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
 				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;

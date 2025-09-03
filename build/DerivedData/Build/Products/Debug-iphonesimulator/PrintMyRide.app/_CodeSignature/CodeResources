@@ -16,9 +16,13 @@
 		<data>
 		peyOpbkoFoZEkTF4GBwzM/95B00=
 		</data>
+		<key>ArtisticPosterRenderer.swift.disabled</key>
+		<data>
+		pJog/5KA7BhkPR7RSr1ZmQhC11c=
+		</data>
 		<key>Assets.car</key>
 		<data>
-		cUjUiJtYw7GjRuw1VsiQ5XYsYqU=
+		OidtzXkAxr6QKSVj22g4YBi6yLk=
 		</data>
 		<key>CanvasSheet.swift.disabled</key>
 		<data>
@@ -46,7 +50,7 @@
 		</data>
 		<key>PrintMyRide.debug.dylib</key>
 		<data>
-		K/3aE+t6hMesl3qBNFRrRxwjlXs=
+		hdh8RUluEr9eK88c3wGDr+ClG+w=
 		</data>
 		<key>PrivacyInfo.xcprivacy</key>
 		<data>
@@ -60,9 +64,29 @@
 		<data>
 		b71FurnFpLaodDDTS8fr7zOawcg=
 		</data>
+		<key>alpine_climb.jpg</key>
+		<data>
+		4LM13+TMouYC6bCaH6yGCmJ4Fxg=
+		</data>
+		<key>city_night_ride.jpg</key>
+		<data>
+		YL9oq1tGDh+dT2BqKNGb+iAa6xA=
+		</data>
+		<key>coastal_sprint.jpg</key>
+		<data>
+		qvnm8yOPAyO84KDnIvqhmmI87a4=
+		</data>
 		<key>default.gpx</key>
 		<data>
 		RCNb2WRCFjeNM2SiwrnmVUX2i7w=
+		</data>
+		<key>forest_switchbacks.jpg</key>
+		<data>
+		FG7WbHAWHzjRON6yZ256hla6sEc=
+		</data>
+		<key>poster_placeholder.jpg</key>
+		<data>
+		FM/SusgTltJTYgX/8kjQnaY0/uo=
 		</data>
 		<key>sample.gpx</key>
 		<data>
@@ -92,11 +116,18 @@
 			rduZbsNmM+0+zhp1lcwfGfi2QPpd/cyl7GjbrI0vC+0=
 			</data>
 		</dict>
+		<key>ArtisticPosterRenderer.swift.disabled</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jEIkuiVirma0+n1W1U0ez/DwqDJZGN1McBi5XE1K6tU=
+			</data>
+		</dict>
 		<key>Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AkS+6aTa/3r+t064+7mDfQWoXh5amCi22QtX08kjxXg=
+			IAeAsDX2vo8orauESuvXVORI4j3oP6JexNm6iDCypUY=
 			</data>
 		</dict>
 		<key>CanvasSheet.swift.disabled</key>
@@ -131,7 +162,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EEMekJqF5YasqKcmd/rejtzlWRzBVBhdf4m6NGGyxas=
+			If3fWKt9i5mAtLb/miDvqw/I2Uv/ujOKmMPWuHKXs3s=
 			</data>
 		</dict>
 		<key>PrivacyInfo.xcprivacy</key>
@@ -155,11 +186,46 @@
 			3gTgxiY8/mFR8G+gb/RpHRMWHigydAOhHeLN/s+dWLc=
 			</data>
 		</dict>
+		<key>alpine_climb.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aqtrTJFuJJLaQ9EWTRinihmLWwcpj5GS/uCUarmvIms=
+			</data>
+		</dict>
+		<key>city_night_ride.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XR+lRqsZWEStkr5bMaPvdEetrw1j39GVNIOiGLWZnwg=
+			</data>
+		</dict>
+		<key>coastal_sprint.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			AK+gEHvOH9jmTqUs8z0mDAEMyjC+H4DPEQMu//Mcogc=
+			</data>
+		</dict>
 		<key>default.gpx</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			cNhMf4d5fJ15P/e/M3oLBVs77ZS/15o2GNIrigcfj7U=
+			</data>
+		</dict>
+		<key>forest_switchbacks.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8wPEcPjP1vnhIE8HYUfk5IUDQr3MIC+0VBcbojjqBos=
+			</data>
+		</dict>
+		<key>poster_placeholder.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HlspfmBJC3y+JuqVEdwIxV6EN7zhnf/gnpd5sA1K7aw=
 			</data>
 		</dict>
 		<key>sample.gpx</key>

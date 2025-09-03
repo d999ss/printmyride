@@ -3,6 +3,8 @@ import UIKit
 
 @MainActor
 final class PosterStore: ObservableObject {
+    static let shared = PosterStore()
+    
     @Published private(set) var posters: [Poster] = []
 
     private let seededKey = "pmr.hasSeededSamplePoster"

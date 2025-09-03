@@ -1,40 +1,5 @@
 {
   "source": "/Users/donnysmith/CC/printmyride/PrintMyRide/App/PrintMyRideApp.swift",
-  "tables": {
-    "Localizable": [
-      {
-        "comment": "",
-        "key": "🟢 Touch OK",
-        "location": {
-          "startingColumn": 38,
-          "startingLine": 128
-        }
-      },
-      {
-        "comment": "",
-        "key": "Nav: %@",
-        "location": {
-          "startingColumn": 38,
-          "startingLine": 138
-        }
-      },
-      {
-        "comment": "",
-        "key": "🟢 Touch OK",
-        "location": {
-          "startingColumn": 34,
-          "startingLine": 155
-        }
-      },
-      {
-        "comment": "",
-        "key": "Nav: %@",
-        "location": {
-          "startingColumn": 34,
-          "startingLine": 166
-        }
-      }
-    ]
-  },
+  "tables": {},
   "version": 1
 }

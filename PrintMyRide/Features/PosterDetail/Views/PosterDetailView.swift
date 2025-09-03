@@ -269,24 +269,17 @@ struct PosterDetailView: View {
         isGeneratingPoster = true
         defer { isGeneratingPoster = false }
         
-        // Generate beautiful artistic poster instead of basic map
-        generatedPosterImage = await ArtisticPosterRenderer.renderArtisticPoster(
+        // Use the new artistic poster renderer
+        generatedPosterImage = SimpleArtisticPoster.render(
             title: poster.title,
             coordinates: coords,
-            distance: "14.2 MI", // TODO: Calculate from coords
-            duration: "1H 23M", // TODO: Calculate from data
-            elevation: "2,847 FT", // TODO: Calculate elevation gain
-            date: poster.createdAt.formatted(date: .abbreviated, time: .omitted),
-            location: "Colorado", // TODO: Reverse geocode from coords
-            style: .minimalist,
-            palette: .monochrome,
-            size: CGSize(width: 800, height: 1200) // Portrait poster
+            size: CGSize(width: 800, height: 1200)
         )
         
         // Save generated image to disk
         if let image = generatedPosterImage {
             await savePosterToDisk(image: image)
-            exportMessage = "✅ Beautiful artistic poster generated successfully"
+            exportMessage = "✅ Beautiful artistic poster generated!"
         } else {
             exportMessage = "❌ Failed to generate artistic poster"
         }

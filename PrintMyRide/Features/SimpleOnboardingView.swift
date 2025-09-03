@@ -8,7 +8,8 @@ struct SimpleOnboardingView: View {
     var body: some View {
         ZStack {
             // Dimming layer is intentionally hit-testable so a tap dismisses it.
-            Color.black.opacity(0.55)
+            Color.clear
+                .background(.ultraThinMaterial)
                 .ignoresSafeArea()
                 .onTapGesture { onDismiss() }
 
@@ -22,6 +23,7 @@ struct SimpleOnboardingView: View {
                             ZStack {
                                 Image(systemName: "map") // placeholder icon
                                     .imageScale(.large)
+                                    .symbolRenderingMode(.hierarchical)
                                     .foregroundStyle(.secondary)
                             }
                         )

@@ -1,6 +1,7 @@
 // PrintMyRide/UI/PosterDetailV2.swift - Enhanced with Focus Mode + Fixed Layout
 import SwiftUI
 import MapKit
+import CoreLocation
 
 // MARK: - Fixed Layout Components
 
@@ -287,6 +288,25 @@ struct PosterDetailV2: View {
         self.elevationMeters = elevationMeters
         self.durationSec = durationSec
         self.date = date
+    }
+    
+    // Convenience initializer for Poster objects
+    init(poster: Poster) {
+        let coordinates = poster.coordinates ?? DemoCoordsLoader.coords(forTitle: poster.title)
+        
+        // Calculate route stats
+        let distance = RouteStatsCalculator.distance(coords: coordinates)
+        let elevation = RouteStatsCalculator.elevationGain(coords: coordinates)
+        let duration = RouteStatsCalculator.estimatedDuration(coords: coordinates)
+        
+        self.posterID = poster.id
+        self.rideTitle = poster.title
+        self.rideSubtitle = ""
+        self.coords = coordinates
+        self.distanceMeters = distance * 1609.34 // miles to meters
+        self.elevationMeters = elevation * 0.3048 // feet to meters  
+        self.durationSec = duration ?? 3600 // fallback 1 hour
+        self.date = poster.createdAt
     }
 
     var body: some View {

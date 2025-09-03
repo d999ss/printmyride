@@ -24,7 +24,7 @@ struct FavoritesView: View {
                     }
                     .padding(DesignTokens.Spacing.md)
                 }
-                .background(DesignTokens.Colors.surface)
+                .background(.clear)
             }
             .navigationTitle("Collections")
             .navigationBarTitleDisplayMode(.large)
@@ -71,26 +71,22 @@ struct FavoritesView: View {
             }
             .padding(.vertical, DesignTokens.Spacing.sm)
         }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(.ultraThinMaterial)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .stroke(.white.opacity(0.18), lineWidth: 1)
+                )
+        )
     }
     
     private var favoritesGrid: some View {
         LazyVGrid(columns: cols, spacing: DesignTokens.Spacing.gridSpacing) {
             ForEach(favoritedPosters) { poster in
-                let coords = DemoCoordsLoader.coords(forTitle: poster.title)
-                
-                NavigationLink {
-                    let stats = StatsExtractor.compute(coords: coords, elevations: [], timestamps: nil)
-                    PosterDetailV2(
-                        posterID: poster.id,
-                        rideTitle: poster.title,
-                        rideSubtitle: poster.createdAt.formatted(date: .abbreviated, time: .omitted),
-                        coords: coords,
-                        distanceMeters: stats.distanceKm * 1000,
-                        elevationMeters: stats.ascentM,
-                        durationSec: stats.durationSec ?? 0,
-                        date: poster.createdAt
-                    )
-                } label: {
+                NavigationLink(destination: RouteDetailView(poster: poster)) {
+                    let coords = DemoCoordsLoader.coords(forTitle: poster.title)
                     PosterCardView(
                         title: poster.title,
                         thumbPath: poster.thumbnailPath,

@@ -40,6 +40,21 @@ extension ImageResource {
     /// The "PMR Logo" asset catalog image resource.
     static let pmrLogo = ImageResource(name: "PMR Logo", bundle: resourceBundle)
 
+    /// The "alpine_climb" asset catalog image resource.
+    static let alpineClimb = ImageResource(name: "alpine_climb", bundle: resourceBundle)
+
+    /// The "city_night_ride" asset catalog image resource.
+    static let cityNightRide = ImageResource(name: "city_night_ride", bundle: resourceBundle)
+
+    /// The "coastal_sprint" asset catalog image resource.
+    static let coastalSprint = ImageResource(name: "coastal_sprint", bundle: resourceBundle)
+
+    /// The "forest_switchbacks" asset catalog image resource.
+    static let forestSwitchbacks = ImageResource(name: "forest_switchbacks", bundle: resourceBundle)
+
+    /// The "poster_placeholder" asset catalog image resource.
+    static let posterPlaceholder = ImageResource(name: "poster_placeholder", bundle: resourceBundle)
+
 }
 
 // MARK: - Color Symbol Extensions -
@@ -121,6 +136,51 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "alpine_climb" asset catalog image.
+    static var alpineClimb: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .alpineClimb)
+#else
+        .init()
+#endif
+    }
+
+    /// The "city_night_ride" asset catalog image.
+    static var cityNightRide: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .cityNightRide)
+#else
+        .init()
+#endif
+    }
+
+    /// The "coastal_sprint" asset catalog image.
+    static var coastalSprint: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .coastalSprint)
+#else
+        .init()
+#endif
+    }
+
+    /// The "forest_switchbacks" asset catalog image.
+    static var forestSwitchbacks: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .forestSwitchbacks)
+#else
+        .init()
+#endif
+    }
+
+    /// The "poster_placeholder" asset catalog image.
+    static var posterPlaceholder: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .posterPlaceholder)
+#else
+        .init()
+#endif
+    }
+
 }
 #endif
 
@@ -142,6 +202,51 @@ extension UIKit.UIImage {
     static var pmrLogo: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .pmrLogo)
+#else
+        .init()
+#endif
+    }
+
+    /// The "alpine_climb" asset catalog image.
+    static var alpineClimb: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .alpineClimb)
+#else
+        .init()
+#endif
+    }
+
+    /// The "city_night_ride" asset catalog image.
+    static var cityNightRide: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .cityNightRide)
+#else
+        .init()
+#endif
+    }
+
+    /// The "coastal_sprint" asset catalog image.
+    static var coastalSprint: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .coastalSprint)
+#else
+        .init()
+#endif
+    }
+
+    /// The "forest_switchbacks" asset catalog image.
+    static var forestSwitchbacks: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .forestSwitchbacks)
+#else
+        .init()
+#endif
+    }
+
+    /// The "poster_placeholder" asset catalog image.
+    static var posterPlaceholder: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .posterPlaceholder)
 #else
         .init()
 #endif

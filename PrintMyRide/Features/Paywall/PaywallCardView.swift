@@ -125,16 +125,14 @@ struct PaywallCardView: View {
                                     }
                                     .padding(DesignTokens.Spacing.md)
                                     .background(
-                                        RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.button)
-                                            .fill(product.id.contains("annual") ?
-                                                  DesignTokens.Colors.primary.opacity(0.1) :
-                                                  DesignTokens.Colors.surfaceSecondary)
-                                    )
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.button)
-                                            .stroke(product.id.contains("annual") ?
-                                                   DesignTokens.Colors.primary :
-                                                   Color.clear, lineWidth: 2)
+                                        RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.button, style: .continuous)
+                                            .fill(.ultraThinMaterial)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.button, style: .continuous)
+                                                    .stroke(product.id.contains("annual") ?
+                                                           DesignTokens.Colors.primary :
+                                                           .white.opacity(0.18), lineWidth: product.id.contains("annual") ? 2 : 1)
+                                            )
                                     )
                                 }
                                 .buttonStyle(.plain)
@@ -239,6 +237,7 @@ struct PaywallCardView: View {
             }
             .navigationTitle("Try Pro")
             .toolbar { ToolbarItem(placement: .topBarTrailing) { Button("Close") { dismiss() } } }
+            .background(.clear)
         }
         .task(loadProducts)
         .alert("Purchase Error", isPresented: .constant(error != nil)) {

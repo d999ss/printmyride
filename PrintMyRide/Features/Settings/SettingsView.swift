@@ -23,58 +23,25 @@ struct SettingsView: View {
             }
             
             Section("Demo Mode") {
-                HStack {
-                    Label("Enable Mock Strava Data", systemImage: "bicycle.circle.fill")
-                        .font(DesignTokens.Typography.body)
-                    Spacer()
-                    Toggle("", isOn: $mockStrava)
-                }
+                Toggle("Enable Mock Strava Data", isOn: $mockStrava)
                 if mockStrava {
-                    HStack {
-                        Image(systemName: "info.circle")
-                            .foregroundStyle(DesignTokens.Colors.secondary)
-                            .imageScale(.small)
-                        Text("Import functionality enabled with sample data")
-                            .font(DesignTokens.Typography.caption)
-                            .foregroundStyle(DesignTokens.Colors.secondary)
-                    }
+                    Text("Import functionality enabled with sample data")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
             
             Section("Maps") {
-                HStack {
-                    Label("Use Apple Maps Background in Posters", systemImage: "map.fill")
-                        .font(DesignTokens.Typography.body)
-                    Spacer()
-                    Toggle("", isOn: $useMapBackground)
-                }
+                Toggle("Use Apple Maps", isOn: $useMapBackground)
                 if useMapBackground {
-                    HStack {
-                        Image(systemName: "info.circle")
-                            .foregroundStyle(DesignTokens.Colors.secondary)
-                            .imageScale(.small)
-                        Text("Route maps will be blended into poster backgrounds")
-                            .font(DesignTokens.Typography.caption)
-                            .foregroundStyle(DesignTokens.Colors.secondary)
-                    }
+                    Text("Route maps will be blended into poster backgrounds")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
             
             Section("Design") {
-                Button {
-                    showStyleGuide = true
-                } label: {
-                    HStack {
-                        Label("Style Guide", systemImage: "paintbrush.fill")
-                            .font(DesignTokens.Typography.body)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .imageScale(.small)
-                            .foregroundStyle(DesignTokens.Colors.secondary)
-                    }
-                }
-                .buttonStyle(.plain)
-                .foregroundStyle(DesignTokens.Colors.onSurface)
+                NavigationLink("Map Preview", destination: MapPreviewView())
             }
             
             Section("General") {
@@ -139,14 +106,170 @@ struct SettingsView: View {
                 .foregroundStyle(DesignTokens.Colors.onSurface)
             }
         }
+        .formStyle(.grouped)
+        .scrollContentBackground(.hidden)
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
-        .sheet(isPresented: $showStyleGuide) { StyleGuideView() }
     }
     
     private var appVersionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
         return "Version \(version) (\(build))"
+    }
+}
+
+// MARK: - Map Preview View
+struct MapPreviewView: View {
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                // Header
+                VStack(spacing: 8) {
+                    Text("Generated Map Styles")
+                        .font(.largeTitle.weight(.bold))
+                    Text("See how your rides will look as beautiful poster maps")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.horizontal)
+                
+                // Preview samples
+                LazyVGrid(columns: [
+                    GridItem(.flexible()),
+                    GridItem(.flexible())
+                ], spacing: 16) {
+                    
+                    MapPreviewCard(
+                        title: "Classic Route",
+                        subtitle: "Mountain Climb • 12.4 mi",
+                        routeType: "mountain",
+                        color: .blue
+                    )
+                    
+                    MapPreviewCard(
+                        title: "Coastal Ride",
+                        subtitle: "Ocean View • 8.7 mi", 
+                        routeType: "coastal",
+                        color: .teal
+                    )
+                    
+                    MapPreviewCard(
+                        title: "City Loop",
+                        subtitle: "Urban Circuit • 5.2 mi",
+                        routeType: "city", 
+                        color: .orange
+                    )
+                    
+                    MapPreviewCard(
+                        title: "Forest Trail",
+                        subtitle: "Nature Path • 15.8 mi",
+                        routeType: "forest",
+                        color: .green
+                    )
+                }
+                .padding(.horizontal)
+                
+                // Info section
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Map Features")
+                        .font(.headline)
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        MapFeatureRow(icon: "map.fill", text: "High-resolution route visualization")
+                        MapFeatureRow(icon: "location.fill", text: "Automatic route smoothing")
+                        MapFeatureRow(icon: "paintbrush.fill", text: "Custom color themes") 
+                        MapFeatureRow(icon: "square.and.arrow.up.fill", text: "Print-ready export formats")
+                    }
+                }
+                .padding()
+                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+                .padding(.horizontal)
+            }
+        }
+        .navigationTitle("Map Preview")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+// MARK: - Supporting Views
+private struct MapPreviewCard: View {
+    let title: String
+    let subtitle: String
+    let routeType: String
+    let color: Color
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            // Mock map preview
+            RoundedRectangle(cornerRadius: 12)
+                .fill(color.opacity(0.1))
+                .frame(height: 120)
+                .overlay {
+                    ZStack {
+                        // Mock route path
+                        Path { path in
+                            switch routeType {
+                            case "mountain":
+                                path.move(to: CGPoint(x: 20, y: 80))
+                                path.addCurve(to: CGPoint(x: 140, y: 40), 
+                                            control1: CGPoint(x: 60, y: 90),
+                                            control2: CGPoint(x: 100, y: 30))
+                            case "coastal":
+                                path.move(to: CGPoint(x: 20, y: 60))
+                                path.addCurve(to: CGPoint(x: 140, y: 60),
+                                            control1: CGPoint(x: 50, y: 40),
+                                            control2: CGPoint(x: 110, y: 80))
+                            case "city":
+                                path.move(to: CGPoint(x: 30, y: 70))
+                                path.addLine(to: CGPoint(x: 60, y: 70))
+                                path.addLine(to: CGPoint(x: 60, y: 40))
+                                path.addLine(to: CGPoint(x: 100, y: 40))
+                                path.addLine(to: CGPoint(x: 100, y: 80))
+                                path.addLine(to: CGPoint(x: 130, y: 80))
+                            case "forest":
+                                path.move(to: CGPoint(x: 25, y: 70))
+                                path.addCurve(to: CGPoint(x: 135, y: 50),
+                                            control1: CGPoint(x: 60, y: 30),
+                                            control2: CGPoint(x: 100, y: 90))
+                            default:
+                                path.move(to: CGPoint(x: 20, y: 60))
+                                path.addLine(to: CGPoint(x: 140, y: 60))
+                            }
+                        }
+                        .stroke(color, lineWidth: 3)
+                        .shadow(color: color.opacity(0.3), radius: 2)
+                    }
+                }
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Text(subtitle)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding()
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
+    }
+}
+
+private struct MapFeatureRow: View {
+    let icon: String
+    let text: String
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .foregroundStyle(.blue)
+                .frame(width: 20)
+            Text(text)
+                .font(.subheadline)
+            Spacer()
+        }
     }
 }

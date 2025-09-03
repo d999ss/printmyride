@@ -1,0 +1,37 @@
+name: iOS CI
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  beta:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set Xcode
+        run: sudo xcode-select -switch /Applications/Xcode.app
+
+      - name: Ruby setup
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Restore ASC key
+        run: |
+          mkdir -p ios/keys
+          echo "$ASC_P8_BASE64" | base64 --decode > ios/keys/PrintMyRide_ASC.p8
+        shell: bash
+        env:
+          ASC_P8_BASE64: ${{ secrets.ASC_P8_BASE64 }}
+
+      - name: Fastlane beta
+        env:
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_P8_BASE64: ${{ secrets.ASC_P8_BASE64 }}
+          TF_NOTES: "Auto build from tag ${{ github.ref_name }}"
+        run: bundle exec fastlane ios beta
