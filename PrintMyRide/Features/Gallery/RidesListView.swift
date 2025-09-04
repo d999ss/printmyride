@@ -10,8 +10,7 @@ struct RidesListView: View {
     
     private enum RideFilter: String, CaseIterable {
         case all = "All"
-        case favorites = "Favorites"  
-        case thisMonth = "This Month"
+        case favorites = "Favorites"
     }
     
     private var filteredRides: [Poster] {
@@ -21,27 +20,7 @@ struct RidesListView: View {
             return rides
         case .favorites:
             return rides.filter { FavoritesStore.shared.contains($0.id) }
-        case .thisMonth:
-            let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
-            return rides.filter { $0.createdAt > thirtyDaysAgo }
         }
-    }
-    
-    private var thisMonthStats: (rides: Int, miles: Double, elevation: Double) {
-        let thirtyDaysAgo = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
-        let thisMonthRides = posterStore.posters.filter { $0.createdAt > thirtyDaysAgo }
-        
-        let totalMiles = thisMonthRides.compactMap { ride -> Double? in
-            guard let coords = ride.coordinates else { return nil }
-            return RouteStatsCalculator.distance(coords: coords)
-        }.reduce(0, +)
-        
-        let totalElevation = thisMonthRides.compactMap { ride -> Double? in
-            guard let coords = ride.coordinates else { return nil }
-            return RouteStatsCalculator.elevationGain(coords: coords)
-        }.reduce(0, +)
-        
-        return (thisMonthRides.count, totalMiles, totalElevation)
     }
     
     var body: some View {
@@ -54,24 +33,7 @@ struct RidesListView: View {
                     }
                     .padding()
                 }
-                // Clean section header
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("This Month")
-                        .font(.headline)
-                    
-                    HStack(spacing: 20) {
-                        Label("\(thisMonthStats.rides) rides", systemImage: "bicycle")
-                        Label(String(format: "%.0f mi", thisMonthStats.miles), systemImage: "map")
-                        Label(String(format: "%.0f ft", thisMonthStats.elevation), systemImage: "arrow.up.forward")
-                    }
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .labelStyle(.titleAndIcon)
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                
-                // Custom segmented control for perfect TapDoctor compliance
+// Custom segmented control for perfect TapDoctor compliance
                 HStack(spacing: 0) {
                     ForEach(RideFilter.allCases, id: \.self) { filter in
                         Button {

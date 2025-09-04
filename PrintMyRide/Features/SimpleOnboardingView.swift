@@ -17,8 +17,9 @@ struct SimpleOnboardingView: View {
                 // Hero
                 VStack(alignment: .leading, spacing: 12) {
                     RoundedRectangle(cornerRadius: 18)
-                        .fill(.ultraThinMaterial)
                         .frame(height: 180)
+                        .background(LiquidGlassRoundedRectangle(cornerRadius: 18))
+                        .liquidGlassRounded(cornerRadius: 18)
                         .overlay(
                             ZStack {
                                 Image(systemName: "map") // placeholder icon
@@ -39,14 +40,22 @@ struct SimpleOnboardingView: View {
                         services.mockStrava = true
                         onDismiss() 
                     }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.primary)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 16)
+                    .background(LiquidGlassCapsule())
+                    .liquidGlassCapsule()
                     
                     Button("Connect Strava") { 
                         onDismiss() 
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 16)
+                    .background(LiquidGlassCapsule())
+                    .liquidGlassCapsule(strokeOpacity: 0.15, shadowOpacity: 0.1)
                     
                     Button("Skip for now") { 
                         onDismiss() 

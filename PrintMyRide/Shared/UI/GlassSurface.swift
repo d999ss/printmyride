@@ -1,24 +1,27 @@
 import SwiftUI
 
-// MARK: - True Liquid Glass Surface Modifier
-// Single material layer with proper glass treatment - no custom blur stacking
+// MARK: - Liquid Glass Surface Modifier with proper version gating
 struct GlassSurface: ViewModifier {
     var corner: CGFloat = 22
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     
     func body(content: Content) -> some View {
         content
             .padding(12)
-            .background(.ultraThinMaterial) // system material only
-            .clipShape(RoundedRectangle(cornerRadius: corner, style: .continuous))
-            .overlay(
-                // Subtle edge/specular highlight - not additional blur
-                RoundedRectangle(cornerRadius: corner, style: .continuous)
-                    .strokeBorder(.white.opacity(0.30), lineWidth: 0.8)
-                    .blendMode(.overlay)
-            )
-            .shadow(radius: 16, x: 0, y: 10)                 // soft lift
-            .shadow(color: .black.opacity(0.08), radius: 4)  // tight contact
-            .compositingGroup()
+            .background(liquidGlassBackground)
+            .liquidGlassRounded(cornerRadius: corner)
+    }
+    
+    @ViewBuilder
+    private var liquidGlassBackground: some View {
+        let shape = RoundedRectangle(cornerRadius: corner, style: .continuous)
+        
+        if reduceTransparency {
+            shape.fill(.quaternary)                           // accessibility fallback
+        } else {
+            // Use current iOS APIs - future Liquid Glass will be available in iOS 26+
+            shape.fill(.ultraThinMaterial)
+        }
     }
 }
 

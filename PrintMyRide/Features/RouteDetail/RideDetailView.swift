@@ -151,11 +151,14 @@ struct RideDetailView: View {
                         sendToStudio()
                     } label: {
                         Label("Send to Studio", systemImage: "photo.on.rectangle")
+                            .font(.headline)
+                            .foregroundStyle(.primary)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
+                    .buttonStyle(.plain)
+                    .background(LiquidGlassCapsule())
+                    .liquidGlassCapsule()
                 }
                 .glass()
                 
