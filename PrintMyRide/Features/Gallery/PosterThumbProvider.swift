@@ -174,7 +174,7 @@ struct PosterThumbProvider: View {
         var design = PosterDesign()
         design.paperSize = CGSize(width: thumbSize.width/72, height: thumbSize.height/72) // Convert pixels to inches
         design.backgroundColor = .clear // Clear background to show map
-        design.routeColor = .blue // Blue route line for visibility on map
+        design.routeColor = Color(UIColor.systemBrown) // Brown route line for visibility on map
         design.strokeWidthPt = max(6.0, thumbSize.width * 0.02) // Thicker stroke for visibility in thumbnails
         design.margins = 0.10 // 10% margins so route fills more of the frame
         design.lineCap = .round // Smooth line endings

@@ -50,7 +50,7 @@ struct OnboardingView: View {
                         .padding(.vertical, 14)
                         .background(
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .fill(.blue)
+                                .fill(Color(UIColor.systemBrown))
                         )
                         .contentShape(Rectangle())
                         .onTapGesture {

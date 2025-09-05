@@ -18,5 +18,5 @@ enum PosterTokens {
     // colors
     static var fgPrimary: Color { .primary }
     static var fgSecondary: Color { .secondary }
-    static var accent: Color { .blue }
+    static var accent: Color { .accentColor }
 }

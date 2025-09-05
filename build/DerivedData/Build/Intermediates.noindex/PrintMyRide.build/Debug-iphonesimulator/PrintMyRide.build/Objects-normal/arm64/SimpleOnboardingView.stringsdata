@@ -7,7 +7,7 @@
         "key": "Turn rides into art.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 30
+          "startingLine": 31
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Instant demo posters. Export hi-res with Try Pro. Print via demo checkout.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 32
+          "startingLine": 33
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Start Demo",
         "location": {
           "startingColumn": 28,
-          "startingLine": 38
+          "startingLine": 39
         }
       },
       {
@@ -31,7 +31,7 @@
         "key": "Connect Strava",
         "location": {
           "startingColumn": 28,
-          "startingLine": 45
+          "startingLine": 50
         }
       },
       {
@@ -39,7 +39,7 @@
         "key": "Skip for now",
         "location": {
           "startingColumn": 28,
-          "startingLine": 51
+          "startingLine": 60
         }
       }
     ]

@@ -160,7 +160,7 @@ enum RouteThumbnailRenderer {
             }
             
             // Draw route line
-            ctx.setStrokeColor(UIColor.systemBlue.cgColor)
+            ctx.setStrokeColor(UIColor.systemBrown.cgColor)
             ctx.setLineWidth(1.5)
             ctx.setLineCap(.round)
             ctx.setLineJoin(.round)

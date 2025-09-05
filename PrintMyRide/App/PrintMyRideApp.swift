@@ -7,8 +7,8 @@ struct PrintMyRideApp: App {
     @StateObject private var oauth = StravaOAuth()
     @StateObject private var services = ServiceHub()
     @StateObject private var appearanceManager = AppearanceManager()
-    @AppStorage("hasOnboarded") private var hasOnboarded: Bool = false
-    @State private var showOnboarding = false
+    @AppStorage("hasOnboarded") private var hasOnboarded: Bool = true
+    // @State private var showOnboarding = false // Removed onboarding
     @State private var showSplash = true
     
     init() {
@@ -73,7 +73,7 @@ struct PrintMyRideApp: App {
                         .environmentObject(services)
                         .environmentObject(appearanceManager)
                         .allowsHitTesting(true)
-                        .tint(.accentColor)
+                        .tint(Color(UIColor.systemBrown))
                         .onAppear {
                         if ProcessInfo.processInfo.arguments.contains("--PMRTestMode") {
                             UserDefaults.standard.set(true, forKey: "pmr.testMode")
@@ -82,10 +82,7 @@ struct PrintMyRideApp: App {
                             let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
                             try? fm.removeItem(at: docs.appendingPathComponent("posters_index.json"))
                         }
-                            if !hasOnboarded { 
-                                AnalyticsService.shared.startOnboardingTimer()
-                                showOnboarding = true 
-                            }
+                        // Onboarding disabled
                         }
                         .onOpenURL { url in
                             // Handle auth callbacks and deep links
@@ -95,9 +92,9 @@ struct PrintMyRideApp: App {
                                 oauth.handleCallback(url: url)
                             }
                         }
-                        .fullScreenCover(isPresented: $showOnboarding) {
-                            OnboardingCoordinator()
-                        }
+                        // .fullScreenCover(isPresented: $showOnboarding) {
+                        //     OnboardingCoordinator()
+                        // } // Onboarding disabled
                 }
                 
                 
@@ -109,12 +106,7 @@ struct PrintMyRideApp: App {
             .onChange(of: appearanceManager.appearanceMode) { _ in
                 // Force view refresh when appearance mode changes
             }
-            .onChange(of: hasOnboarded) { done in
-                if done { 
-                    showOnboarding = false 
-                    AnalyticsService.shared.trackOnboardingCompleted()
-                }
-            }
+            // .onChange(of: hasOnboarded) removed - onboarding disabled
         }
     }
     
@@ -201,7 +193,7 @@ func configureLiquidGlassChrome() {
     UINavigationBar.appearance().standardAppearance = nav
     UINavigationBar.appearance().scrollEdgeAppearance = nav
     UINavigationBar.appearance().compactAppearance = nav
-    UINavigationBar.appearance().tintColor = .label
+    UINavigationBar.appearance().tintColor = .systemBrown
     
     // Hide system tab bar since we're using custom floating glass one
     UITabBar.appearance().isHidden = true
@@ -213,5 +205,5 @@ func configureLiquidGlassChrome() {
     tool.backgroundColor = .clear
     UIToolbar.appearance().standardAppearance = tool
     UIToolbar.appearance().compactAppearance = tool
-    UIToolbar.appearance().tintColor = .label
+    UIToolbar.appearance().tintColor = .systemBrown
 }

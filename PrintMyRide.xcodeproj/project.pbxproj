@@ -393,15 +393,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 101;
 				DEVELOPMENT_TEAM = 3864YR83JA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDocumentTypes = "";
 				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleURLName = pmr;\n    CFBundleURLSchemes =     (\n        pmr\n    );\n}";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_LSApplicationQueriesSchemes = strava;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "PrintMyRide uses HealthKit to import your workout data and create beautiful route posters from your fitness activities.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "PrintMyRide uses HealthKit to save your recorded routes as workouts for poster creation.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PrintMyRide uses your location to record cycling routes and create poster maps from your rides.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PrintMyRide uses your location to record cycling routes and create poster maps from your rides.";
 				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
 				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
 				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;
@@ -415,7 +420,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = d999ss.PrintMyRide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -429,15 +434,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 101;
 				DEVELOPMENT_TEAM = 3864YR83JA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleURLTypes = "{\n    CFBundleURLName = pmr;\n    CFBundleURLSchemes =     (\n        pmr\n    );\n}";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_LSApplicationQueriesSchemes = strava;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "PrintMyRide uses HealthKit to import your workout data and create beautiful route posters from your fitness activities.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "PrintMyRide uses HealthKit to save your recorded routes as workouts for poster creation.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PrintMyRide uses your location to record cycling routes and create poster maps from your rides.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PrintMyRide uses your location to record cycling routes and create poster maps from your rides.";
 				INFOPLIST_KEY_STRAVA_BACKEND_EXCHANGE = "https://printmyride-worker.workers.dev/api/strava/exchange";
 				INFOPLIST_KEY_STRAVA_BACKEND_REFRESH = "https://printmyride-worker.workers.dev/api/strava/refresh";
 				INFOPLIST_KEY_STRAVA_CLIENT_ID = 173748;
@@ -451,7 +461,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = d999ss.PrintMyRide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -466,7 +476,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 101;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
@@ -484,7 +494,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 101;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
@@ -501,7 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 101;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = d999ss.PrintMyRideUITests;
@@ -517,7 +527,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 101;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = d999ss.PrintMyRideUITests;

@@ -33,7 +33,7 @@ struct RouteRenderer {
                     }
                 }
                 
-                context.stroke(path, with: .color(.blue), style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                context.stroke(path, with: .color(Color(UIColor.systemBrown)), style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
             }
             .frame(width: size.width, height: size.height)
             .background(Color(.systemBackground))

@@ -165,7 +165,7 @@ struct PaywallCardView: View {
                         
                         VStack(spacing: DesignTokens.Spacing.sm) {
                             FeatureRow(icon: "checkmark.circle.fill", text: "Unlimited high-resolution exports", color: .green)
-                            FeatureRow(icon: "printer.fill", text: "Print-ready formats (18×24, A2, A3)", color: .blue)
+                            FeatureRow(icon: "printer.fill", text: "Print-ready formats (18×24, A2, A3)", color: Color(UIColor.systemBrown))
                             FeatureRow(icon: "paintbrush.fill", text: "Exclusive poster templates", color: .purple)
                             FeatureRow(icon: "map.fill", text: "Advanced map overlays", color: .orange)
                             FeatureRow(icon: "bolt.fill", text: "Priority processing", color: .yellow)
@@ -294,7 +294,7 @@ struct PaywallCardView: View {
             try await AppStore.sync()
             // Check entitlements after sync
             for await result in Transaction.currentEntitlements {
-                if case .verified(let transaction) = result {
+                if case .verified(_) = result {
                     await MainActor.run { gate.isSubscribed = true }
                     dismiss()
                     return

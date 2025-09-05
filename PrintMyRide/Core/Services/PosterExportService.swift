@@ -43,7 +43,7 @@ final class PosterExportService: ObservableObject {
         
         return renderer.image { context in
             // Background
-            UIColor.systemBlue.setFill()
+            UIColor.systemBrown.setFill()
             context.fill(CGRect(origin: .zero, size: size))
             
             // Title

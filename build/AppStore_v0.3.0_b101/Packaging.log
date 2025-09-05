@@ -1,0 +1,215 @@
+2025-09-05 17:11:23 +0000 [MT] Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x90dcf0c00; archive(resolved)="<IDEArchive: 0x90d76ea70>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team(resolved)="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	Chain (15, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x90dcf0c00; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionProcessingPipelineContext: 0x90dcf0900; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca2f80; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca2a80; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca2800; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca2580; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca2300; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca2080; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca1e00; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca0a00; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca0780; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca0500; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="<IDEProvisioningBasicTeam: 0x90dc3abe0; teamID='3864YR83JA', teamName='(null)'>">
+	<IDEDistributionContext: 0x90dca0280; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="(null)">
+	<IDEDistributionContext: 0x90dca0000; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="<IDEDistributionMethodiOSAppStoreDistribution: 0x90d59bf30>", team="(null)">
+	<IDEDistributionContext: 0x1033b66b0; archive = "<IDEArchive: 0x90d76ea70>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x90dcf0c00>
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionCreateDestRootStep
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionCopyItemStep
+2025-09-05 17:11:23 +0000 [MT] Running /usr/bin/ditto '-V' '/Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app' '/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root/Payload/PrintMyRide.app'
+2025-09-05 17:11:23 +0000  >>> Copying /Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app 
+2025-09-05 17:11:23 +0000  copying file ./_CodeSignature/CodeResources ... 
+2025-09-05 17:11:23 +0000  7021 bytes for ./_CodeSignature/CodeResources
+2025-09-05 17:11:23 +0000  copying file ./poster_placeholder.jpg ... 
+2025-09-05 17:11:23 +0000  3868016 bytes for ./poster_placeholder.jpg
+2025-09-05 17:11:23 +0000  copying file ./PreBuildCheck.sh ... 
+2025-09-05 17:11:23 +0000  943 bytes for ./PreBuildCheck.sh
+copying file ./forest_switchbacks.jpg ... 
+2025-09-05 17:11:23 +0000  4624566 bytes for ./forest_switchbacks.jpg
+2025-09-05 17:11:23 +0000  copying file ./Demo_ParkCity.gpx ... 
+1528 bytes for ./Demo_ParkCity.gpx
+copying file ./Demo_Boulder.gpx ... 
+2025-09-05 17:11:23 +0000  1297 bytes for ./Demo_Boulder.gpx
+2025-09-05 17:11:23 +0000  copying file ./default.gpx ... 
+2025-09-05 17:11:23 +0000  603 bytes for ./default.gpx
+2025-09-05 17:11:23 +0000  copying file ./AppIcon60x60@2x.png ... 
+2025-09-05 17:11:23 +0000  4662 bytes for ./AppIcon60x60@2x.png
+2025-09-05 17:11:23 +0000  copying file ./city_night_ride.jpg ... 
+2025-09-05 17:11:23 +0000  3497278 bytes for ./city_night_ride.jpg
+2025-09-05 17:11:23 +0000  copying file ./sample.gpx ... 
+603 bytes for ./sample.gpx
+2025-09-05 17:11:23 +0000  copying file ./CanvasSheet.swift.disabled ... 
+2025-09-05 17:11:23 +0000  2130 bytes for ./CanvasSheet.swift.disabled
+2025-09-05 17:11:23 +0000  copying file ./Assets.car ... 
+2025-09-05 17:11:23 +0000  23019648 bytes for ./Assets.car
+2025-09-05 17:11:23 +0000  copying file ./coastal_sprint.jpg ... 
+2025-09-05 17:11:23 +0000  3595640 bytes for ./coastal_sprint.jpg
+2025-09-05 17:11:23 +0000  copying file ./AppIcon76x76@2x~ipad.png ... 
+2025-09-05 17:11:23 +0000  6234 bytes for ./AppIcon76x76@2x~ipad.png
+2025-09-05 17:11:23 +0000  copying file ./StyleSheet.swift.disabled ... 
+2025-09-05 17:11:23 +0000  2848 bytes for ./StyleSheet.swift.disabled
+2025-09-05 17:11:23 +0000  copying file ./PrivacyInfo.xcprivacy ... 
+2025-09-05 17:11:23 +0000  325 bytes for ./PrivacyInfo.xcprivacy
+2025-09-05 17:11:23 +0000  copying file ./PrintMyRide ... 
+2025-09-05 17:11:23 +0000  1507664 bytes for ./PrintMyRide
+2025-09-05 17:11:23 +0000  copying file ./Afternoon_Mountain_Bike_Ride.gpx ... 
+2025-09-05 17:11:23 +0000  395644 bytes for ./Afternoon_Mountain_Bike_Ride.gpx
+2025-09-05 17:11:23 +0000  copying file ./Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-4.jpg ... 
+2025-09-05 17:11:23 +0000  374338 bytes for ./Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-4.jpg
+2025-09-05 17:11:23 +0000  copying file ./ArtisticPosterRenderer.swift.disabled ... 
+2025-09-05 17:11:23 +0000  14935 bytes for ./ArtisticPosterRenderer.swift.disabled
+2025-09-05 17:11:23 +0000  copying file ./embedded.mobileprovision ... 
+2025-09-05 17:11:23 +0000  14371 bytes for ./embedded.mobileprovision
+2025-09-05 17:11:23 +0000  copying file ./Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-3.jpg ... 
+2025-09-05 17:11:23 +0000  360699 bytes for ./Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-3.jpg
+2025-09-05 17:11:23 +0000  copying file ./alpine_climb.jpg ... 
+2025-09-05 17:11:23 +0000  5318209 bytes for ./alpine_climb.jpg
+2025-09-05 17:11:23 +0000  copying file ./Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-2.jpg ... 
+2025-09-05 17:11:23 +0000  344403 bytes for ./Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-2.jpg
+2025-09-05 17:11:23 +0000  copying file ./Info.plist ... 
+2025-09-05 17:11:23 +0000  2021 bytes for ./Info.plist
+2025-09-05 17:11:23 +0000  copying file ./PkgInfo ... 
+2025-09-05 17:11:23 +0000  8 bytes for ./PkgInfo
+2025-09-05 17:11:23 +0000 [MT] /usr/bin/ditto exited with 0
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionEmbedProfileStep
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionInfoPlistStep
+2025-09-05 17:11:23 +0000 [MT] Skipping setting DTXcodeBuildDistribution because toolsBuildVersionName was nil.
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionItemRemovalStep
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionAppThinningPlistStep
+2025-09-05 17:11:23 +0000 [MT] Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionSymbolsStep
+2025-09-05 17:11:23 +0000 [MT] Writing /var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Symbols/B35259C6-0904-3FF4-BB52-20C17A5DC89A.symbols
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionCopyAppleProvidedContentStep
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionAppThinningStep
+2025-09-05 17:11:23 +0000 [MT] Skipping step: IDEDistributionAppThinningStep because it said so
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionArchThinningStep
+2025-09-05 17:11:23 +0000 [MT] Item /Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app doesn't have the entitlement com.apple.developer.web-browser-engine.host enabled, returning ["arm64e"]
+2025-09-05 17:11:23 +0000 [MT] Archs to thin for item /Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app are ["arm64e"]
+2025-09-05 17:11:23 +0000 [MT] Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root/Payload/PrintMyRide.app/PrintMyRide' '-verify_arch' 'arm64e'
+2025-09-05 17:11:23 +0000 [MT] /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2025-09-05 17:11:23 +0000 [MT] Skipping architecture thinning for item "PrintMyRide" because arch "arm64e" wasn't found
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionODRStep
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionStripXattrsStep
+2025-09-05 17:11:23 +0000 [MT] Skipping stripping extended attributes because the codesign step will strip them.
+2025-09-05 17:11:23 +0000 [MT] Processing step: IDEDistributionCodesignStep
+2025-09-05 17:11:23 +0000 [MT] Entitlements for <IDEDistributionItem: 0x90ba4daa0; bundleID='d999ss.PrintMyRide', path='<DVTFilePath:0x90b9f7840:'/Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x90ba4d9e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x90c5ef180; name='Apple Development: Donny Smith (RGAVJ5Z827)', hash='18D7DBC2B6DA1C81F9FEF1862C700F7C1B5E8B56', serialNumber='63033500525A18531282F70191344BF4', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2025-08-27 23:53:04 +0000''>', entitlements='{
+    "application-identifier" = "3864YR83JA.d999ss.PrintMyRide";
+    "com.apple.developer.team-identifier" = 3864YR83JA;
+    "get-task-allow" = 1;
+}', teamID='3864YR83JA', identifier='d999ss.PrintMyRide', executablePath='<DVTFilePath:0x90ba4d380:'/Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app/PrintMyRide'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "3864YR83JA.d999ss.PrintMyRide";
+    "beta-reports-active" = 1;
+    "com.apple.developer.team-identifier" = 3864YR83JA;
+    "get-task-allow" = 0;
+}
+2025-09-05 17:11:23 +0000 [MT] Associated App Clip Identifiers Filter: Skipping because "com.apple.developer.associated-appclip-app-identifiers" is not present
+2025-09-05 17:11:23 +0000 [MT] Entitlements for <IDEDistributionItem: 0x90ba4daa0; bundleID='d999ss.PrintMyRide', path='<DVTFilePath:0x90b9f7840:'/Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x90ba4d9e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x90c5eee80; name='Apple Development: Donny Smith (RGAVJ5Z827)', hash='18D7DBC2B6DA1C81F9FEF1862C700F7C1B5E8B56', serialNumber='63033500525A18531282F70191344BF4', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2025-08-27 23:53:04 +0000''>', entitlements='{
+    "application-identifier" = "3864YR83JA.d999ss.PrintMyRide";
+    "com.apple.developer.team-identifier" = 3864YR83JA;
+    "get-task-allow" = 1;
+}', teamID='3864YR83JA', identifier='d999ss.PrintMyRide', executablePath='<DVTFilePath:0x90ba4d380:'/Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app/PrintMyRide'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "3864YR83JA.d999ss.PrintMyRide";
+    "beta-reports-active" = 1;
+    "com.apple.developer.team-identifier" = 3864YR83JA;
+    "get-task-allow" = 0;
+}
+2025-09-05 17:11:23 +0000 [MT] Writing entitlements for <IDEDistributionItem: 0x90ba4daa0; bundleID='d999ss.PrintMyRide', path='<DVTFilePath:0x90b9f7840:'/Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x90ba4d9e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x90c5eee80; name='Apple Development: Donny Smith (RGAVJ5Z827)', hash='18D7DBC2B6DA1C81F9FEF1862C700F7C1B5E8B56', serialNumber='63033500525A18531282F70191344BF4', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2025-08-27 23:53:04 +0000''>', entitlements='{
+    "application-identifier" = "3864YR83JA.d999ss.PrintMyRide";
+    "com.apple.developer.team-identifier" = 3864YR83JA;
+    "get-task-allow" = 1;
+}', teamID='3864YR83JA', identifier='d999ss.PrintMyRide', executablePath='<DVTFilePath:0x90ba4d380:'/Users/donnysmith/CC/printmyride/build/PrintMyRide_v0.3.0_b101.xcarchive/Products/Applications/PrintMyRide.app/PrintMyRide'>', hardenedRuntime='0'>'> to: /var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/entitlements~~~tyw2fL
+2025-09-05 17:11:23 +0000 [MT] invoking codesign: <NSConcreteTask: 0x90ad91f40; launchPath='/usr/bin/codesign', arguments='(
+    "-f",
+    "-s",
+    7684BB23E5A9D6408CC1380D1E56807FC77163E0,
+    "--entitlements",
+    "/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/entitlements~~~tyw2fL",
+    "--preserve-metadata=identifier,flags,runtime",
+    "--generate-entitlement-der",
+    "--strip-disallowed-xattrs",
+    "-vvv",
+    "/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root/Payload/PrintMyRide.app"
+)'>
+2025-09-05 17:11:46 +0000 [MT] codesign output: /var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root/Payload/PrintMyRide.app: replacing existing signature
+/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root/Payload/PrintMyRide.app: signed app bundle with Mach-O thin (arm64) [d999ss.PrintMyRide]
+2025-09-05 17:11:46 +0000 [MT] Processing step: IDEDistributionZipODRItemStep
+2025-09-05 17:11:46 +0000 [MT] Skipping step: IDEDistributionZipODRItemStep because it said so
+2025-09-05 17:11:46 +0000 [MT] Processing step: IDEDistributionCreateIPAStep
+2025-09-05 17:11:46 +0000 [MT] Running /usr/bin/rsync '-8aPhhE' '/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Symbols' '--link-dest' '/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk' '/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root'
+2025-09-05 17:11:46 +0000  Symbols/
+Symbols/B35259C6-0904-3FF4-BB52-20C17A5DC89A.symbols
+2025-09-05 17:11:46 +0000 [MT] /usr/bin/rsync exited with 0
+2025-09-05 17:11:46 +0000 [MT] Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root' '/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Packages/PrintMyRide.ipa'
+2025-09-05 17:11:46 +0000  >>> Copying /var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root 
+2025-09-05 17:11:46 +0000  copying file ./Payload/PrintMyRide.app/_CodeSignature/CodeResources ... 
+2025-09-05 17:11:46 +0000  7021 bytes for ./Payload/PrintMyRide.app/_CodeSignature/CodeResources
+2025-09-05 17:11:46 +0000  copying file ./Payload/PrintMyRide.app/poster_placeholder.jpg ... 
+2025-09-05 17:11:46 +0000  3868016 bytes for ./Payload/PrintMyRide.app/poster_placeholder.jpg
+2025-09-05 17:11:46 +0000  copying file ./Payload/PrintMyRide.app/PreBuildCheck.sh ... 
+943 bytes for ./Payload/PrintMyRide.app/PreBuildCheck.sh
+copying file ./Payload/PrintMyRide.app/forest_switchbacks.jpg ... 
+2025-09-05 17:11:46 +0000  4624566 bytes for ./Payload/PrintMyRide.app/forest_switchbacks.jpg
+2025-09-05 17:11:46 +0000  copying file ./Payload/PrintMyRide.app/Demo_ParkCity.gpx ... 
+1528 bytes for ./Payload/PrintMyRide.app/Demo_ParkCity.gpx
+copying file ./Payload/PrintMyRide.app/Demo_Boulder.gpx ... 
+1297 bytes for ./Payload/PrintMyRide.app/Demo_Boulder.gpx
+copying file ./Payload/PrintMyRide.app/default.gpx ... 
+603 bytes for ./Payload/PrintMyRide.app/default.gpx
+copying file ./Payload/PrintMyRide.app/AppIcon60x60@2x.png ... 
+4662 bytes for ./Payload/PrintMyRide.app/AppIcon60x60@2x.png
+copying file ./Payload/PrintMyRide.app/city_night_ride.jpg ... 
+2025-09-05 17:11:46 +0000  3497278 bytes for ./Payload/PrintMyRide.app/city_night_ride.jpg
+2025-09-05 17:11:46 +0000  copying file ./Payload/PrintMyRide.app/sample.gpx ... 
+603 bytes for ./Payload/PrintMyRide.app/sample.gpx
+2025-09-05 17:11:46 +0000  copying file ./Payload/PrintMyRide.app/CanvasSheet.swift.disabled ... 
+2025-09-05 17:11:46 +0000  2130 bytes for ./Payload/PrintMyRide.app/CanvasSheet.swift.disabled
+2025-09-05 17:11:46 +0000  copying file ./Payload/PrintMyRide.app/Assets.car ... 
+2025-09-05 17:11:47 +0000  23019648 bytes for ./Payload/PrintMyRide.app/Assets.car
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/coastal_sprint.jpg ... 
+2025-09-05 17:11:47 +0000  3595640 bytes for ./Payload/PrintMyRide.app/coastal_sprint.jpg
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/AppIcon76x76@2x~ipad.png ... 
+6234 bytes for ./Payload/PrintMyRide.app/AppIcon76x76@2x~ipad.png
+copying file ./Payload/PrintMyRide.app/StyleSheet.swift.disabled ... 
+2848 bytes for ./Payload/PrintMyRide.app/StyleSheet.swift.disabled
+copying file ./Payload/PrintMyRide.app/PrivacyInfo.xcprivacy ... 
+325 bytes for ./Payload/PrintMyRide.app/PrivacyInfo.xcprivacy
+copying file ./Payload/PrintMyRide.app/PrintMyRide ... 
+2025-09-05 17:11:47 +0000  1507744 bytes for ./Payload/PrintMyRide.app/PrintMyRide
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/Afternoon_Mountain_Bike_Ride.gpx ... 
+2025-09-05 17:11:47 +0000  395644 bytes for ./Payload/PrintMyRide.app/Afternoon_Mountain_Bike_Ride.gpx
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-4.jpg ... 
+2025-09-05 17:11:47 +0000  374338 bytes for ./Payload/PrintMyRide.app/Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-4.jpg
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/ArtisticPosterRenderer.swift.disabled ... 
+2025-09-05 17:11:47 +0000  14935 bytes for ./Payload/PrintMyRide.app/ArtisticPosterRenderer.swift.disabled
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/embedded.mobileprovision ... 
+2025-09-05 17:11:47 +0000  14319 bytes for ./Payload/PrintMyRide.app/embedded.mobileprovision
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-3.jpg ... 
+2025-09-05 17:11:47 +0000  360699 bytes for ./Payload/PrintMyRide.app/Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-3.jpg
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/alpine_climb.jpg ... 
+2025-09-05 17:11:47 +0000  5318209 bytes for ./Payload/PrintMyRide.app/alpine_climb.jpg
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-2.jpg ... 
+2025-09-05 17:11:47 +0000  344403 bytes for ./Payload/PrintMyRide.app/Otoky-N8-Porsche-Carrera-GT-Type-7-Cevoss-2.jpg
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/Info.plist ... 
+2025-09-05 17:11:47 +0000  2021 bytes for ./Payload/PrintMyRide.app/Info.plist
+2025-09-05 17:11:47 +0000  copying file ./Payload/PrintMyRide.app/PkgInfo ... 
+2025-09-05 17:11:47 +0000  8 bytes for ./Payload/PrintMyRide.app/PkgInfo
+2025-09-05 17:11:47 +0000  copying file ./Symbols/B35259C6-0904-3FF4-BB52-20C17A5DC89A.symbols ... 
+2025-09-05 17:11:47 +0000  3919076 bytes for ./Symbols/B35259C6-0904-3FF4-BB52-20C17A5DC89A.symbols
+2025-09-05 17:11:47 +0000 [MT] /usr/bin/ditto exited with 0
+2025-09-05 17:11:47 +0000 [MT] Processing step: IDEDistributionAppStoreInformationStep
+2025-09-05 17:11:47 +0000 [MT] Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2025-09-05 17:11:47 +0000 [MT] Processing step: IDEDistributionGenerateProcessedDistributionItems
+2025-09-05 17:11:47 +0000 [MT] IDEDistributionItem init <DVTFilePath:0x90b42ce40:'/var/folders/53/hbsp_q6d6pj_b1qq1_zcg5bw0000gn/T/XcodeDistPipeline.~~~gnMQyk/Root/Payload/PrintMyRide.app'>
+2025-09-05 17:11:47 +0000 [MT] Processing step: IDEDistributionCreateManifestStep
+2025-09-05 17:11:47 +0000 [MT] Skipping step: IDEDistributionCreateManifestStep because it said so

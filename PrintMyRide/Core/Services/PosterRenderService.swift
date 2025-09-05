@@ -115,7 +115,7 @@ actor PosterRenderService {
     
     private func drawOptimizedRoute(coords: [CLLocationCoordinate2D], design: PosterDesign, context: UIGraphicsImageRendererContext, size: CGSize) {
         // Convert to points with optimized projection
-        let region = RouteRegion.region(for: coords, padding: 0.1)
+        let _ = RouteRegion.region(for: coords, padding: 0.1)
         let lat0 = coords.reduce(0.0, { $0 + $1.latitude }) / Double(coords.count)
         let kx = cos(lat0 * .pi/180)
         let minLat = coords.map(\.latitude).min()!

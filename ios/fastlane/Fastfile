@@ -20,6 +20,26 @@ platform :ios do
     )
   end
 
+  desc "Update version numbers"
+  lane :update_version do |options|
+    version = options[:version] || "0.2.1"
+    build = options[:build] || "3"
+    
+    # Update marketing version  
+    increment_version_number_in_xcodeproj(
+      version_number: version,
+      xcodeproj: "PrintMyRide.xcodeproj"
+    )
+    
+    # Update build number
+    increment_build_number_in_xcodeproj(
+      build_number: build,
+      xcodeproj: "PrintMyRide.xcodeproj"
+    )
+    
+    UI.success("✅ Updated to version #{version} build #{build}")
+  end
+
   desc "Ship to TestFlight"
   lane :beta do
     increment_build_number(xcodeproj: "PrintMyRide.xcodeproj")

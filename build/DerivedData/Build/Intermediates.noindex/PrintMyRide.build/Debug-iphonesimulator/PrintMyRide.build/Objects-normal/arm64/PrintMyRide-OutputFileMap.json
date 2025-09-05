@@ -145,6 +145,16 @@
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/VSCOButtons.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/VSCOButtons~partial.swiftmodule"
   },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Debug/TapDoctor.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/TapDoctor~partial.swiftmodule"
+  },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Extensions/NotificationExtensions.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/NotificationExtensions.swiftconstvalues",
     "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/NotificationExtensions.d",
@@ -154,6 +164,16 @@
     "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/NotificationExtensions.o",
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/NotificationExtensions.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/NotificationExtensions~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/FeatureFlags.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/FeatureFlags~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Models/Account.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Account.swiftconstvalues",
@@ -214,6 +234,16 @@
     "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterText.o",
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterText.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterText~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Models/StorePoster.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StorePoster~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Models/StravaTokens.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaTokens.swiftconstvalues",
@@ -345,6 +375,16 @@
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AsyncRouteThumbnailProvider.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AsyncRouteThumbnailProvider~partial.swiftmodule"
   },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Services/AuthService.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthService~partial.swiftmodule"
+  },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Services/HealthKitService.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/HealthKitService.swiftconstvalues",
     "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/HealthKitService.d",
@@ -364,6 +404,16 @@
     "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LocationRecordingService.o",
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LocationRecordingService.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LocationRecordingService~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Services/MultiUserStravaService.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MultiUserStravaService~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Services/OrderService.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/OrderService.swiftconstvalues",
@@ -424,6 +474,16 @@
     "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/SubscriptionGate.o",
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/SubscriptionGate.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/SubscriptionGate~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Theme/AppearanceManager.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppearanceManager~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Utilities/AppRouter.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AppRouter.swiftconstvalues",
@@ -635,6 +695,16 @@
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/ZoomState.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/ZoomState~partial.swiftmodule"
   },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Utils/GPXGenerator.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/GPXGenerator~partial.swiftmodule"
+  },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Core/Utils/NativeAppearance.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/NativeAppearance.swiftconstvalues",
     "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/NativeAppearance.d",
@@ -835,6 +905,26 @@
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaReal.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaReal~partial.swiftmodule"
   },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Auth/AuthWrapperView.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AuthWrapperView~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Auth/LoginView.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LoginView~partial.swiftmodule"
+  },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Checkout/MockCheckoutView.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MockCheckoutView.swiftconstvalues",
     "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/MockCheckoutView.d",
@@ -1005,15 +1095,15 @@
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterThumbProvider.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterThumbProvider~partial.swiftmodule"
   },
-  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Gallery/RouteListView.swift" : {
-    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView.swiftconstvalues",
-    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView.d",
-    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView.dia",
-    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView.o",
-    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView.bc",
-    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView.o",
-    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView.swiftdeps",
-    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteListView~partial.swiftmodule"
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Gallery/RidesListView.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RidesListView~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Gallery/StudioHubView.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StudioHubView.swiftconstvalues",
@@ -1134,6 +1224,16 @@
     "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PaywallPlaceholder.o",
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PaywallPlaceholder.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PaywallPlaceholder~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/PosterDetail/PosterPreviewView.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterPreviewView~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/PosterDetail/Views/PosterDetailV2.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/PosterDetailV2.swiftconstvalues",
@@ -1355,15 +1455,15 @@
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RootView.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RootView~partial.swiftmodule"
   },
-  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/RouteDetail/RouteDetailView.swift" : {
-    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView.swiftconstvalues",
-    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView.d",
-    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView.dia",
-    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView.o",
-    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView.bc",
-    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView.o",
-    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView.swiftdeps",
-    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RouteDetailView~partial.swiftmodule"
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/RouteDetail/RideDetailView.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/RideDetailView~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Settings/AboutView.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/AboutView.swiftconstvalues",
@@ -1425,6 +1525,26 @@
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/SplashScreen.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/SplashScreen~partial.swiftmodule"
   },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Strava/StravaActivitiesView.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaActivitiesView~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Features/Strava/StravaConnectionView.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/StravaConnectionView~partial.swiftmodule"
+  },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Poster/DemoCoordsLoader.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DemoCoordsLoader.swiftconstvalues",
     "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/DemoCoordsLoader.d",
@@ -1464,6 +1584,16 @@
     "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CardStyles.o",
     "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CardStyles.swiftdeps",
     "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/CardStyles~partial.swiftmodule"
+  },
+  "/Users/donnysmith/CC/printmyride/PrintMyRide/Shared/UI/Components/LiquidGlass.swift" : {
+    "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass.swiftconstvalues",
+    "dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass.d",
+    "diagnostics" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass.dia",
+    "index-unit-output-path" : "/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass.o",
+    "llvm-bc" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass.bc",
+    "object" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass.o",
+    "swift-dependencies" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass.swiftdeps",
+    "swiftmodule" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/LiquidGlass~partial.swiftmodule"
   },
   "/Users/donnysmith/CC/printmyride/PrintMyRide/Shared/UI/Components/Shimmer.swift" : {
     "const-values" : "/Users/donnysmith/CC/printmyride/build/DerivedData/Build/Intermediates.noindex/PrintMyRide.build/Debug-iphonesimulator/PrintMyRide.build/Objects-normal/arm64/Shimmer.swiftconstvalues",

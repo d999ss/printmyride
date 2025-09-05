@@ -12,7 +12,7 @@ final class MapSnapshotService {
         style: Int  // 0 standard, 1 hybrid, 2 satellite
     ) async -> UIImage? {
         guard !coords.isEmpty, size.width > 20, size.height > 20 else { 
-            print("MapSnapshot: Invalid input - coords:\(coords.count), size:\(size)")
+            // Invalid input parameters
             return nil 
         }
 
@@ -29,7 +29,7 @@ final class MapSnapshotService {
         )
         let center = CLLocationCoordinate2D(latitude: (minLat + maxLat)/2, longitude: (minLon + maxLon)/2)
 
-        print("MapSnapshot: size=\(Int(size.width))x\(Int(size.height)) pts=\(coords.count) span=\(span.latitudeDelta),\(span.longitudeDelta) style=\(style)")
+        // Generating map snapshot
 
         // Options guarded by OS version
         let opts = MKMapSnapshotter.Options()
@@ -52,7 +52,7 @@ final class MapSnapshotService {
         return await withCheckedContinuation { cont in
             MKMapSnapshotter(options: opts).start { snap, err in
                 guard let snap = snap, err == nil else { 
-                    print("MapSnapshot: Failed - \(err?.localizedDescription ?? "unknown error")")
+                    // Map snapshot failed
                     cont.resume(returning: nil)
                     return 
                 }
@@ -65,7 +65,7 @@ final class MapSnapshotService {
                     ctx.fill(CGRect(origin: .zero, size: size))
                 }
                 
-                print("MapSnapshot: Success - generated \(Int(img.size.width))x\(Int(img.size.height)) image")
+                // Map snapshot generated successfully
                 cont.resume(returning: img)
             }
         }
@@ -104,7 +104,7 @@ final class MapSnapshotService {
                         size: size
                     )
                     
-                    let result = await ImageRenderer(content: routeOverlay).uiImage
+                    let result = ImageRenderer(content: routeOverlay).uiImage
                     
                     // Cache the result
                     if let image = result {

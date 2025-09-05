@@ -33,5 +33,5 @@ func applyNativeAppearances() {
     }()
     
     // Use system colors for tint
-    UIView.appearance().tintColor = UIColor.systemBlue
+    UIView.appearance().tintColor = UIColor.systemBrown
 }

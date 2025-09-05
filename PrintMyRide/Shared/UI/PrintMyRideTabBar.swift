@@ -5,8 +5,8 @@ struct PrintMyRideTabBar: View {
 
   var body: some View {
     HStack(spacing: 28) {
-      item("Studio",  "photo.on.rectangle", 0)
-      item("Rides",   "bicycle",            1)
+      item("Studio",  "rectangle.portrait.on.rectangle.portrait", 0)
+      item("Rides",   "point.topleft.down.curvedto.point.bottomright.up",            1)
       item("Profile", "person",             2)
     }
     .padding(.horizontal, 20)
@@ -28,7 +28,7 @@ struct PrintMyRideTabBar: View {
           .font(.footnote.weight(active ? .semibold : .regular))
           .foregroundStyle(.primary)
       }
-      .frame(minWidth: 80, minHeight: 50)  // Increased for better hit area
+      .frame(minWidth: 88, minHeight: 56)  // Ensure 44pt minimum tap target
       .contentShape(Rectangle())           // Ensure entire frame is tappable
     }
     .buttonStyle(.plain)

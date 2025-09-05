@@ -3,7 +3,7 @@ import SwiftUI
 enum DesignTokens {
     // MARK: - Colors
     enum Colors {
-        static let primary = Color.blue
+        static let primary = Color.accentColor
         static let secondary = Color.gray
         static let accent = Color.orange
         static let surface = Color(.systemBackground)

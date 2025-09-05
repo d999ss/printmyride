@@ -115,30 +115,54 @@ struct PosterDetailView: View {
                     }
                 }
 
-                // Actions
-                VStack(spacing: 10) {
-                    Button("Export High-Res (PDF)") {
-                        if gate.isSubscribed { Task { await exportPDF(inches: CGSize(width: 18, height: 24)) } }
-                        else { 
-                            PMRLog.export.warning("[Export] blocked by unsubscribed state for \(poster.title, privacy: .public)")
-                            showPaywall = true 
-                        }
+                // Purchase Options
+                VStack(spacing: 16) {
+                    VStack(spacing: 12) {
+                        Text("Order Your Poster")
+                            .font(.title2.weight(.semibold))
+                        
+                        Text("Get your route printed on premium paper and shipped directly to you")
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(exporting)
-
-                    NavigationLink("Print Poster (Demo Checkout)") {
-                        MockCheckoutView(poster: poster)
-                    }.buttonStyle(.bordered)
-
-                    Button("Share Poster Image") {
-                        let url = documentsURL().appendingPathComponent(poster.filePath)
-                        if let img = UIImage(contentsOfFile: url.path) {
-                            Haptics.tap()
-                            ShareSheet.present(items: [img])
+                    
+                    VStack(spacing: 10) {
+                        NavigationLink("Order Physical Poster") {
+                            MockCheckoutView(poster: poster)
                         }
-                    }.buttonStyle(.bordered)
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.large)
+                        .tint(Color(UIColor.systemBrown))
+
+                        Button("Export High-Res (PDF)") {
+                            if gate.isSubscribed { Task { await exportPDF(inches: CGSize(width: 18, height: 24)) } }
+                            else { 
+                                PMRLog.export.warning("[Export] blocked by unsubscribed state for \(poster.title, privacy: .public)")
+                                showPaywall = true 
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(exporting)
+
+                        Button("Share Poster Image") {
+                            let url = documentsURL().appendingPathComponent(poster.filePath)
+                            if let img = UIImage(contentsOfFile: url.path) {
+                                Haptics.tap()
+                                ShareSheet.present(items: [img])
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                    }
                 }
+                .padding(.vertical, 20)
+                .background(Color(.systemGray6), in: RoundedRectangle(cornerRadius: 12))
+                .padding(.horizontal, -16) // Extend to edges
+                .padding(.horizontal, 16)  // Then add back padding
+                
+                // Extra bottom padding for navigation clearance
+                Spacer()
+                    .frame(height: 80)
 
                 if let msg = exportMessage {
                     Text(msg).font(.footnote).foregroundStyle(.secondary)
@@ -147,6 +171,7 @@ struct PosterDetailView: View {
             .padding(16)
         }
         .navigationTitle(poster.title)
+        .toolbar(.hidden, for: .tabBar) // Hide bottom navigation for focused poster experience
         .sheet(isPresented: $showPaywall) {
             PaywallCardView().environmentObject(gate)
         }

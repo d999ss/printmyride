@@ -155,7 +155,7 @@ struct MapPreviewView: View {
                         title: "Classic Route",
                         subtitle: "Mountain Climb • 12.4 mi",
                         routeType: "mountain",
-                        color: .blue
+                        color: Color(UIColor.systemBrown)
                     )
                     
                     MapPreviewCard(
@@ -275,7 +275,7 @@ private struct MapFeatureRow: View {
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
-                .foregroundStyle(.blue)
+                .foregroundStyle(Color(UIColor.systemBrown))
                 .frame(width: 20)
             Text(text)
                 .font(.subheadline)

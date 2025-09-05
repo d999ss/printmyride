@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreLocation
 
 struct GalleryView: View {
     @EnvironmentObject var library: LibraryStore
@@ -43,17 +44,20 @@ struct GalleryView: View {
                     ScrollView {
                         LazyVGrid(columns: cols, spacing: 2) {
                             ForEach(library.projects) { p in
-                                Tile(project: p,
-                                     image: thumb(for: p),
-                                     isSelecting: isSelecting,
-                                     isSelected: selected.contains(p.id))
-                                .onTapGesture {
-                                    if isSelecting {
-                                        toggle(p.id)
-                                    } else {
-                                        open(project: p)
-                                    }
+                                NavigationLink(destination: PosterDetailView(poster: convertToPoster(p))) {
+                                    Tile(project: p,
+                                         image: thumb(for: p),
+                                         isSelecting: isSelecting,
+                                         isSelected: selected.contains(p.id))
                                 }
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            if isSelecting {
+                                                toggle(p.id)
+                                            }
+                                        }
+                                )
                                 .onLongPressGesture {
                                     if !isSelecting {
                                         isSelecting = true
@@ -95,10 +99,28 @@ struct GalleryView: View {
         UIImage(contentsOfFile: library.thumbnailURL(for: p).path)
     }
 
-    private func open(project: PosterProject) {
-        // v1: just go to Create tab preloaded (wire with your tab router)
-        // You already know how you're switching tabs; call it here.
-        // selected.removeAll(); isSelecting = false
+    private func convertToPoster(_ project: PosterProject) -> Poster {
+        // Convert PosterProject to Poster for PosterDetailView
+        var coordinateData: Data?
+        
+        // Try to load coordinates from route file if available
+        if let routeURL = library.routeURL(for: project) {
+            if let gpxRoute = GPXImporter.load(url: routeURL) {
+                let coordinates = gpxRoute.points.map { 
+                    CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.lon) 
+                }
+                coordinateData = coordinates.compactMap { SerializableCoordinate(coordinate: $0) }.data
+            }
+        }
+        
+        return Poster(
+            id: project.id,
+            title: project.title,
+            createdAt: project.createdAt,
+            thumbnailPath: project.thumbnailFilename,
+            filePath: project.thumbnailFilename, // Use thumbnail as file path since we don't have full res yet
+            coordinateData: coordinateData
+        )
     }
 
     private func shareSelected() {

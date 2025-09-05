@@ -134,7 +134,7 @@ final class OnboardingModel: ObservableObject {
         let posterSize = CGSize(width: 600, height: 800)
         
         // Render poster using existing service
-        if let posterImage = await PosterRenderService.shared.renderPoster(
+        if let _ = await PosterRenderService.shared.renderPoster(
             design: design,
             route: route,
             size: posterSize

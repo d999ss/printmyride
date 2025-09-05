@@ -271,7 +271,7 @@ struct PermissionsScreen: View {
                     icon: "photo.fill",
                     title: "Photos",
                     subtitle: "Save posters to your library",
-                    color: .blue
+                    color: Color(UIColor.systemBrown)
                 )
                 
                 PermissionRow(
@@ -407,7 +407,7 @@ struct TipsScreen: View {
             
             VStack(spacing: 16) {
                 TipRow(icon: "paintbrush.fill", text: "Edit style", color: .purple)
-                TipRow(icon: "arrow.triangle.swap", text: "Change ride", color: .blue)
+                TipRow(icon: "arrow.triangle.swap", text: "Change ride", color: Color(UIColor.systemBrown))
                 TipRow(icon: "square.and.arrow.down.fill", text: "Save & share", color: .green)
             }
             
@@ -477,7 +477,7 @@ struct LiquidGlassButtonStyle: ButtonStyle {
     @ViewBuilder
     private var glassCapsule: some View {
         Capsule()
-            .fill(.blue.gradient)
+            .fill(Color(UIColor.systemBrown).gradient)
             .overlay(Capsule().stroke(.white.opacity(0.2), lineWidth: 1))
             .shadow(color: .black.opacity(0.15), radius: 28, x: 0, y: 6)
     }
@@ -531,7 +531,7 @@ struct AsyncButton: View {
     
     private var backgroundColor: Color {
         switch style {
-        case .primary: return .blue.opacity(0.1)
+        case .primary: return Color(UIColor.systemBrown).opacity(0.1)
         case .secondary: return Color(.quaternaryLabel)
         }
     }
