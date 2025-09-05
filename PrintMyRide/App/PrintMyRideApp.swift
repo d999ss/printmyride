@@ -6,6 +6,7 @@ struct PrintMyRideApp: App {
     @StateObject private var appState = AppState()
     @StateObject private var oauth = StravaOAuth()
     @StateObject private var services = ServiceHub()
+    @StateObject private var appearanceManager = AppearanceManager()
     @AppStorage("hasOnboarded") private var hasOnboarded: Bool = false
     @State private var showOnboarding = false
     @State private var showSplash = true
@@ -17,10 +18,6 @@ struct PrintMyRideApp: App {
         // Initialize poster snapshot system
         AppBootstrap.run()
         
-        // Enable TapDoctor for DEBUG builds
-        #if DEBUG
-        TapDoctor.shared.enableAutoScanAndFix()
-        #endif
         
         // Defaults: dark + studio + show onboarding for new users
         UserDefaults.standard.register(defaults: [
@@ -59,34 +56,27 @@ struct PrintMyRideApp: App {
             #endif
         } else {
             #if DEBUG
-            print("[Strava] missing STRAVA_* keys in Info.plist")
-            // Fallback: set values directly to test OAuth pipeline
-            // TODO: Replace <YOUR_WORKER> with actual worker domain
-            StravaService.shared.configure(
-                clientId: "173748",
-                exchange: URL(string:"https://your-worker.workers.dev/api/strava/exchange")!,
-                refresh:  URL(string:"https://your-worker.workers.dev/api/strava/refresh")!,
-                redirectHTTPS: URL(string:"https://printmyride.app/oauth/strava/callback")!
-            )
+            print("[Strava] missing STRAVA_* keys in Info.plist - Strava integration disabled")
             #endif
         }
     }
 
+    
     var body: some Scene {
         WindowGroup {
             ZStack {
                 if !showSplash {
-                    OnboardingGate()                   // your main app with onboarding gate
+                    // Use new multi-user auth wrapper
+                    AuthWrapperView()
                         .environmentObject(appState)
                         .environmentObject(oauth)
                         .environmentObject(services)
-                        .allowsHitTesting(true)        // force-enable interactions
-                        // System-native global polish
-                        .tint(.accentColor)  // System accent color applied globally
+                        .environmentObject(appearanceManager)
+                        .allowsHitTesting(true)
+                        .tint(.accentColor)
                         .onAppear {
                         if ProcessInfo.processInfo.arguments.contains("--PMRTestMode") {
                             UserDefaults.standard.set(true, forKey: "pmr.testMode")
-                            // Ensure deterministic first-run: clear local poster data and seeded flag
                             UserDefaults.standard.removeObject(forKey: "pmr.hasSeededSamplePoster")
                             let fm = FileManager.default
                             let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -98,15 +88,13 @@ struct PrintMyRideApp: App {
                             }
                         }
                         .onOpenURL { url in
-                            // Handle different URL schemes
+                            // Handle auth callbacks and deep links
                             if url.scheme == "printmyride" {
                                 handleDeepLink(url: url)
                             } else {
-                                // Forward to OAuth handler; it checks scheme/host/path
                                 oauth.handleCallback(url: url)
                             }
                         }
-                        // Full-screen onboarding coordinator
                         .fullScreenCover(isPresented: $showOnboarding) {
                             OnboardingCoordinator()
                         }
@@ -117,13 +105,16 @@ struct PrintMyRideApp: App {
                     SplashScreen { showSplash = false }
                 }
             }
+            .preferredColorScheme(appearanceManager.appearanceMode.colorScheme)
+            .onChange(of: appearanceManager.appearanceMode) { _ in
+                // Force view refresh when appearance mode changes
+            }
             .onChange(of: hasOnboarded) { done in
                 if done { 
                     showOnboarding = false 
                     AnalyticsService.shared.trackOnboardingCompleted()
                 }
             }
-            .preferredColorScheme(.light)
         }
     }
     

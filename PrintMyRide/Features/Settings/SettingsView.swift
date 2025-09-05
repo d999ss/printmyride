@@ -4,6 +4,7 @@ import StoreKit
 struct SettingsView: View {
     @EnvironmentObject var library: LibraryStore
     @EnvironmentObject private var gate: SubscriptionGate
+    @EnvironmentObject private var appearanceManager: AppearanceManager
     @AppStorage("units") private var units: String = "mi"
     @AppStorage("defaultGridSpacing") private var defaultGrid: Double = 50
     @AppStorage("defaultPaperPreset") private var defaultPaper: String = "18x24"
@@ -45,6 +46,15 @@ struct SettingsView: View {
             }
             
             Section("General") {
+                Picker("Appearance", selection: $appearanceManager.appearanceMode) {
+                    ForEach(AppearanceManager.AppearanceMode.allCases, id: \.self) { mode in
+                        Label(mode.displayName, systemImage: mode.iconName)
+                            .font(DesignTokens.Typography.body)
+                            .tag(mode)
+                    }
+                }
+                .font(DesignTokens.Typography.body)
+                
                 Picker("Units", selection: $units) {
                     Text("Miles")
                         .font(DesignTokens.Typography.body)
